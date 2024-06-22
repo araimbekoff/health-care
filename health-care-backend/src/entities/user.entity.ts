@@ -30,6 +30,6 @@ export class UserEntity {
   @JoinColumn({ name: 'emergency_contact_id' })
   emergency_contact: UserEntity;
 
-  @Column()
+  @Column({ nullable: true })
   emergency_contact_id: number;
 }

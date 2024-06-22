@@ -18,21 +18,6 @@ describe('OpenaiService', () => {
     expect(service).toBeDefined();
   });
 
-  it('test batch schedule prompt', async () => {
-    const medications_raw: string | null =
-      'Лизиноприл 10мг, 2 раза в день, Метформин 1000мг, 2 раза в день';
-    const procedures_raw: string | null =
-      'Мониторинг артериального давления 2 раза в неделю, Анализ крови на глюкозу 1 раз в месяц';
-    const exercises_raw: string | null =
-      'Прогулки на свежем воздухе 15 минут ежедневно, Легкие растяжки 2 раза в неделю';
-
-    await service.schedulesBatch(
-      medications_raw,
-      procedures_raw,
-      exercises_raw,
-    );
-  });
-
   it('test schedule prompt', async () => {
     const instructions: string[] | null[] = [
       'Лизиноприл 10мг, 2 раза в день, Метформин 1000мг, 2 раза в день',

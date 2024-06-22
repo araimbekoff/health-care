@@ -7,6 +7,10 @@ import {
 } from 'typeorm';
 import { UserEntity } from './user.entity';
 
+export enum TreatmentType {
+  AG = 'AG',
+}
+
 @Entity('treatment')
 export class TreatmentEntity {
   @PrimaryGeneratedColumn()
@@ -25,12 +29,36 @@ export class TreatmentEntity {
   @Column({ name: 'user_id' })
   user_id: number;
 
-  @Column({ name: 'medications_raw', type: 'text' })
+  @Column({
+    type: 'enum',
+    enum: TreatmentType,
+  })
+  type: TreatmentType;
+
+  @Column({ name: 'medications_json', type: 'text', nullable: true })
+  medications_json: string;
+
+  @Column({ name: 'procedures_json', type: 'text', nullable: true })
+  procedures_json: string;
+
+  @Column({ name: 'exercises_json', type: 'text', nullable: true })
+  exercises_json: string;
+
+  @Column({ name: 'medications_raw', type: 'text', nullable: true })
   medications_raw: string;
 
-  @Column({ name: 'procedures_raw', type: 'text' })
+  @Column({ name: 'procedures_raw', type: 'text', nullable: true })
   procedures_raw: string;
 
-  @Column({ name: 'exercises_raw', type: 'text' })
+  @Column({ name: 'exercises_raw', type: 'text', nullable: true })
   exercises_raw: string;
+
+  compareEntities(other: TreatmentEntity): boolean {
+    return (
+      this.type === other.type &&
+      this.medications_raw === other.medications_raw &&
+      this.procedures_raw === other.procedures_raw &&
+      this.exercises_raw === other.exercises_raw
+    );
+  }
 }
