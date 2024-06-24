@@ -55,6 +55,7 @@ export class TreatmentEntity {
 
   compareEntities(other: TreatmentEntity): boolean {
     return (
+      other &&
       this.type === other.type &&
       this.medications_raw === other.medications_raw &&
       this.procedures_raw === other.procedures_raw &&

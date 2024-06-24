@@ -9,9 +9,9 @@ import { UserEntity } from './user.entity';
 import { TreatmentEntity } from './treatment.entity';
 
 export enum ScheduleType {
-  MEDICATION = 'medication',
-  PROCEDURE = 'procedure',
-  EXERCISE = 'exercise',
+  MEDICATION = 'medications',
+  PROCEDURE = 'procedures',
+  EXERCISE = 'exercises',
 }
 
 @Entity('treatment_schedule')
@@ -19,7 +19,7 @@ export class TreatmentScheduleEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @ManyToOne(() => UserEntity)
+  @ManyToOne(() => TreatmentEntity)
   @JoinColumn({ name: 'treatment_id' })
   treatment: TreatmentEntity;
 
@@ -35,7 +35,7 @@ export class TreatmentScheduleEntity {
   @Column({ nullable: true })
   is_sent: boolean;
 
-  @Column()
+  @Column({ nullable: true })
   send_error: string;
 
   @Column({

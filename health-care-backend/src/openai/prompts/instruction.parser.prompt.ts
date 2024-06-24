@@ -1,6 +1,6 @@
 import { AbstractPrompt } from './abstract.prompt';
 
-export class ParserPrompt extends AbstractPrompt {
+export class InstructionParserPrompt extends AbstractPrompt {
   instruction: string | null;
 
   constructor(instruction: string | null) {

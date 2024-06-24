@@ -3,6 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from '../entities/user.entity';
 import { Repository } from 'typeorm';
 import { TreatmentRawDto } from '../treatment/dto/treatmentRawDto';
+import { Transactional } from 'typeorm-transactional';
 
 @Injectable()
 export class IdManagerService {
@@ -17,10 +18,12 @@ export class IdManagerService {
     });
   }
 
+  @Transactional()
   async create(rec: UserEntity) {
     await this.userRepo.save(rec);
   }
 
+  @Transactional()
   async createUserByTreatmentRaw(treatmentRawDto: TreatmentRawDto) {
     const { data } = treatmentRawDto;
     const rec = this.userRepo.create();

@@ -3,7 +3,14 @@ import { AbstractPrompt } from './prompts/abstract.prompt';
 import OpenAI from 'openai';
 import { ConfigService } from '@nestjs/config';
 import { SchedulePrompt } from './prompts/schedule.prompt';
-import { ParserPrompt } from './prompts/parser.prompt';
+import { InstructionParserPrompt } from './prompts/instruction.parser.prompt';
+import { TreatmentRawTextParserPrompt } from './prompts/treatment-raw-text.parser.prompt';
+import { TreatmentRawDto } from '../treatment/dto/treatmentRawDto';
+
+export class OpenaiScheduleResponse {
+  instruction: string;
+  schedules: string[];
+}
 
 @Injectable()
 export class OpenaiService {
@@ -27,14 +34,27 @@ export class OpenaiService {
     return prompt.getResponse(response) as T;
   }
 
-  async schedules(instruction: string) {
-    const parserPrompt = new ParserPrompt(instruction);
+  async parseRawToTreatment(treatment_raw_text: string) {
+    const prompt = new TreatmentRawTextParserPrompt(treatment_raw_text);
+    return await this.request<TreatmentRawDto>(prompt);
+  }
+
+  async schedules(instruction: string): Promise<OpenaiScheduleResponse[]> {
+    const parserPrompt = new InstructionParserPrompt(instruction);
     const dataItems = await this.request<{ data: string[] }>(parserPrompt);
-    console.log(dataItems);
-    for (const item of dataItems.data) {
-      const schedulePrompt = new SchedulePrompt(item);
-      const res = await this.request(schedulePrompt);
-      console.log(res);
+    const schedules_list: OpenaiScheduleResponse[] = [];
+    for (const instruction of dataItems.data) {
+      const schedulePrompt = new SchedulePrompt(instruction);
+      const res = await this.request<{ data: string[] }>(schedulePrompt);
+      schedules_list.push({
+        instruction,
+        schedules: res.data,
+      });
+      console.log({
+        instruction,
+        schedules: res.data,
+      });
     }
+    return schedules_list;
   }
 }
