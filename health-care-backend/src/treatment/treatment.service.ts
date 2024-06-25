@@ -16,11 +16,11 @@ import { rethrow } from '@nestjs/core/helpers/rethrow';
 export class TreatmentService {
   constructor(
     @InjectRepository(TreatmentEntity)
-    readonly treatmentRepo: Repository<TreatmentEntity>,
-    readonly idManagerService: IdManagerService,
-    readonly idManagerClinicService: IdManagerClinicService,
-    readonly scheduleGeneratorService: ScheduleGeneratorService,
-    readonly openaiService: OpenaiService,
+    private readonly treatmentRepo: Repository<TreatmentEntity>,
+    private readonly idManagerService: IdManagerService,
+    private readonly idManagerClinicService: IdManagerClinicService,
+    private readonly scheduleGeneratorService: ScheduleGeneratorService,
+    private readonly openaiService: OpenaiService,
   ) {}
 
   private async loadLastTreatment(
@@ -147,16 +147,26 @@ export class TreatmentService {
   private genReport(treatment: TreatmentEntity) {
     return [
       treatment.medications_raw
-        ? `- Прием лекарств: \`${treatment.medications_raw}\'`
+        ? `Прием лекарств: \`${treatment.medications_raw.replace(/[_*[\]()~`>#+\-=|{}.!]/g, '\\$&')}\` `
         : null,
       treatment.exercises_raw
-        ? `- Упраженения: \`${treatment.exercises_raw}\` `
+        ? `Упраженения: \`${treatment.exercises_raw.replace(/[_*[\]()~`>#+\-=|{}.!]/g, '\\$&')}\` `
         : null,
       treatment.procedures_raw
-        ? `- Процедуры: \`${treatment.procedures_raw}\` `
+        ? `Процедуры: \`${treatment.procedures_raw.replace(/[_*[\]()~`>#+\-=|{}.!]/g, '\\$&')}\` `
         : null,
     ]
       .filter((it) => !!it)
       .join('\n');
+    // .replace(/[_*[\]()~`>#+\-=|{}.!]/g, '\\$&');
+  }
+
+  async loadReportByPhone(phone: string) {
+    return this.genReport(await this.loadByPhone(phone));
+  }
+
+  async loadByPhone(phone: string) {
+    const user = await this.idManagerService.findUser(phone);
+    return await this.loadLastTreatment(user, TreatmentType.AG);
   }
 }
