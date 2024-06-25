@@ -6,6 +6,7 @@ import { OpenaiModule } from './openai/openai.module';
 import { TreatmentModule } from './treatment/treatment.module';
 import { IdManagerModule } from './id-manager/id-manager.module';
 import { ScheduleGeneratorModule } from './schedule-generator/schedule-generator.module';
+import { MessengerModule } from './messenger/messenger.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ScheduleGeneratorModule } from './schedule-generator/schedule-generator
     TreatmentModule,
     IdManagerModule,
     ScheduleGeneratorModule,
+    MessengerModule,
   ],
   controllers: [AppController],
   providers: [AppService],

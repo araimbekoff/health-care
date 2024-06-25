@@ -6,8 +6,9 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UserEntity } from './user.entity';
+import { DoctorEntity } from './doctor.entity';
 
-@Entity('health_state_entity')
+@Entity('health_state')
 export class HealthStateEntity {
   @PrimaryGeneratedColumn()
   id: number;
@@ -19,6 +20,13 @@ export class HealthStateEntity {
   @Column({ name: 'user_id' })
   user_id: number;
 
+  @ManyToOne(() => DoctorEntity)
+  @JoinColumn({ name: 'doctor_id' })
+  doctor: DoctorEntity;
+
+  @Column({ name: 'doctor_id' })
+  doctor_id: number;
+
   @Column()
   last_visit_date: Date;
 
@@ -29,7 +37,7 @@ export class HealthStateEntity {
   medical_history: string;
 
   @Column()
-  blood__pressure: string;
+  blood_pressure: string;
 
   @Column()
   pulse: string;

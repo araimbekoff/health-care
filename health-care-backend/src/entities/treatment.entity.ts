@@ -6,6 +6,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { UserEntity } from './user.entity';
+import { DoctorEntity } from './doctor.entity';
 
 export enum TreatmentType {
   AG = 'AG',
@@ -29,11 +30,21 @@ export class TreatmentEntity {
   @Column({ name: 'user_id' })
   user_id: number;
 
+  @ManyToOne(() => DoctorEntity)
+  @JoinColumn({ name: 'doctor_id' })
+  doctor: DoctorEntity;
+
+  @Column({ name: 'doctor_id' })
+  doctor_id: number;
+
   @Column({
     type: 'enum',
     enum: TreatmentType,
   })
   type: TreatmentType;
+
+  @Column({ name: 'raw_text', type: 'text', nullable: true })
+  raw_text: string;
 
   @Column({ name: 'medications_json', type: 'text', nullable: true })
   medications_json: string;

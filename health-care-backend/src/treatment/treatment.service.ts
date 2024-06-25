@@ -8,6 +8,9 @@ import { UserEntity } from '../entities/user.entity';
 import { ScheduleGeneratorService } from '../schedule-generator/schedule-generator.service';
 import { OpenaiService } from '../openai/openai.service';
 import { Transactional } from 'typeorm-transactional';
+import { IdManagerClinicService } from '../id-manager/id-manager.clinic.service';
+import { DoctorEntity } from '../entities/doctor.entity';
+import { rethrow } from '@nestjs/core/helpers/rethrow';
 
 @Injectable()
 export class TreatmentService {
@@ -15,6 +18,7 @@ export class TreatmentService {
     @InjectRepository(TreatmentEntity)
     readonly treatmentRepo: Repository<TreatmentEntity>,
     readonly idManagerService: IdManagerService,
+    readonly idManagerClinicService: IdManagerClinicService,
     readonly scheduleGeneratorService: ScheduleGeneratorService,
     readonly openaiService: OpenaiService,
   ) {}
@@ -33,11 +37,25 @@ export class TreatmentService {
   @Transactional()
   async saveFromRawText(
     raw_text: string,
-    callback: (param: number | TreatmentEntity) => void,
+    callback: (param: number | TreatmentEntity, report: string) => void,
     callbackError: (e: Error) => void,
   ) {
     const dtoRaw = await this.extractRawDto(raw_text);
-    await this.save(dtoRaw, TreatmentType.AG, callback, callbackError);
+    const doctor_phone = dtoRaw.data.find((it) => it.field === 'doctor_phone');
+    const clinic_uin = dtoRaw.data.find((it) => it.field === 'clinic_uin');
+    const doctor = await this.idManagerClinicService.registerDoctor(
+      '',
+      doctor_phone.value,
+      clinic_uin.value,
+    );
+    await this.save(
+      raw_text,
+      dtoRaw,
+      TreatmentType.AG,
+      doctor,
+      callback,
+      callbackError,
+    );
   }
 
   private async extractRawDto(raw_text: string) {
@@ -49,6 +67,8 @@ export class TreatmentService {
       medications_raw: false,
       procedures_raw: false,
       exercises_raw: false,
+      doctor_phone: false,
+      clinic_uin: false,
     };
     const control_fields = Object.keys(control_fields_map);
     const missing_fields = [];
@@ -70,28 +90,40 @@ export class TreatmentService {
   }
 
   async save(
+    raw_text: string,
     dto: TreatmentRawDto,
     treatmentType: TreatmentType,
-    callback: (param: number | TreatmentEntity) => void,
+    doctor: DoctorEntity,
+    callback: (param: number | TreatmentEntity, report: string) => void,
     callbackError: (e: Error) => void,
   ) {
     const user = await this.idManagerService.createUserByTreatmentRaw(dto);
-    const treatment = await this.saveFromRawInternal(user, dto, treatmentType);
+    const treatment = await this.saveFromRawInternal(
+      raw_text,
+      user,
+      doctor,
+      dto,
+      treatmentType,
+    );
     this.scheduleGeneratorService
       .genByTreatment(treatment)
-      .then(() => callback(treatment))
+      .then(() => callback(treatment, this.genReport(treatment)))
       .catch((e: Error) => callbackError(e));
   }
 
   @Transactional()
   async saveFromRawInternal(
+    raw_text: string,
     user: UserEntity,
+    doctor: DoctorEntity,
     dto: TreatmentRawDto,
     treatmentType: TreatmentType,
   ) {
     let rec = this.convertToTreatment(dto.data);
+    rec.raw_text = raw_text;
     rec.user = user;
     rec.type = treatmentType;
+    rec.doctor_id = doctor.id;
     const dbRec = await this.loadLastTreatment(user, treatmentType);
     const as_ald_treatment = rec.compareEntities(dbRec);
     if (!as_ald_treatment) {
@@ -110,5 +142,21 @@ export class TreatmentService {
       map[field.field] = field.value;
     }
     return this.treatmentRepo.create(map);
+  }
+
+  private genReport(treatment: TreatmentEntity) {
+    return [
+      treatment.medications_raw
+        ? `- Прием лекарств: \`${treatment.medications_raw}\'`
+        : null,
+      treatment.exercises_raw
+        ? `- Упраженения: \`${treatment.exercises_raw}\` `
+        : null,
+      treatment.procedures_raw
+        ? `- Процедуры: \`${treatment.procedures_raw}\` `
+        : null,
+    ]
+      .filter((it) => !!it)
+      .join('\n');
   }
 }

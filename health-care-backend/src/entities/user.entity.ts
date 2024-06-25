@@ -6,6 +6,12 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
+export enum MessengerType {
+  TELEGRAM = 'telegram',
+  WHATSAPP = 'whatsapp',
+  INSTAGRAM = 'instagram',
+}
+
 @Entity('users')
 export class UserEntity {
   @PrimaryGeneratedColumn()
@@ -17,14 +23,33 @@ export class UserEntity {
   @Column({ name: 'phone' })
   phone: string;
 
-  @Column()
+  @Column({ nullable: true })
   gender: string;
 
-  @Column()
+  @Column({ nullable: true })
   birthday: Date;
 
-  @Column()
+  @Column({ nullable: true })
   address: string;
+
+  @Column({ nullable: true })
+  telegram_id: string;
+
+  @Column({ nullable: true })
+  whatsapp_id: string;
+
+  @Column({ nullable: true })
+  instagram_id: string;
+
+  @Column({ nullable: false, default: false })
+  is_su: boolean;
+
+  @Column({
+    nullable: true,
+    type: 'enum',
+    enum: MessengerType,
+  })
+  default_messenger: string;
 
   @ManyToOne(() => UserEntity)
   @JoinColumn({ name: 'emergency_contact_id' })

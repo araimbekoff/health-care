@@ -10,7 +10,6 @@ import {
   ScheduleType,
   TreatmentScheduleEntity,
 } from '../entities/treatment.schedule.entity';
-import { Transactional } from 'typeorm-transactional';
 
 @Injectable()
 export class ScheduleGeneratorService {

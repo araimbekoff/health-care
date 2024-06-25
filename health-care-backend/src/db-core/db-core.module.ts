@@ -12,6 +12,9 @@ import {
   initializeTransactionalContext,
 } from 'typeorm-transactional';
 import { join } from 'path';
+import { TreatmentResponseEntity } from '../entities/treatment.response.entity';
+import { ClinicEntity } from '../entities/clinic.entity';
+import { DoctorEntity } from '../entities/doctor.entity';
 
 config();
 
@@ -48,6 +51,9 @@ addTransactionalDataSource(dataSource);
       HealthStateEntity,
       TreatmentEntity,
       TreatmentScheduleEntity,
+      TreatmentResponseEntity,
+      ClinicEntity,
+      DoctorEntity,
     ]),
   ],
   providers: [

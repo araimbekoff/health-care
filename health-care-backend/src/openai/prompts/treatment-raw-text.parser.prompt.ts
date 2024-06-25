@@ -136,6 +136,16 @@ export class TreatmentRawTextParserPrompt extends AbstractPrompt {
       "field": "exercises_raw",
       "title": "Упражнения",
       "value": "Прогулки на свежем воздухе 20 минут ежедневно, Легкая зарядка 2 раза в неделю"
+    },
+    {
+      "field": "doctor_phone",
+      "title": "Контакты лечащего врача",
+      "value": "+77770123456"
+    },
+    {
+      "field": "clinic_uin",
+      "title": "БИН бизнес идентификацонный номер мед клиники 12 цифр",
+      "value": "820228399094"
     }
   ]}
   Если какие то поля для выходных данных не нашел, то оставь их пустыми.
