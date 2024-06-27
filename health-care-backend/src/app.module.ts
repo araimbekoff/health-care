@@ -7,6 +7,7 @@ import { TreatmentModule } from './treatment/treatment.module';
 import { IdManagerModule } from './id-manager/id-manager.module';
 import { ScheduleGeneratorModule } from './schedule-generator/schedule-generator.module';
 import { MessengerModule } from './messenger/messenger.module';
+import { ScheduleTaskModule } from './schedule-task/schedule-task.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { MessengerModule } from './messenger/messenger.module';
     IdManagerModule,
     ScheduleGeneratorModule,
     MessengerModule,
+    ScheduleTaskModule,
   ],
   controllers: [AppController],
   providers: [AppService],

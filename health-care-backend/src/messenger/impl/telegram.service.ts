@@ -208,4 +208,8 @@ export class TelegramService {
       console.error(e);
     }
   }
+
+  async sendMessage(telegram_id: string, message: string) {
+    await this.bot.telegram.sendMessage(telegram_id, message);
+  }
 }
