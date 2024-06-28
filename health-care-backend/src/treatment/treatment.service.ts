@@ -10,7 +10,6 @@ import { OpenaiService } from '../openai/openai.service';
 import { Transactional } from 'typeorm-transactional';
 import { IdManagerClinicService } from '../id-manager/id-manager.clinic.service';
 import { DoctorEntity } from '../entities/doctor.entity';
-import { rethrow } from '@nestjs/core/helpers/rethrow';
 
 @Injectable()
 export class TreatmentService {
