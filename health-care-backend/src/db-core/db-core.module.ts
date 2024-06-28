@@ -1,50 +1,38 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
-import { config } from 'dotenv';
-import { UserEntity } from '../entities/user.entity';
-import { HealthStateEntity } from '../entities/health.state.entity';
-import { TreatmentEntity } from '../entities/treatment.entity';
-import { TreatmentScheduleEntity } from '../entities/treatment.schedule.entity';
-import * as process from 'node:process';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import {
   addTransactionalDataSource,
   initializeTransactionalContext,
 } from 'typeorm-transactional';
-import { join } from 'path';
+import { UserEntity } from '../entities/user.entity';
+import { HealthStateEntity } from '../entities/health.state.entity';
+import { TreatmentEntity } from '../entities/treatment.entity';
+import { TreatmentScheduleEntity } from '../entities/treatment.schedule.entity';
 import { TreatmentResponseEntity } from '../entities/treatment.response.entity';
 import { ClinicEntity } from '../entities/clinic.entity';
 import { DoctorEntity } from '../entities/doctor.entity';
 
-config();
-
-// Define DataSource options
-const dataSourceOptions: DataSourceOptions = {
-  type: 'postgres',
-  host: process.env.DB_HOST,
-  port: parseInt(process.env.DB_PORT, 10),
-  username: process.env.DB_USERNAME,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_DATABASE,
-  entities: [join(__dirname, '../**', '*.entity.{ts,js}')],
-  synchronize: true,
-};
-
-// Create and initialize DataSource
-const dataSource = new DataSource(dataSourceOptions);
-addTransactionalDataSource(dataSource);
-
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     TypeOrmModule.forRootAsync({
-      useFactory: async () => {
+      imports: [ConfigModule],
+      useFactory: async (configService: ConfigService) => {
+        const options = getDataSourceOptions(configService);
+
+        const dataSource = new DataSource(options);
         await dataSource.initialize();
+        addTransactionalDataSource(dataSource);
         console.log('DataSource has been initialized');
+
         return {
-          ...dataSourceOptions,
+          ...options,
           autoLoadEntities: true,
         } as TypeOrmModuleOptions;
       },
+      inject: [ConfigService],
     }),
     TypeOrmModule.forFeature([
       UserEntity,
@@ -59,7 +47,9 @@ addTransactionalDataSource(dataSource);
   providers: [
     {
       provide: DataSource,
-      useValue: dataSource,
+      useFactory: (configService: ConfigService) =>
+        new DataSource(getDataSourceOptions(configService)),
+      inject: [ConfigService],
     },
   ],
   exports: [TypeOrmModule, DataSource],
@@ -68,4 +58,25 @@ export class DbCoreModule {
   constructor() {
     initializeTransactionalContext();
   }
+}
+
+function getDataSourceOptions(configService: ConfigService): DataSourceOptions {
+  return {
+    type: 'postgres',
+    host: configService.get('DB_HOST'),
+    port: configService.get<number>('DB_PORT'),
+    username: configService.get('DB_USERNAME'),
+    password: configService.get('DB_PASSWORD'),
+    database: configService.get('DB_DATABASE'),
+    entities: [
+      UserEntity,
+      HealthStateEntity,
+      TreatmentEntity,
+      TreatmentScheduleEntity,
+      TreatmentResponseEntity,
+      ClinicEntity,
+      DoctorEntity,
+    ],
+    synchronize: configService.get<boolean>('DB_SYNCHRONIZE'),
+  };
 }

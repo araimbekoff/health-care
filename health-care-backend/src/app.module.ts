@@ -8,6 +8,7 @@ import { IdManagerModule } from './id-manager/id-manager.module';
 import { ScheduleGeneratorModule } from './schedule-generator/schedule-generator.module';
 import { MessengerModule } from './messenger/messenger.module';
 import { ScheduleTaskModule } from './schedule-task/schedule-task.module';
+import { ScheduleResponseModule } from './schedule-response/schedule-response.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ScheduleTaskModule } from './schedule-task/schedule-task.module';
     ScheduleGeneratorModule,
     MessengerModule,
     ScheduleTaskModule,
+    ScheduleResponseModule,
   ],
   controllers: [AppController],
   providers: [AppService],

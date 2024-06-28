@@ -1,3 +1,4 @@
+// telegram.service.ts
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Context, Markup, Telegraf } from 'telegraf';
@@ -7,175 +8,168 @@ import { Contact } from '@telegraf/types/message';
 import { UserEntity } from '../../entities/user.entity';
 import { TreatmentService } from '../../treatment/treatment.service';
 import { TreatmentEntity } from '../../entities/treatment.entity';
+import {
+  isScheduleResponse,
+  TreatmentScheduleResponseDto,
+} from '../dto/messenger-dtos';
 
-export type TgContext = Context & {
-  update: Update.MessageUpdate<Message>;
-};
-export type CQContext = Context & {
-  update: Update.CallbackQueryUpdate;
-};
-
-class CallbackAttr {
-  name?: string;
-  mess?: string;
-  request_text: boolean;
-}
-
-export const CBQ: Record<string, CallbackAttr> = {
-  view_my_treatments: {
-    mess: '',
-    request_text: false,
-  },
-  view_patient_treatments: {
-    mess: 'Введите номер телефона пациента в формате +77774041000',
-    request_text: true,
-  },
-  add_patient_treatments: {
-    mess: 'Введите рекомендацию к лечению',
-    request_text: true,
-  },
-};
+export type TgContext = Context & { update: Update.MessageUpdate<Message> };
+export type CQContext = Context & { update: Update.CallbackQueryUpdate };
 
 @Injectable()
 export class TelegramService {
-  protected readonly bot: Telegraf<Context>;
-  protected callbackQueryMap: Record<number, string> = {};
-
-  // protected readonly observers: AbstractTelegramObserver[] = [];
+  private readonly bot: Telegraf<Context>;
+  private readonly callbackQueryMap: Record<number, string> = {};
 
   constructor(
-    private configService: ConfigService,
+    private readonly configService: ConfigService,
     private readonly messengerIdManagerService: IdManagerMessengerService,
     private readonly treatmentService: TreatmentService,
   ) {
     const token = this.configService.get<string>('TELEGRAM_BOT_TOKEN');
     this.bot = new Telegraf<TgContext>(token);
-    this.init().then(() => console.log('telegram initialized'));
-    this.bot.launch().then(() => console.log('telegram launched'));
+
+    this.init()
+      .then(() => console.log('Telegram initialized'))
+      .catch(console.error);
+
+    this.bot
+      .launch()
+      .then(() => console.log('Telegram launched'))
+      .catch(console.error);
   }
 
-  private async getUser(ctx: TgContext | CQContext) {
-    const { from } = ctx;
-    const user = await this.messengerIdManagerService.getUserByTelegram(from);
+  private async getUser(
+    ctx: TgContext | CQContext,
+  ): Promise<UserEntity | null> {
+    const user = await this.messengerIdManagerService.getUserByTelegram(
+      ctx.from,
+    );
     if (!user) {
       await ctx.reply('Для продолжения отправьте номер телефона', {
         reply_markup: {
           one_time_keyboard: true,
           keyboard: [
-            [{ text: 'отправить номер телефона', request_contact: true }],
+            [{ text: 'Отправить номер телефона', request_contact: true }],
           ],
         },
       });
-      return null;
     }
     return user;
   }
 
-  async init() {
+  private async init(): Promise<void> {
     this.bot.command('start', async (ctx: TgContext) => {
       const user = await this.getUser(ctx);
-      if (user) {
-        this.replyToStart(user, ctx).then().catch();
-      }
+      if (user) await this.replyToStart(user, ctx);
     });
 
     this.bot.on('message', async (ctx: TgContext) => {
-      // if (!user) {
-      //   return;
-      // }
       if ('contact' in ctx.message) {
-        this.receiveContact(ctx)
-          .then(() => console.log('registered'))
-          .catch((e) => console.log('registering failed', e));
+        await this.receiveContact(ctx);
         return;
       }
-      const user = await this.getUser(ctx);
 
-      if (this.callbackQueryMap[ctx.from.id]) {
-        this.execCallbackQueryRequest(this.callbackQueryMap[ctx.from.id], ctx);
-        // .then(() => console.log('execCallbackQueryRequest_'))
-        // .catch((e) => console.log('execCallbackQueryRequest_', e));
+      const user = await this.getUser(ctx);
+      if (!user) return;
+
+      const callbackQuery = this.callbackQueryMap[ctx.from.id];
+      if (callbackQuery) {
+        await this.execCallbackQueryRequest(callbackQuery, ctx);
       } else {
-        ctx.reply('Мы не смогли обработать ваш запрос.');
-        this.replyToStart(user, ctx).then().catch();
+        await ctx.reply('Мы не смогли обработать ваш запрос.');
+        await this.replyToStart(user, ctx);
       }
     });
-    this.bot.on('callback_query', (ctx: CQContext) => {
-      const { callbackQuery } = ctx;
-      if ('data' in callbackQuery) {
-        const { data } = callbackQuery;
-        this.callbackQueryHandler(ctx, data);
+
+    this.bot.on('callback_query', async (ctx: CQContext) => {
+      if ('data' in ctx.callbackQuery) {
+        const { data } = ctx.callbackQuery;
+        await this.callbackQueryHandler(ctx, data);
       }
     });
   }
 
-  private extractTextMessage(ctx: TgContext) {
+  private extractTextMessage(ctx: TgContext): string | null {
     if (ctx.update && ctx.update.message && 'text' in ctx.update.message) {
       return ctx.update.message.text;
     }
-    return null;
   }
 
-  execCallbackQueryRequest(callbackQuery: string, ctx: TgContext) {
+  private async execCallbackQueryRequest(
+    callbackQuery: string,
+    ctx: TgContext,
+  ): Promise<void> {
     const mess = this.extractTextMessage(ctx);
     if (!mess || !CBQ[callbackQuery]) {
-      this.callbackQueryHandler(ctx, callbackQuery).then(() => console.log(''));
+      await this.callbackQueryHandler(ctx, callbackQuery);
       return;
     }
-    //
-    if (callbackQuery === 'add_patient_treatments') {
-      this.treatmentService
-        .saveFromRawText(
+
+    switch (callbackQuery) {
+      case 'add_patient_treatments':
+        await this.treatmentService.saveFromRawText(
           mess,
           async (treatment: number | TreatmentEntity, report: string) => {
-            await ctx.reply(`Рекомендации успешно добавлены: \n ${report}`, {
+            await ctx.reply(`Рекомендации успешно добавлены: \n${report}`, {
               parse_mode: 'MarkdownV2',
             });
           },
           async (e: Error) => {
             await ctx.reply(`Ошибка обработки: ${e.message}`);
           },
-        )
-        .catch(async (e) => {
-          await ctx.reply(`Ошибка обработки: ${e.message}`, {
-            parse_mode: 'MarkdownV2',
-          });
-          await this.callbackQueryHandler(ctx, callbackQuery);
-        });
-    } else if (callbackQuery === 'view_patient_treatments') {
-      this.treatmentService.loadReportByPhone(mess).then((rep) => {
-        ctx.reply(rep, { parse_mode: 'MarkdownV2' });
-      });
+        );
+        break;
+
+      case 'view_patient_treatments':
+        const report = await this.treatmentService.loadReportByPhone(mess);
+        await ctx.reply(report, { parse_mode: 'MarkdownV2' });
+        break;
+
+      default:
+        await ctx.reply(
+          'Ваш запрос обрабатывается. Вы получите сообщение о результатах обработки',
+        );
     }
-    ctx.reply(
-      'Ваш запрос обрабатывается. Вы получите сообщение о результатах обраотки',
-    );
+
     delete this.callbackQueryMap[ctx.from.id];
   }
 
-  async callbackQueryHandler(
+  private async callbackQueryHandler(
     ctx: CQContext | TgContext,
     callbackQuery: string,
-  ) {
-    const cbqItem = CBQ[callbackQuery];
-    if (!cbqItem) {
-      ctx.reply('Неизвестная коменда').then(() => console.log(''));
+  ): Promise<void> {
+    if (isScheduleResponse(callbackQuery)) {
       this.callbackQueryMap[ctx.from.id] = null;
       return;
-    } else if (callbackQuery === 'view_my_treatments') {
-      const telegram_id = ctx.from.id;
-      console.log('telegram_id', telegram_id);
-      const user = await this.getUser(ctx);
-      const rep = await this.treatmentService.loadReportByPhone(user.phone);
-      ctx.reply(rep, { parse_mode: 'MarkdownV2' });
     }
-    if (cbqItem.request_text) {
-      this.callbackQueryMap[ctx.from.id] = callbackQuery;
-      ctx.reply(cbqItem.mess).then(() => console.log(''));
+    const cbqItem = CBQ[callbackQuery];
+    if (!cbqItem) {
+      await ctx.reply('Неизвестная команда');
+      this.callbackQueryMap[ctx.from.id] = null;
+      return;
+    }
+
+    switch (callbackQuery) {
+      case 'view_my_treatments':
+        const user = await this.getUser(ctx);
+        if (user) {
+          const report = await this.treatmentService.loadReportByPhone(
+            user.phone,
+          );
+          await ctx.reply(report, { parse_mode: 'MarkdownV2' });
+        }
+        break;
+
+      default:
+        if (cbqItem.request_text) {
+          this.callbackQueryMap[ctx.from.id] = callbackQuery;
+          await ctx.reply(cbqItem.mess);
+        }
     }
   }
 
-  async replyToStart(user: UserEntity, ctx: TgContext) {
+  private async replyToStart(user: UserEntity, ctx: TgContext): Promise<void> {
     await ctx.sendMessage(
       'Выберите функцию',
       Markup.inlineKeyboard(
@@ -195,7 +189,7 @@ export class TelegramService {
     );
   }
 
-  async receiveContact(ctx: TgContext) {
+  private async receiveContact(ctx: TgContext): Promise<void> {
     try {
       if ('contact' in ctx.message) {
         const contact: Contact = ctx.message.contact;
@@ -209,7 +203,38 @@ export class TelegramService {
     }
   }
 
-  async sendMessage(telegram_id: string, message: string) {
-    await this.bot.telegram.sendMessage(telegram_id, message);
+  async sendMessage(
+    telegram_id: string,
+    message: string,
+    buttons: TreatmentScheduleResponseDto[],
+  ): Promise<void> {
+    const inline_buttons = buttons.map((btn) =>
+      Markup.button.callback(btn.title, btn.callback_data),
+    );
+    const inline_keyboard = inline_buttons.length
+      ? Markup.inlineKeyboard(inline_buttons, { columns: 1 })
+      : undefined;
+    await this.bot.telegram.sendMessage(telegram_id, message, inline_keyboard);
   }
 }
+
+class CallbackAttr {
+  name?: string;
+  mess?: string;
+  request_text = false;
+}
+
+export const CBQ: Record<string, CallbackAttr> = {
+  view_my_treatments: {
+    mess: 'Посмотреть мои рекомендации от врача',
+    request_text: true,
+  },
+  view_patient_treatments: {
+    mess: 'Введите номер телефона пациента в формате +77774041000',
+    request_text: true,
+  },
+  add_patient_treatments: {
+    mess: 'Введите рекомендацию к лечению',
+    request_text: true,
+  },
+};

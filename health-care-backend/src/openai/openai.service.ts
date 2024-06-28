@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { AbstractPrompt } from './prompts/abstract.prompt';
 import OpenAI from 'openai';
 import { ConfigService } from '@nestjs/config';
 import { SchedulePrompt } from './prompts/schedule.prompt';
@@ -16,45 +15,33 @@ export class OpenaiScheduleResponse {
 export class OpenaiService {
   private openai: OpenAI;
 
-  constructor(private configService: ConfigService) {
+  constructor(private readonly configService: ConfigService) {
     this.openai = new OpenAI({
       apiKey: this.configService.get<string>('OPENAI_KEY'),
     });
   }
 
-  async request<T>(prompt: AbstractPrompt) {
-    const response = await this.openai.chat.completions.create({
-      model: prompt.getModel(),
-      messages: prompt.getBody().messages,
-      temperature: prompt.getTemperature(),
-      response_format: {
-        type: 'json_object',
-      },
-    });
-    return prompt.getResponse(response) as T;
-  }
-
-  async parseRawToTreatment(treatment_raw_text: string) {
-    const prompt = new TreatmentRawTextParserPrompt(treatment_raw_text);
-    return await this.request<TreatmentRawDto>(prompt);
+  async parseRawToTreatment(
+    treatmentRawText: string,
+  ): Promise<TreatmentRawDto> {
+    const prompt = new TreatmentRawTextParserPrompt(treatmentRawText);
+    return this.request<TreatmentRawDto>(prompt);
   }
 
   async schedules(instruction: string): Promise<OpenaiScheduleResponse[]> {
     const parserPrompt = new InstructionParserPrompt(instruction);
     const dataItems = await this.request<{ data: string[] }>(parserPrompt);
-    const schedules_list: OpenaiScheduleResponse[] = [];
-    for (const instruction of dataItems.data) {
-      const schedulePrompt = new SchedulePrompt(instruction);
-      const res = await this.request<{ data: string[] }>(schedulePrompt);
-      schedules_list.push({
-        instruction,
-        schedules: res.data,
-      });
-      console.log({
-        instruction,
-        schedules: res.data,
-      });
-    }
-    return schedules_list;
+    return Promise.all(
+      dataItems.data.map(async (instruction) => {
+        const schedulePrompt = new SchedulePrompt(instruction);
+        const res = await this.request<{ data: string[] }>(schedulePrompt);
+        return { instruction, schedules: res.data };
+      }),
+    );
+  }
+
+  private async request<T>(prompt: any): Promise<T> {
+    const response = await this.openai.chat.completions.create(prompt);
+    return prompt.getResponse(response) as T;
   }
 }
