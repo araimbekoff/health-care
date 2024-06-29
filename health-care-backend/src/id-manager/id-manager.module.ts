@@ -6,7 +6,7 @@ import { IdManagerMessengerService } from './id-manager.messenger.service';
 import { IdManagerClinicService } from './id-manager.clinic.service';
 
 @Module({
-  imports: [ConfigModule.forRoot(), DbCoreModule],
+  imports: [ConfigModule, DbCoreModule],
   providers: [
     IdManagerService,
     IdManagerMessengerService,

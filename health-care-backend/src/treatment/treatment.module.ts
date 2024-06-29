@@ -8,7 +8,7 @@ import { ScheduleGeneratorModule } from '../schedule-generator/schedule-generato
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule,
     DbCoreModule,
     IdManagerModule,
     ScheduleGeneratorModule,

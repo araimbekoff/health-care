@@ -18,7 +18,7 @@ describe('TreatmentService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
-        ConfigModule.forRoot(),
+        ConfigModule,
         DbCoreModule,
         IdManagerModule,
         ScheduleGeneratorModule,

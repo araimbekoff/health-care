@@ -16,7 +16,7 @@ import { DoctorEntity } from '../entities/doctor.entity';
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       useFactory: async (configService: ConfigService) => {

@@ -8,7 +8,7 @@ describe('OpenaiService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot()],
+      imports: [ConfigModule],
       providers: [OpenaiService],
     }).compile();
 

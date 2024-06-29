@@ -10,7 +10,7 @@ import { ScheduleResponseModule } from '../schedule-response/schedule-response.m
 
 @Module({
   imports: [
-    ConfigModule.forRoot(),
+    ConfigModule,
     DbCoreModule,
     IdManagerModule,
     TreatmentModule,

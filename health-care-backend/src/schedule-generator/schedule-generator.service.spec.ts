@@ -11,7 +11,7 @@ describe('ScheduleGeneratorService', () => {
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      imports: [ConfigModule.forRoot(), DbCoreModule, OpenaiModule],
+      imports: [ConfigModule, DbCoreModule, OpenaiModule],
       providers: [ScheduleGeneratorService],
     }).compile();
 
