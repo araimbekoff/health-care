@@ -2,10 +2,12 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { Context, Markup, Telegraf } from 'telegraf';
-import { IdManagerMessengerService } from '../../id-manager/id-manager.messenger.service';
+import {
+  IdManagerMessengerService,
+  UserInfoDto,
+} from '../../id-manager/id-manager.messenger.service';
 import { Update, Message } from 'telegraf/typings/core/types/typegram';
 import { Contact } from '@telegraf/types/message';
-import { UserEntity } from '../../entities/user.entity';
 import { TreatmentService } from '../../treatment/treatment.service';
 import { TreatmentEntity } from '../../entities/treatment.entity';
 import {
@@ -14,6 +16,7 @@ import {
 } from '../dto/messenger-dtos';
 import { ScheduleResponseService } from '../../schedule-response/schedule-response.service';
 import { ScheduleTaskService } from '../../schedule-task/schedule-task.service';
+import { InlineKeyboardButton } from 'telegraf/src/core/types/typegram';
 
 export type TgContext = Context & { update: Update.MessageUpdate<Message> };
 export type CQContext = Context & { update: Update.CallbackQueryUpdate };
@@ -49,10 +52,11 @@ export class TelegramService {
 
   private async getUser(
     ctx: TgContext | CQContext,
-  ): Promise<UserEntity | null> {
-    const user = await this.messengerIdManagerService.getUserByTelegram(
+  ): Promise<UserInfoDto | null> {
+    const userInfo = await this.messengerIdManagerService.getUserByTelegram(
       ctx.from,
     );
+    const user = userInfo.user;
     if (!user) {
       await ctx.reply('Для продолжения отправьте номер телефона', {
         reply_markup: {
@@ -63,13 +67,16 @@ export class TelegramService {
         },
       });
     }
-    return user;
+    return userInfo;
   }
 
   private async init(): Promise<void> {
     this.bot.command('start', async (ctx: TgContext) => {
-      const user = await this.getUser(ctx);
-      if (user) await this.replyToStart(user, ctx);
+      const userInfo = await this.getUser(ctx);
+      const user = userInfo.user;
+      if (user) {
+        await replyToStart(userInfo, ctx);
+      }
     });
 
     this.bot.on('message', async (ctx: TgContext) => {
@@ -78,7 +85,8 @@ export class TelegramService {
         return;
       }
 
-      const user = await this.getUser(ctx);
+      const userInfo = await this.getUser(ctx);
+      const user = userInfo.user;
       if (!user) return;
 
       const callbackQuery = this.callbackQueryMap[ctx.from.id];
@@ -86,7 +94,7 @@ export class TelegramService {
         await this.execCallbackQueryRequest(callbackQuery, ctx);
       } else {
         await ctx.reply('Мы не смогли обработать ваш запрос.');
-        await this.replyToStart(user, ctx);
+        await replyToStart(userInfo, ctx);
       }
     });
 
@@ -167,7 +175,8 @@ export class TelegramService {
 
     switch (callbackQuery) {
       case 'view_my_treatments':
-        const user = await this.getUser(ctx);
+        const userInfo = await this.getUser(ctx);
+        const user = userInfo.user;
         if (user) {
           const report = await this.treatmentService.loadReportByPhone(
             user.phone,
@@ -182,26 +191,6 @@ export class TelegramService {
           await ctx.reply(cbqItem.mess);
         }
     }
-  }
-
-  private async replyToStart(user: UserEntity, ctx: TgContext): Promise<void> {
-    await ctx.sendMessage(
-      'Выберите функцию',
-      Markup.inlineKeyboard(
-        [
-          Markup.button.callback('Мои рекомендации', 'view_my_treatments'),
-          Markup.button.callback(
-            'Найти рекомендации пациенту',
-            'view_patient_treatments',
-          ),
-          Markup.button.callback(
-            'Добавить рекомендации пациенту',
-            'add_patient_treatments',
-          ),
-        ],
-        { columns: 1 },
-      ),
-    );
   }
 
   private async receiveContact(ctx: TgContext): Promise<void> {
@@ -233,23 +222,70 @@ export class TelegramService {
   }
 }
 
+/**/
+const replyToStart = async (
+  userInfo: UserInfoDto,
+  ctx: TgContext,
+): Promise<void> => {
+  const keyboards: InlineKeyboardButton.CallbackButton[] = [];
+  if (userInfo.is_superuser) {
+    keyboards.push(
+      Markup.button.callback(
+        CBQ['add_clinic_doctor'].btn_title,
+        'add_clinic_doctor',
+      ),
+    );
+  }
+  if (userInfo.is_superuser || userInfo?.clinics?.length) {
+    keyboards.push(
+      Markup.button.callback(
+        CBQ['view_patient_treatments'].btn_title,
+        'view_patient_treatments',
+      ),
+      Markup.button.callback(
+        CBQ['add_patient_treatments'].btn_title,
+        'add_patient_treatments',
+      ),
+    );
+  }
+  keyboards.push(
+    Markup.button.callback(
+      CBQ['view_my_treatments'].btn_title,
+      'view_my_treatments',
+    ),
+  );
+  await ctx.sendMessage(
+    'Выберите функцию',
+    Markup.inlineKeyboard(keyboards, { columns: 1 }),
+  );
+};
+
 class CallbackAttr {
   name?: string;
   mess?: string;
-  request_text = false;
+  btn_title: string;
+  request_text: boolean;
 }
 
 export const CBQ: Record<string, CallbackAttr> = {
   view_my_treatments: {
+    btn_title: 'мои рекомендации',
     mess: 'Посмотреть мои рекомендации от врача',
-    request_text: true,
+    request_text: false,
   },
   view_patient_treatments: {
+    btn_title: 'Найти рекомендации пациенту',
     mess: 'Введите номер телефона пациента в формате +77774041000',
     request_text: true,
   },
   add_patient_treatments: {
+    btn_title: 'Добавить рекомендации пациенту',
     mess: 'Введите рекомендацию к лечению',
+    request_text: true,
+  },
+  add_clinic_doctor: {
+    btn_title: 'Добавить доктора',
+    mess: 'Введите БИН клиники, номер телефона и ФИО врача',
     request_text: true,
   },
 };
