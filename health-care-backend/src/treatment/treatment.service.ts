@@ -26,11 +26,13 @@ export class TreatmentService {
     user: UserEntity,
     treatmentType: TreatmentType,
   ) {
-    return await this.treatmentRepo.findOneBy({
+    const treatment = await this.treatmentRepo.findOneBy({
       user_id: user.id,
       type: treatmentType,
       is_actual: true,
     });
+    console.log(treatment === null);
+    return treatment;
   }
 
   @Transactional()
@@ -144,6 +146,9 @@ export class TreatmentService {
   }
 
   private genReport(treatment: TreatmentEntity) {
+    if (!treatment) {
+      return '`У вас нет действующих рекомендаций.`';
+    }
     return [
       treatment.medications_raw
         ? `Прием лекарств: \`${treatment.medications_raw.replace(/[_*[\]()~`>#+\-=|{}.!]/g, '\\$&')}\` `

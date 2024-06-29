@@ -12,6 +12,8 @@ import {
   isScheduleResponse,
   TreatmentScheduleResponseDto,
 } from '../dto/messenger-dtos';
+import { ScheduleResponseService } from '../../schedule-response/schedule-response.service';
+import { ScheduleTaskService } from '../../schedule-task/schedule-task.service';
 
 export type TgContext = Context & { update: Update.MessageUpdate<Message> };
 export type CQContext = Context & { update: Update.CallbackQueryUpdate };
@@ -20,9 +22,15 @@ export type CQContext = Context & { update: Update.CallbackQueryUpdate };
 export class TelegramService {
   private readonly bot: Telegraf<Context>;
   private readonly callbackQueryMap: Record<number, string> = {};
+  private scheduleTaskService: ScheduleTaskService;
+
+  registerScheduleTaskService(scheduleTaskService: ScheduleTaskService) {
+    this.scheduleTaskService = scheduleTaskService;
+  }
 
   constructor(
     private readonly configService: ConfigService,
+    private readonly scheduleResponseService: ScheduleResponseService,
     private readonly messengerIdManagerService: IdManagerMessengerService,
     private readonly treatmentService: TreatmentService,
   ) {
@@ -139,8 +147,15 @@ export class TelegramService {
     ctx: CQContext | TgContext,
     callbackQuery: string,
   ): Promise<void> {
+    ctx.deleteMessage().then(() => console.log('ok'));
     if (isScheduleResponse(callbackQuery)) {
       this.callbackQueryMap[ctx.from.id] = null;
+      const res =
+        await this.scheduleResponseService.registerCallbackData(callbackQuery);
+      if (res.schedule) {
+        this.scheduleTaskService.addTask(res.schedule);
+      }
+      await ctx.reply(res.mess);
       return;
     }
     const cbqItem = CBQ[callbackQuery];

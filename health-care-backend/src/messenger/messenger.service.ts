@@ -7,6 +7,8 @@ import { TreatmentEntity } from '../entities/treatment.entity';
 import { Repository } from 'typeorm';
 import { MessengerType, UserEntity } from '../entities/user.entity';
 import {
+  genResponseCallback,
+  genResponseRemindCallback,
   ScheduleResponseType,
   TreatmentScheduleResponseDto,
 } from './dto/messenger-dtos';
@@ -57,15 +59,15 @@ export class MessengerService {
     const buttons: TreatmentScheduleResponseDto[] = [
       {
         title: 'Я принял лекарство',
-        callback_data: `${ScheduleResponseType.RESPONSE}-${schedule.id}`,
+        callback_data: genResponseCallback(schedule.id),
       },
       {
         title: 'Отложить на 10 мин',
-        callback_data: `${ScheduleResponseType.REMIND_AFTER}-${schedule.id}-10`,
+        callback_data: genResponseRemindCallback(schedule.id, 10),
       },
       {
         title: 'Отложить на 30 мин',
-        callback_data: `${ScheduleResponseType.REMIND_AFTER}-${schedule.id}-30`,
+        callback_data: genResponseRemindCallback(schedule.id, 30),
       },
     ];
     await this.telegramService.sendMessage(user.telegram_id, message, buttons);

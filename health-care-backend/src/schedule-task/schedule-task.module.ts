@@ -7,5 +7,6 @@ import { MessengerModule } from '../messenger/messenger.module';
 @Module({
   imports: [DbCoreModule, ScheduleModule.forRoot(), MessengerModule],
   providers: [ScheduleTaskService],
+  exports: [ScheduleTaskService],
 })
 export class ScheduleTaskModule {}

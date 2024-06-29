@@ -9,6 +9,7 @@ import { ScheduleGeneratorModule } from './schedule-generator/schedule-generator
 import { MessengerModule } from './messenger/messenger.module';
 import { ScheduleTaskModule } from './schedule-task/schedule-task.module';
 import { ScheduleResponseModule } from './schedule-response/schedule-response.module';
+import { GlobalConfigModule } from './global-config/global-config.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { ScheduleResponseModule } from './schedule-response/schedule-response.mo
     MessengerModule,
     ScheduleTaskModule,
     ScheduleResponseModule,
+    GlobalConfigModule,
   ],
   controllers: [AppController],
   providers: [AppService],

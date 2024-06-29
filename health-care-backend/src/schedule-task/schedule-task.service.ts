@@ -5,6 +5,7 @@ import { Between, Repository } from 'typeorm';
 import { SchedulerRegistry } from '@nestjs/schedule';
 import { CronJob } from 'cron';
 import { MessengerService } from '../messenger/messenger.service';
+import { TelegramService } from '../messenger/impl/telegram.service';
 
 @Injectable()
 export class ScheduleTaskService implements OnModuleInit {
@@ -16,7 +17,10 @@ export class ScheduleTaskService implements OnModuleInit {
     private readonly scheduleRepository: Repository<TreatmentScheduleEntity>,
     private readonly schedulerRegistry: SchedulerRegistry,
     private readonly messengerService: MessengerService,
-  ) {}
+    private readonly telegramService: TelegramService,
+  ) {
+    this.telegramService.registerScheduleTaskService(this);
+  }
 
   async onModuleInit() {
     await this.scheduleDailyTaskUpdate();
@@ -73,7 +77,7 @@ export class ScheduleTaskService implements OnModuleInit {
     });
 
     schedules.forEach((schedule) => {
-      this.addTask(schedule.id, schedule);
+      this.addTask(schedule);
     });
   }
 
@@ -82,6 +86,7 @@ export class ScheduleTaskService implements OnModuleInit {
 
     // Получаем расписание на оставшуюся часть текущего дня
     const now = new Date();
+
     const endOfToday = new Date(
       now.getFullYear(),
       now.getMonth(),
@@ -90,22 +95,23 @@ export class ScheduleTaskService implements OnModuleInit {
       0,
       0,
     );
-
+    // todo: remove
+    now.setDate(now.getDate() - 1);
     const schedules = await this.scheduleRepository.find({
       where: {
         send_date: Between(now, endOfToday),
       },
     });
     const now_test = new Date();
-    schedules.forEach((schedule) => {
-      now_test.setSeconds(now_test.getSeconds() + 10);
+    [schedules[0], schedules[1]].forEach((schedule) => {
+      now_test.setSeconds(now_test.getSeconds() + 5);
       schedule.send_date = now_test;
-      this.addTask(schedule.id, schedule);
+      this.addTask(schedule);
     });
   }
 
-  addTask(id: number, schedule: TreatmentScheduleEntity) {
-    const name = `task-${id}`;
+  addTask(schedule: TreatmentScheduleEntity) {
+    const name = `task-${schedule.id}`;
     const job = new CronJob(schedule.send_date, () => {
       this.logger.log(`Executing task: ${name}`, JSON.stringify(schedule));
       this.messengerService

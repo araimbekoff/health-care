@@ -22,7 +22,7 @@ export class TreatmentResponseEntity {
   @Column({ name: 'response_date' })
   response_date: Date;
 
-  @Column({ type: 'text' })
+  @Column({ type: 'text', nullable: true })
   response_text: string;
 
   @Column({ type: 'text', nullable: true })
