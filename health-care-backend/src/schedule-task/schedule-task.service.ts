@@ -96,14 +96,13 @@ export class ScheduleTaskService implements OnModuleInit {
       0,
     );
     // todo: remove
-    now.setDate(now.getDate() - 1);
     const schedules = await this.scheduleRepository.find({
       where: {
         send_date: Between(now, endOfToday),
       },
     });
     const now_test = new Date();
-    [schedules[0], schedules[1]].forEach((schedule) => {
+    schedules.forEach((schedule) => {
       now_test.setSeconds(now_test.getSeconds() + 5);
       schedule.send_date = now_test;
       this.addTask(schedule);
