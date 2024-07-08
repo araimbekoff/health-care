@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from '../entities/user.entity';
 import { Repository } from 'typeorm';
@@ -6,10 +6,15 @@ import { Transactional } from 'typeorm-transactional';
 import { User } from 'telegraf/typings/core/types/typegram';
 import { ClinicEntity } from '../entities/clinic.entity';
 import { DoctorEntity } from '../entities/doctor.entity';
+import { TgContext } from '../messenger/impl/telegram.service';
+import { OpenaiService } from '../openai/openai.service';
 
 @Injectable()
 export class IdManagerClinicService {
+  logger = new Logger(IdManagerClinicService.name);
+
   constructor(
+    private readonly openaiService: OpenaiService,
     @InjectRepository(UserEntity)
     readonly userRepo: Repository<UserEntity>,
     @InjectRepository(ClinicEntity)
@@ -40,6 +45,26 @@ export class IdManagerClinicService {
       user = await this.userRepo.save({ full_name, phone });
     }
     return user;
+  }
+
+  @Transactional()
+  async registerDoctorByText(doctor_info: string, ctx: TgContext) {
+    const res = await this.openaiService.parseDoctorInfo(doctor_info);
+    try {
+      if (!res.full_name) {
+        await ctx.reply('Введите корректное имя врача');
+      } else if (!res.phone) {
+        await ctx.reply('Введите номер телефона врача');
+      } else if (!res.clinic_uin) {
+        await ctx.reply('Введите корректный БИН клиники');
+      } else {
+        await this.registerDoctor(res.full_name, res.phone, res.clinic_uin);
+        await ctx.reply('Доктор добавлен успешно');
+      }
+    } catch (e) {
+      this.logger.warn(`Error registerDoctorByText ${e.message}`);
+      await ctx.reply(`Не получилось добавить доктора. Причины: ${e.message}`);
+    }
   }
 
   @Transactional()

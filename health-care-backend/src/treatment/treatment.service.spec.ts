@@ -6,11 +6,11 @@ import { IdManagerModule } from '../id-manager/id-manager.module';
 import { ScheduleGeneratorModule } from '../schedule-generator/schedule-generator.module';
 import { OpenaiModule } from '../openai/openai.module';
 
-const callback = () => {};
-const callbackError = (e: Error) => {
-  console.error(e);
-  throw new Error(e.message);
-};
+// const callback = () => {};
+// const callbackError = (e: Error) => {
+//   console.error(e);
+//   throw new Error(e.message);
+// };
 
 describe('TreatmentService', () => {
   let service: TreatmentService;
@@ -47,6 +47,6 @@ describe('TreatmentService', () => {
     БИН 8202283999094
 `;
 
-    await service.saveFromRawText(data, callback, callbackError);
+    await service.saveFromRawText(data);
   }, 100000);
 });

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserEntity } from '../entities/user.entity';
-import { Repository } from 'typeorm';
+import { In, Repository } from 'typeorm';
 import { Transactional } from 'typeorm-transactional';
 import { User, Contact } from 'telegraf/typings/core/types/typegram';
 import { DoctorEntity } from '../entities/doctor.entity';
@@ -17,6 +17,10 @@ export class UserInfoDto {
 @Injectable()
 export class IdManagerMessengerService {
   constructor(
+    @InjectRepository(ClinicEntity)
+    readonly clinicRepo: Repository<ClinicEntity>,
+    @InjectRepository(DoctorEntity)
+    readonly doctorRepo: Repository<DoctorEntity>,
     @InjectRepository(UserEntity)
     readonly userRepo: Repository<UserEntity>,
     readonly configService: ConfigService,
@@ -27,9 +31,18 @@ export class IdManagerMessengerService {
     const user = await this.userRepo.findOneBy({
       telegram_id: '' + telegramUser.id,
     });
+    const doctors = !user
+      ? null
+      : await this.doctorRepo.findBy({ user_id: user.id });
+    const clinics = doctors?.length
+      ? await this.clinicRepo.findBy({
+          id: In(doctors.map((it) => it.clinic_id)),
+        })
+      : null;
     return {
       user,
       is_superuser: this.isSuperUser(user),
+      clinics,
     };
   }
 
@@ -46,7 +59,7 @@ export class IdManagerMessengerService {
         phone: phone_number,
       });
     } else {
-      user.full_name = [first_name, last_name].join(' ');
+      user.full_name = user.full_name || [first_name, last_name].join(' ');
       user.telegram_id = user_id + '';
     }
     await this.userRepo.save(user);

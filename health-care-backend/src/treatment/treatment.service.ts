@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { TreatmentRawDto, TreatmentRawFieldDto } from './dto/treatmentRawDto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TreatmentEntity, TreatmentType } from '../entities/treatment.entity';
@@ -10,9 +10,12 @@ import { OpenaiService } from '../openai/openai.service';
 import { Transactional } from 'typeorm-transactional';
 import { IdManagerClinicService } from '../id-manager/id-manager.clinic.service';
 import { DoctorEntity } from '../entities/doctor.entity';
+// import { TgContext } from '../messenger/impl/telegram.service';
 
 @Injectable()
 export class TreatmentService {
+  logger = new Logger(TreatmentService.name);
+
   constructor(
     @InjectRepository(TreatmentEntity)
     private readonly treatmentRepo: Repository<TreatmentEntity>,
@@ -36,11 +39,7 @@ export class TreatmentService {
   }
 
   @Transactional()
-  async saveFromRawText(
-    raw_text: string,
-    callback: (param: number | TreatmentEntity, report: string) => void,
-    callbackError: (e: Error) => void,
-  ) {
+  async saveFromRawText(raw_text: string) {
     const dtoRaw = await this.extractRawDto(raw_text);
     const doctor_phone = dtoRaw.data.find((it) => it.field === 'doctor_phone');
     const clinic_uin = dtoRaw.data.find((it) => it.field === 'clinic_uin');
@@ -49,14 +48,7 @@ export class TreatmentService {
       doctor_phone.value,
       clinic_uin.value,
     );
-    await this.save(
-      raw_text,
-      dtoRaw,
-      TreatmentType.AG,
-      doctor,
-      callback,
-      callbackError,
-    );
+    return await this.save(raw_text, dtoRaw, TreatmentType.AG, doctor);
   }
 
   private async extractRawDto(raw_text: string) {
@@ -64,7 +56,7 @@ export class TreatmentService {
     const control_fields_map = {
       phone: false,
       full_name: false,
-      medical_history: false,
+      // medical_history: false,
       medications_raw: false,
       procedures_raw: false,
       exercises_raw: false,
@@ -84,7 +76,8 @@ export class TreatmentService {
     }
     if (missing_fields.length) {
       throw new Error(
-        `Пожалуйста, дополните описание недостающими сведениями: ${missing_fields.join('\n')}`,
+        `Пожалуйста, дополните описание недостающими сведениями:
+         ${missing_fields.join('\n- ')}`,
       );
     }
     return dtoRaw;
@@ -95,8 +88,6 @@ export class TreatmentService {
     dto: TreatmentRawDto,
     treatmentType: TreatmentType,
     doctor: DoctorEntity,
-    callback: (param: number | TreatmentEntity, report: string) => void,
-    callbackError: (e: Error) => void,
   ) {
     const user = await this.idManagerService.createUserByTreatmentRaw(dto);
     const treatment = await this.saveFromRawInternal(
@@ -106,10 +97,8 @@ export class TreatmentService {
       dto,
       treatmentType,
     );
-    this.scheduleGeneratorService
-      .genByTreatment(treatment)
-      .then(() => callback(treatment, this.genReport(treatment)))
-      .catch((e: Error) => callbackError(e));
+    await this.scheduleGeneratorService.genByTreatment(treatment);
+    return treatment;
   }
 
   @Transactional()
@@ -145,7 +134,7 @@ export class TreatmentService {
     return this.treatmentRepo.create(map);
   }
 
-  private genReport(treatment: TreatmentEntity) {
+  static genReport(treatment: TreatmentEntity) {
     if (!treatment) {
       return '`У вас нет действующих рекомендаций.`';
     }
@@ -166,7 +155,7 @@ export class TreatmentService {
   }
 
   async loadReportByPhone(phone: string) {
-    return this.genReport(await this.loadByPhone(phone));
+    return TreatmentService.genReport(await this.loadByPhone(phone));
   }
 
   async loadByPhone(phone: string) {

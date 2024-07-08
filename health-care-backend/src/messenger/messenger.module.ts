@@ -6,6 +6,7 @@ import { IdManagerModule } from '../id-manager/id-manager.module';
 import { TreatmentModule } from '../treatment/treatment.module';
 import { DbCoreModule } from '../db-core/db-core.module';
 import { ScheduleResponseModule } from '../schedule-response/schedule-response.module';
+import { IdManagerClinicService } from '../id-manager/id-manager.clinic.service';
 
 @Global()
 @Module({

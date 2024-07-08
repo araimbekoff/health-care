@@ -5,6 +5,8 @@ import { SchedulePrompt } from './prompts/schedule.prompt';
 import { InstructionParserPrompt } from './prompts/instruction.parser.prompt';
 import { TreatmentRawTextParserPrompt } from './prompts/treatment-raw-text.parser.prompt';
 import { TreatmentRawDto } from '../treatment/dto/treatmentRawDto';
+import { AbstractPrompt } from './prompts/abstract.prompt';
+import { DoctorParserPrompt } from './prompts/doctor.parser.prompt';
 
 export class OpenaiScheduleResponse {
   instruction: string;
@@ -40,8 +42,26 @@ export class OpenaiService {
     );
   }
 
-  private async request<T>(prompt: any): Promise<T> {
-    const response = await this.openai.chat.completions.create(prompt);
+  private async request<T>(prompt: AbstractPrompt): Promise<T> {
+    const response = await this.openai.chat.completions.create(
+      prompt.getBody() as any,
+    );
     return prompt.getResponse(response) as T;
+  }
+
+  async parseDoctorInfo(doctor_info: string): Promise<{
+    full_name: string;
+    phone: string;
+    clinic_uin: string;
+  }> {
+    const prompt = new DoctorParserPrompt(doctor_info);
+    const parsed_data = await this.request<{
+      data: {
+        full_name: string;
+        phone: string;
+        clinic_uin: string;
+      };
+    }>(prompt);
+    return parsed_data?.data;
   }
 }

@@ -1,6 +1,12 @@
 import { ChatCompletionMessageParam } from 'openai/resources/chat/completions';
 import OpenAI from 'openai';
 import ChatCompletion = OpenAI.ChatCompletion;
+import {
+  ChatCompletionChunk,
+  ChatCompletionCreateParamsBase,
+} from 'openai/src/resources/chat/completions';
+import { APIPromise } from 'openai/src/core';
+import { Stream } from 'openai/src/streaming';
 
 export abstract class AbstractPrompt {
   getModel() {
@@ -15,12 +21,16 @@ export abstract class AbstractPrompt {
 
   abstract getUserMessage(): string;
 
-  getResponse(openaiResponse: ChatCompletion) {
-    const { choices } = openaiResponse;
-    if (!choices || !choices.length) {
-      return null;
+  // getResponse(openaiResponse: ChatCompletion) {
+  getResponse(openaiResponse: OpenAI.Chat.Completions.ChatCompletion) {
+    if ('choices' in openaiResponse) {
+      const { choices } = openaiResponse;
+      if (!choices) {
+        return null;
+      }
+      return JSON.parse(choices[0]?.message?.content);
     }
-    return JSON.parse(choices[0]?.message?.content);
+    return null;
   }
 
   getBody() {

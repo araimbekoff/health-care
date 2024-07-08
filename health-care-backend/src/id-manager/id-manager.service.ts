@@ -32,7 +32,8 @@ export class IdManagerService {
       if (!fields.includes(field.field)) {
         continue;
       }
-      rec[field.field] = field.value;
+      rec[field.field] =
+        !field.value || !field.value.trim() ? null : field.value;
     }
     if (!rec.phone) {
       throw new Error("user doesn't created");

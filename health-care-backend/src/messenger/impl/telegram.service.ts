@@ -9,7 +9,6 @@ import {
 import { Update, Message } from 'telegraf/typings/core/types/typegram';
 import { Contact } from '@telegraf/types/message';
 import { TreatmentService } from '../../treatment/treatment.service';
-import { TreatmentEntity } from '../../entities/treatment.entity';
 import {
   isScheduleResponse,
   TreatmentScheduleResponseDto,
@@ -17,6 +16,7 @@ import {
 import { ScheduleResponseService } from '../../schedule-response/schedule-response.service';
 import { ScheduleTaskService } from '../../schedule-task/schedule-task.service';
 import { InlineKeyboardButton } from 'telegraf/src/core/types/typegram';
+import { IdManagerClinicService } from '../../id-manager/id-manager.clinic.service';
 
 export type TgContext = Context & { update: Update.MessageUpdate<Message> };
 export type CQContext = Context & { update: Update.CallbackQueryUpdate };
@@ -35,6 +35,7 @@ export class TelegramService {
     private readonly configService: ConfigService,
     private readonly scheduleResponseService: ScheduleResponseService,
     private readonly messengerIdManagerService: IdManagerMessengerService,
+    private readonly idManagerClinicService: IdManagerClinicService,
     private readonly treatmentService: TreatmentService,
   ) {
     const token = this.configService.get<string>('TELEGRAM_BOT_TOKEN');
@@ -71,6 +72,7 @@ export class TelegramService {
   }
 
   private async init(): Promise<void> {
+    console.log('start _init');
     this.bot.command('start', async (ctx: TgContext) => {
       const userInfo = await this.getUser(ctx);
       const user = userInfo.user;
@@ -123,18 +125,18 @@ export class TelegramService {
     }
 
     switch (callbackQuery) {
+      case 'add_clinic_doctor':
+        await this.idManagerClinicService.registerDoctorByText(mess, ctx);
+        break;
       case 'add_patient_treatments':
-        await this.treatmentService.saveFromRawText(
-          mess,
-          async (treatment: number | TreatmentEntity, report: string) => {
-            await ctx.reply(`Рекомендации успешно добавлены: \n${report}`, {
-              parse_mode: 'MarkdownV2',
-            });
-          },
-          async (e: Error) => {
-            await ctx.reply(`Ошибка обработки: ${e.message}`);
-          },
-        );
+        try {
+          const treatment = await this.treatmentService.saveFromRawText(mess);
+          const report = TreatmentService.genReport(treatment);
+          await ctx.reply(`Рекомендации успешно добавлены: \n ${report}`);
+        } catch (e) {
+          console.error(e);
+          await ctx.reply(e.message);
+        }
         break;
 
       case 'view_patient_treatments':

@@ -9,7 +9,6 @@ import { MessengerType, UserEntity } from '../entities/user.entity';
 import {
   genResponseCallback,
   genResponseRemindCallback,
-  ScheduleResponseType,
   TreatmentScheduleResponseDto,
 } from './dto/messenger-dtos';
 

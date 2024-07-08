@@ -1,5 +1,4 @@
 import { AbstractPrompt } from './abstract.prompt';
-import * as inspector from 'node:inspector';
 
 export class TreatmentRawTextParserPrompt extends AbstractPrompt {
   instruction: string | null;
