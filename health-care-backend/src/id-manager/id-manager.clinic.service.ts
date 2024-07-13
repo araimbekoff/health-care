@@ -8,10 +8,11 @@ import { ClinicEntity } from '../entities/clinic.entity';
 import { DoctorEntity } from '../entities/doctor.entity';
 import { TgContext } from '../messenger/impl/telegram.service';
 import { OpenaiService } from '../openai/openai.service';
+import { CustomLogger } from '../logger/custom.logger';
 
 @Injectable()
 export class IdManagerClinicService {
-  logger = new Logger(IdManagerClinicService.name);
+  logger = new CustomLogger(IdManagerClinicService.name);
 
   constructor(
     private readonly openaiService: OpenaiService,

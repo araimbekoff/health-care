@@ -1,4 +1,4 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { TreatmentRawDto, TreatmentRawFieldDto } from './dto/treatmentRawDto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { TreatmentEntity, TreatmentType } from '../entities/treatment.entity';
@@ -10,11 +10,13 @@ import { OpenaiService } from '../openai/openai.service';
 import { Transactional } from 'typeorm-transactional';
 import { IdManagerClinicService } from '../id-manager/id-manager.clinic.service';
 import { DoctorEntity } from '../entities/doctor.entity';
+import { CustomLogger } from '../logger/custom.logger';
+
 // import { TgContext } from '../messenger/impl/telegram.service';
 
 @Injectable()
 export class TreatmentService {
-  logger = new Logger(TreatmentService.name);
+  logger = new CustomLogger(TreatmentService.name);
 
   constructor(
     @InjectRepository(TreatmentEntity)

@@ -6,7 +6,10 @@ import { IdManagerModule } from '../id-manager/id-manager.module';
 import { TreatmentModule } from '../treatment/treatment.module';
 import { DbCoreModule } from '../db-core/db-core.module';
 import { ScheduleResponseModule } from '../schedule-response/schedule-response.module';
-import { IdManagerClinicService } from '../id-manager/id-manager.clinic.service';
+import { TgViewMyTreatmentsCmd } from './impl/commands/tg-view-my-treatments.cmd';
+import { TgAddPatientTreatmentsCmd } from './impl/commands/tg-add-patient-treatments.cmd';
+import { TgDoctorRegistrationCmd } from './impl/commands/tg-doctor-registration-cmd';
+import { TgStartCmd } from './impl/commands/tg-start.cmd';
 
 @Global()
 @Module({
@@ -17,7 +20,14 @@ import { IdManagerClinicService } from '../id-manager/id-manager.clinic.service'
     TreatmentModule,
     ScheduleResponseModule,
   ],
-  providers: [MessengerService, TelegramService],
+  providers: [
+    MessengerService,
+    TelegramService,
+    TgViewMyTreatmentsCmd,
+    TgAddPatientTreatmentsCmd,
+    TgDoctorRegistrationCmd,
+    TgStartCmd,
+  ],
   exports: [MessengerService, TelegramService],
 })
 export class MessengerModule {}

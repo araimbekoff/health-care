@@ -9,12 +9,13 @@ import { MessengerType, UserEntity } from '../entities/user.entity';
 import {
   genResponseCallback,
   genResponseRemindCallback,
-  TreatmentScheduleResponseDto,
+  TgMarkupButtonDto,
 } from './dto/messenger-dtos';
+import { CustomLogger } from '../logger/custom.logger';
 
 @Injectable()
 export class MessengerService {
-  private readonly logger = new Logger(MessengerService.name);
+  private readonly logger = new CustomLogger(MessengerService.name);
 
   constructor(
     private readonly telegramService: TelegramService,
@@ -55,7 +56,7 @@ export class MessengerService {
     schedule: TreatmentScheduleEntity,
   ): Promise<void> {
     const message = schedule.message_ctx;
-    const buttons: TreatmentScheduleResponseDto[] = [
+    const buttons: TgMarkupButtonDto[] = [
       {
         title: 'Я принял лекарство',
         callback_data: genResponseCallback(schedule.id),

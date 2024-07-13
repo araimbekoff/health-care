@@ -45,7 +45,7 @@ export enum ScheduleResponseType {
   REMIND_AFTER = 'schedule_remind_after',
 }
 
-export class TreatmentScheduleResponseDto {
+export class TgMarkupButtonDto {
   title: string;
   callback_data: string;
 }

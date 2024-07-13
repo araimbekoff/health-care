@@ -6,6 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+    "build:diagnostics": "tsc --extendedDiagnostics --diagnostics",
+    "start:diagnostics": "npm run build:diagnostics && nest start",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",

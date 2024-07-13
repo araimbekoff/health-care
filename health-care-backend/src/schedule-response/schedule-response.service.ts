@@ -9,6 +9,7 @@ import {
 } from '../messenger/dto/messenger-dtos';
 import { Transactional } from 'typeorm-transactional';
 import { TreatmentEntity } from '../entities/treatment.entity';
+import { CustomLogger } from '../logger/custom.logger';
 
 export class ResponseRegisteringResultDto {
   mess: string;
@@ -18,7 +19,7 @@ export class ResponseRegisteringResultDto {
 
 @Injectable()
 export class ScheduleResponseService {
-  logger = new Logger(ScheduleResponseService.name);
+  logger = new CustomLogger(ScheduleResponseService.name);
 
   constructor(
     @InjectRepository(TreatmentScheduleEntity)
