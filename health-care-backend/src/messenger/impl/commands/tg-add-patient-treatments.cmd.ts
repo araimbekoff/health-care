@@ -5,14 +5,20 @@ import { UserInfoDto } from '../../../id-manager/id-manager.messenger.service';
 import { Context } from 'telegraf';
 
 @Injectable()
-export class TgAddPatientTreatmentsCmd implements AwaitingInputCommand {
-  constructor(private readonly treatmentService: TreatmentService) {}
+export class TgAddPatientTreatmentsCmd extends AwaitingInputCommand {
+  constructor(private readonly treatmentService: TreatmentService) {
+    super(TgAddPatientTreatmentsCmd.name);
+  }
 
   async handle(ctx: Context): Promise<void> {
     await ctx.reply(this.inputMessage());
   }
 
-  async handleInput(ctx: Context): Promise<void> {
+  async handleInput(
+    mess: string,
+    ctx: Context,
+    user_info: UserInfoDto,
+  ): Promise<void> {
     if ('text' in ctx.message) {
       try {
         const treatment = await this.treatmentService.saveFromRawText(

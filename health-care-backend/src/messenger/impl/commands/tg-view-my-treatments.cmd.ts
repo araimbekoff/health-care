@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {  TgCommandHandler } from './-command-interfaces';
+import { TgCommandHandler } from './-command-interfaces';
 import { TreatmentService } from '../../../treatment/treatment.service';
 import {
   IdManagerMessengerService,
@@ -8,11 +8,13 @@ import {
 import { Context } from 'telegraf';
 
 @Injectable()
-export class TgViewMyTreatmentsCmd implements TgCommandHandler {
+export class TgViewMyTreatmentsCmd extends TgCommandHandler {
   constructor(
     private readonly treatmentService: TreatmentService,
     private readonly messengerIdManagerService: IdManagerMessengerService,
-  ) {}
+  ) {
+    super(TgViewMyTreatmentsCmd.name);
+  }
 
   async handle(ctx: Context): Promise<void> {
     const userInfo = await this.messengerIdManagerService.getUserByTelegram(

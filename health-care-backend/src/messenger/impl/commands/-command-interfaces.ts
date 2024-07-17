@@ -5,20 +5,30 @@ import { UserInfoDto } from '../../../id-manager/id-manager.messenger.service';
 // export type TgContext = Context & { update: Update.MessageUpdate<Message> };
 // export type CQContext = Context & { update: Update.CallbackQueryUpdate };
 
-export interface TgCommandHandler {
-  handle(ctx: Context): Promise<void>;
+export abstract class TgCommandHandler {
+  readonly class_name;
 
-  cmdCode(): string;
+  constructor(class_name: string) {
+    this.class_name = class_name;
+  }
 
-  isCmdCode(callback_data: string): boolean;
+  abstract handle(ctx: Context): Promise<void>;
 
-  cmdName(): string;
+  abstract cmdCode(): string;
 
-  hasAccess(user_info: UserInfoDto): boolean;
+  abstract isCmdCode(callback_data: string): boolean;
+
+  abstract cmdName(): string;
+
+  abstract hasAccess(user_info: UserInfoDto): boolean;
 }
 
-export interface AwaitingInputCommand extends TgCommandHandler {
-  handleInput(ctx: Context): Promise<void>;
+export abstract class AwaitingInputCommand extends TgCommandHandler {
+  abstract handleInput(
+    mess: string,
+    ctx: Context,
+    user_info: UserInfoDto,
+  ): Promise<void>;
 
-  inputMessage(): string;
+  abstract inputMessage(): string;
 }

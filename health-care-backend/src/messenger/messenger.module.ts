@@ -10,6 +10,7 @@ import { TgViewMyTreatmentsCmd } from './impl/commands/tg-view-my-treatments.cmd
 import { TgAddPatientTreatmentsCmd } from './impl/commands/tg-add-patient-treatments.cmd';
 import { TgDoctorRegistrationCmd } from './impl/commands/tg-doctor-registration-cmd';
 import { TgStartCmd } from './impl/commands/tg-start.cmd';
+import { OpenaiModule } from '../openai/openai.module';
 
 @Global()
 @Module({
@@ -19,6 +20,7 @@ import { TgStartCmd } from './impl/commands/tg-start.cmd';
     IdManagerModule,
     TreatmentModule,
     ScheduleResponseModule,
+    OpenaiModule,
   ],
   providers: [
     MessengerService,

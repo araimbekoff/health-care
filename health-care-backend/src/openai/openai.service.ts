@@ -13,6 +13,12 @@ export class OpenaiScheduleResponse {
   schedules: string[];
 }
 
+export class DoctorInfoDto {
+  full_name: string;
+  phone: string;
+  clinic_uin: string;
+}
+
 @Injectable()
 export class OpenaiService {
   private openai: OpenAI;
@@ -49,11 +55,7 @@ export class OpenaiService {
     return prompt.getResponse(response) as T;
   }
 
-  async parseDoctorInfo(doctor_info: string): Promise<{
-    full_name: string;
-    phone: string;
-    clinic_uin: string;
-  }> {
+  async parseDoctorInfo(doctor_info: string): Promise<DoctorInfoDto> {
     const prompt = new DoctorParserPrompt(doctor_info);
     const parsed_data = await this.request<{
       data: {

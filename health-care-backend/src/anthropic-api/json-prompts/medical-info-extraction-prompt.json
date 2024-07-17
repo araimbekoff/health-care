@@ -1,0 +1,97 @@
+{
+  "prompt": "Вы - система извлечения информации из медицинских заключений, специализирующаяся на Программе управления здоровьем (ПУЗ) в Казахстане. Проанализируйте медицинское заключение в поле 'request' этого JSON объекта (this.request) и извлеките структурированную информацию согласно приведенной схеме. Особое внимание уделите всем показателям здоровья, диагнозам, назначениям и направлениям. Если информация отсутствует, оставьте поле пустым или укажите null. Верните только JSON без дополнительных комментариев.",
+  "request": "%",
+  "schema": {
+    "patient": {
+      "fullName": "string",
+      "dateOfBirth": "string",
+      "gender": "string",
+      "phone": "string",
+      "email": "string"
+    },
+    "emergency_contact": {
+      "name": "",
+      "relation": "",
+      "phone": ""
+    },
+    "healthMetrics": {
+      "anthropometry": {
+        "height": "string",
+        "weight": "string",
+        "bmi": "string",
+        "waistCircumference": "string"
+      },
+      "lifestyle": {
+        "smokingStatus": "string",
+        "physicalActivityLevel": "string"
+      },
+      "vitalSigns": {
+        "bloodPressure": {
+          "systolic": "string",
+          "diastolic": "string"
+        },
+        "heartRate": "string",
+        "respiratoryRate": "string",
+        "oxygenSaturation": "string"
+      },
+      "laboratoryResults": {
+        "fastingBloodGlucose": "string",
+        "hba1c": "string",
+        "lipidProfile": {
+          "totalCholesterol": "string",
+          "ldl": "string",
+          "hdl": "string",
+          "triglycerides": "string"
+        },
+        "renalFunction": {
+          "creatinine": "string",
+          "microalbuminuria": "string"
+        },
+        "electrolytes": {
+          "potassium": "string",
+          "sodium": "string"
+        }
+      },
+      "pulmonaryFunction": {
+        "fev1": "string",
+        "fvc": "string",
+        "peakExpiratoryFlow": "string"
+      },
+      "cardiacAssessment": {
+        "ecgResults": "string"
+      },
+      "diseaseSpecificInfo": {
+        "asthmaControl": {
+          "questionnaireType": "string",
+          "score": "string"
+        },
+        "inhalerUseFrequency": "string",
+        "asthmaExacerbationsFrequency": "string"
+      }
+    },
+    "diagnosis": {
+      "primary": "string",
+      "secondary": "string",
+      "suspectedDiagnosis": "string"
+    },
+    "prescriptions": [
+      {
+        "type": "string (medication/exercise/procedure)",
+        "name": "string",
+        "form": "string",
+        "dosage": "string",
+        "frequency": "string",
+        "duration": "string",
+        "specialInstructions": "string"
+      }
+    ],
+    "referrals": [
+      {
+        "type": "string",
+        "specialist": "string",
+        "reason": "string"
+      }
+    ],
+    "nextAppointment": "string"
+  }
+}

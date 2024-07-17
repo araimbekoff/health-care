@@ -104,7 +104,19 @@ export class TelegramService {
       return;
     }
     const user_info = await this.getUser(ctx);
-    await this.receiveMessage(ctx, user_info);
+    const callback_query = this.callbackQueryMap[ctx.from.id];
+    const cmd = this.tg_cmd_map[callback_query] as AwaitingInputCommand;
+    if (cmd) {
+      const mess = this.extractTextMessage(ctx);
+      try {
+        await cmd.handleInput(mess, ctx, user_info);
+      } catch (e) {
+        this.logger.error(e);
+      } finally {
+        // todo: remove comment
+        // delete this.tg_cmd_map[callback_query];
+      }
+    }
   }
 
   async tgOnStart(ctx: Context) {
@@ -119,27 +131,32 @@ export class TelegramService {
     }
     let cmd: AwaitingInputCommand | TgCommandHandler = null;
     if (data in this.tg_cmd_map) {
-      cmd = this.tg_cmd_map[data];
+      cmd = this.tg_cmd_map[data] as TgCommandHandler;
     }
-    await cmd.handle(ctx);
-    this.logger.log(`callbackQuery.data = ${data}`);
-  }
-
-  /******************************************************************************/
-  /******************************************************************************/
-  /******************************************************************************/
-
-  /******************************************************************************/
-  private extractTextMessage(ctx: TgContext): string | null {
-    if (ctx.update && ctx.update.message && 'text' in ctx.update.message) {
-      return ctx.update.message.text;
+    if (cmd) {
+      this.logger.log(`callbackQuery.data = ${data}, ${cmd.class_name}.handle`);
+      await cmd.handle(ctx);
+      if ('handleInput' in cmd) {
+        this.callbackQueryMap[ctx.from.id] = data;
+      }
     }
   }
 
-  private async receiveMessage(
-    ctx: Context,
-    user_info: UserInfoDto,
-  ): Promise<void> {}
+  /******************************************************************************/
+  /******************************************************************************/
+  /******************************************************************************/
+
+  /******************************************************************************/
+  extractTextMessage(ctx: Context): string | null {
+    const update = ctx.update;
+    if ('message' in update) {
+      const message = update.message;
+      if ('text' in message) {
+        return message.text;
+      }
+    }
+    return null;
+  }
 
   private async callbackQueryHandler(
     ctx: Context,
