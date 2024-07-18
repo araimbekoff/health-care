@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { AnthropicApiService, PromptType } from './anthropic-api.service';
+import { AnthropicApiService, PromptType } from '../anthropic-api.service';
 import { ConfigModule } from '@nestjs/config';
 
 describe('AnthropicApiService', () => {

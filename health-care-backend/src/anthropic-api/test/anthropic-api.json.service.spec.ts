@@ -1,6 +1,16 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { ConfigModule } from '@nestjs/config';
-import { AnthropicApiJsonService } from './anthropic-api.json.service';
+import { AnthropicApiJsonService } from '../anthropic-api.json.service';
+import * as path from 'path';
+import * as fs from 'fs/promises';
+
+const loadFileToText = async (file__name: string) => {
+  const promptPath = path.join(
+    '/opt/projects/health-care/health-care-backend/src/anthropic-api/test/data/',
+    file__name,
+  );
+  return await fs.readFile(promptPath, 'utf-8');
+};
 
 describe('AnthropicApiJsonService', () => {
   let service: AnthropicApiJsonService;
@@ -13,25 +23,16 @@ describe('AnthropicApiJsonService', () => {
 
     service = module.get<AnthropicApiJsonService>(AnthropicApiJsonService);
   });
-  const rawMedicineDescription = `
-        Пациент: Иванов Иван Иванович, 45 лет. 
-        Контакты: +7 (900) 123-45-67, email: ivanov@example.com
-        Контакт для экстренной связи: Иванова Мария Петровна (жена), тел: +7 (900) 765-43-21
-        Диагноз: Гипертоническая болезнь II стадии, риск 3.
-        Назначения:
-        1. Амлодипин 5мг 1 раз в день утром после еды
-        2. Лозартан 50мг 1 раз в день вечером
-        3. Контроль артериального давления 2 раза в день (утром и вечером)
-        4. Ходьба 30 минут ежедневно
-        5. Ограничение соли до 5г в сутки
-        6. Повторный прием через 2 недели
-      `;
 
   describe('Medical Info Extraction and Checking', () => {
     it('should extract medical info, check it, and generate a schedule', async () => {
-      console.log('Raw medicine description:', rawMedicineDescription);
+      // const request = await loadFileToText('example-1.txt');
+      const request = await loadFileToText('hobl-1.txt');
+      console.log(request);
+
+      console.log('Raw medicine description:', request);
       const params = {
-        request: rawMedicineDescription,
+        request,
       };
       // Шаг 1: Извлечение медицинской информации
       const extractedData = await service.complete(
@@ -42,12 +43,12 @@ describe('AnthropicApiJsonService', () => {
       const checkExtractionResult = await service.complete(
         {
           extractedData,
-          originalText: rawMedicineDescription,
+          originalText: request,
         },
         'medical-info-extraction-result-checker.json',
       );
       console.log(checkExtractionResult);
-      // Шаг 2: Проверка извлеченной медицинской информации
+      // // Шаг 2: Проверка извлеченной медицинской информации
       // params['PARAM_JSON_MEDICINE_CONCLUSION'] = extractionResult;
       // const extractionCheckResult = await service.complete(
       //   params,

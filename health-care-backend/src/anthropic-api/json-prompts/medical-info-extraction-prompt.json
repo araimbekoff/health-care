@@ -1,97 +1,99 @@
 {
-  "prompt": "Вы - система извлечения информации из медицинских заключений, специализирующаяся на Программе управления здоровьем (ПУЗ) в Казахстане. Проанализируйте медицинское заключение в поле 'request' этого JSON объекта (this.request) и извлеките структурированную информацию согласно приведенной схеме. Особое внимание уделите всем показателям здоровья, диагнозам, назначениям и направлениям. Если информация отсутствует, оставьте поле пустым или укажите null. Верните только JSON без дополнительных комментариев.",
+  "prompt": "Вы - система извлечения информации из медицинских заключений, специализирующаяся на Программе управления здоровьем (ПУЗ) в Казахстане. Проанализируйте медицинское заключение в поле 'request' этого JSON объекта (this.request) и извлеките структурированную информацию согласно приведенной схеме. Особое внимание уделите всем показателям здоровья, жалобам пациента, анамнезу, диагнозам, назначениям и направлениям. Если информация отсутствует, оставьте поле пустым или укажите null. Верните только JSON без дополнительных комментариев.",
   "request": "%",
   "schema": {
+    "doctor": {
+      "fullName": "string // ФИО врача",
+      "specialization": "string // Специализация врача",
+      "clinic": "string // Название клиники",
+      "appointmentDate": "string // Дата приема в формате yyyy-mm-dd"
+    },
     "patient": {
-      "fullName": "string",
-      "dateOfBirth": "string",
-      "gender": "string",
-      "phone": "string",
-      "email": "string"
+      "fullName": "string // Полное имя пациента",
+      "dateOfBirth": "string // Дата рождения пациента",
+      "gender": "string // Пол пациента",
+      "phone": "string // телефон",
+      "email": "string // емейл",
+      "address": "string // адрес проживания"
     },
     "emergency_contact": {
-      "name": "",
-      "relation": "",
-      "phone": ""
+      "name": "string // ФИО контактного лица",
+      "relation": "string // Степень родства",
+      "phone": "string // Номер телефона"
     },
-    "healthMetrics": {
-      "anthropometry": {
-        "height": "string",
-        "weight": "string",
-        "bmi": "string",
-        "waistCircumference": "string"
-      },
-      "lifestyle": {
-        "smokingStatus": "string",
-        "physicalActivityLevel": "string"
-      },
-      "vitalSigns": {
-        "bloodPressure": {
-          "systolic": "string",
-          "diastolic": "string"
-        },
-        "heartRate": "string",
-        "respiratoryRate": "string",
-        "oxygenSaturation": "string"
-      },
-      "laboratoryResults": {
-        "fastingBloodGlucose": "string",
-        "hba1c": "string",
-        "lipidProfile": {
-          "totalCholesterol": "string",
-          "ldl": "string",
-          "hdl": "string",
-          "triglycerides": "string"
-        },
-        "renalFunction": {
-          "creatinine": "string",
-          "microalbuminuria": "string"
-        },
-        "electrolytes": {
-          "potassium": "string",
-          "sodium": "string"
+    "complaints": [
+      "string // Жалобы пациента"
+    ],
+    "anamnesis": {
+      "previousMedications": [
+        {
+          "name": "string // Название препарата",
+          "dosage": "string // Дозировка",
+          "duration": "string // Длительность приема",
+          "reason": "string // Причина приема"
         }
-      },
-      "pulmonaryFunction": {
-        "fev1": "string",
-        "fvc": "string",
-        "peakExpiratoryFlow": "string"
-      },
-      "cardiacAssessment": {
-        "ecgResults": "string"
-      },
-      "diseaseSpecificInfo": {
-        "asthmaControl": {
-          "questionnaireType": "string",
-          "score": "string"
-        },
-        "inhalerUseFrequency": "string",
-        "asthmaExacerbationsFrequency": "string"
-      }
+      ],
+      "chronicDiseases": [
+        "string // Хронические заболевания"
+      ],
+      "allergies": [
+        "string // Аллергии"
+      ],
+      "previousProcedures": [
+        {
+          "name": "string // Название процедуры",
+          "date": "string // Дата проведения в формате yyyy-mm-dd",
+          "reason": "string // Причина проведения"
+        }
+      ],
+      "additionalInfo": "string // Дополнительная информация из анамнеза"
     },
-    "diagnosis": {
-      "primary": "string",
-      "secondary": "string",
-      "suspectedDiagnosis": "string"
-    },
-    "prescriptions": [
+    "healthMetrics": [
       {
-        "type": "string (medication/exercise/procedure)",
-        "name": "string",
-        "form": "string",
-        "dosage": "string",
-        "frequency": "string",
-        "duration": "string",
-        "specialInstructions": "string"
+        "category": "string // Категория показателя (например, 'антропометрия', 'жизненные показатели', 'лабораторные результаты' и т.д.)",
+        "name": "string // Название показателя",
+        "value": "string // Значение показателя",
+        "unit": "string // Единица измерения (если применимо)",
+        "date": "string // Дата измерения/анализа в формате yyyy-mm-dd (если применимо)",
+        "description": "string // Дополнительное описание или интерпретация (если необходимо)"
       }
     ],
+    "diagnoses": [
+      {
+        "type": "string // Тип диагноза (основной, вторичный, подозреваемый)",
+        "description": "string // Описание диагноза",
+        "code": "string // Код по МКБ-10 (если применимо)"
+      }
+    ],
+    "recommendations": {
+      "medication": [
+        {
+          "name": "string // МНН медикамента",
+          "tradeName": "string // Торговое название медикамента",
+          "frequency": "string // Частота",
+          "courseDuration": "string // Длительность курса лечения",
+          "dosage": "string // Дозировка",
+          "administrationMethod": "string // Способ применения",
+          "additionalInstructions": "string // Дополнительные инструкции"
+        }
+      ],
+      "other": [
+        {
+          "type": "string // Тип рекомендации (exercise/procedure)",
+          "name": "string // Наименование",
+          "frequency": "string // Частота",
+          "courseDuration": "string // Длительность курса",
+          "additionalInstructions": "string // Дополнительные инструкции"
+        }
+      ]
+    },
     "referrals": [
       {
-        "type": "string",
-        "specialist": "string",
-        "reason": "string"
+        "specialist": "string // Специалист или отделение",
+        "reason": "string // Причина направления"
       }
     ],
-    "nextAppointment": "string"
+    "nextAppointment": "string // Дата следующего приема в формате yyyy-mm-dd",
+    "additionalNotes": "string // Дополнительные заметки или рекомендации"
   }
 }

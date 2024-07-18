@@ -1,5 +1,19 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 
+export class DoctorDto {
+  @ApiProperty({ description: 'ФИО врача' })
+  fullName: string;
+
+  @ApiProperty({ description: 'Специализация врача' })
+  specialization: string;
+
+  @ApiProperty({ description: 'Название клиники' })
+  clinic: string;
+
+  @ApiProperty({ description: 'Дата приема в формате yyyy-mm-dd' })
+  appointmentDate: string;
+}
+
 export class PatientDto {
   @ApiProperty({ description: 'Полное имя пациента' })
   fullName: string;
@@ -10,211 +24,153 @@ export class PatientDto {
   @ApiProperty({ description: 'Пол пациента' })
   gender: string;
 
-  @ApiProperty({ description: 'Контактная информация пациента' })
-  contacts: string;
+  @ApiProperty({ description: 'телефон' })
+  phone: string;
+  @ApiProperty({ description: 'емейл' })
+  email: string;
+  @ApiProperty({ description: 'Адрес проживания' })
+  address: string;
 }
 
 export class EmergencyContactDto {
   @ApiProperty({ description: 'ФИО контактного лица' })
   name: string;
 
-  @ApiProperty({ description: 'степень родства' })
+  @ApiProperty({ description: 'Степень родства' })
   relation: string;
 
-  @ApiProperty({ description: 'номер телефона' })
+  @ApiProperty({ description: 'Номер телефона' })
   phone: string;
 }
 
-export class AnthropometryDto {
-  @ApiProperty({ description: 'Рост пациента' })
-  height: string;
-
-  @ApiProperty({ description: 'Вес пациента' })
-  weight: string;
-
-  @ApiProperty({ description: 'Индекс массы тела (ИМТ)' })
-  bmi: string;
-
-  @ApiProperty({ description: 'Окружность талии' })
-  waistCircumference: string;
-}
-
-export class LifestyleDto {
-  @ApiProperty({ description: 'Статус курения' })
-  smokingStatus: string;
-
-  @ApiProperty({ description: 'Уровень физической активности' })
-  physicalActivityLevel: string;
-}
-
-export class BloodPressureDto {
-  @ApiProperty({ description: 'Систолическое артериальное давление' })
-  systolic: string;
-
-  @ApiProperty({ description: 'Диастолическое артериальное давление' })
-  diastolic: string;
-}
-
-export class VitalSignsDto {
-  @ApiProperty({ type: BloodPressureDto })
-  bloodPressure: BloodPressureDto;
-
-  @ApiProperty({ description: 'Частота сердечных сокращений' })
-  heartRate: string;
-
-  @ApiProperty({ description: 'Частота дыхания' })
-  respiratoryRate: string;
-
-  @ApiProperty({ description: 'Насыщение крови кислородом (сатурация)' })
-  oxygenSaturation: string;
-}
-
-export class LipidProfileDto {
-  @ApiProperty({ description: 'Общий холестерин' })
-  totalCholesterol: string;
-
-  @ApiProperty({ description: 'Липопротеины низкой плотности' })
-  ldl: string;
-
-  @ApiProperty({ description: 'Липопротеины высокой плотности' })
-  hdl: string;
-
-  @ApiProperty({ description: 'Триглицериды' })
-  triglycerides: string;
-}
-
-export class RenalFunctionDto {
-  @ApiProperty({ description: 'Креатинин' })
-  creatinine: string;
-
-  @ApiProperty({ description: 'Микроальбуминурия' })
-  microalbuminuria: string;
-}
-
-export class ElectrolytesDto {
-  @ApiProperty({ description: 'Калий' })
-  potassium: string;
-
-  @ApiProperty({ description: 'Натрий' })
-  sodium: string;
-}
-
-export class LaboratoryResultsDto {
-  @ApiProperty({ description: 'Уровень глюкозы в крови натощак' })
-  fastingBloodGlucose: string;
-
-  @ApiProperty({ description: 'Гликированный гемоглобин' })
-  hba1c: string;
-
-  @ApiProperty({ type: LipidProfileDto })
-  lipidProfile: LipidProfileDto;
-
-  @ApiProperty({ type: RenalFunctionDto })
-  renalFunction: RenalFunctionDto;
-
-  @ApiProperty({ type: ElectrolytesDto })
-  electrolytes: ElectrolytesDto;
-}
-
-export class PulmonaryFunctionDto {
-  @ApiProperty({ description: 'Объем форсированного выдоха за 1 секунду' })
-  fev1: string;
-
-  @ApiProperty({ description: 'Форсированная жизненная емкость легких' })
-  fvc: string;
-
-  @ApiProperty({ description: 'Пиковая скорость выдоха' })
-  peakExpiratoryFlow: string;
-}
-
-export class CardiacAssessmentDto {
-  @ApiProperty({ description: 'Результаты ЭКГ' })
-  ecgResults: string;
-}
-
-export class AsthmaControlDto {
-  @ApiProperty({ description: 'Тип опросника (например, ACT или ACQ)' })
-  questionnaireType: string;
-
-  @ApiProperty({ description: 'Балл по опроснику' })
-  score: string;
-}
-
-export class DiseaseSpecificInfoDto {
-  @ApiProperty({ type: AsthmaControlDto })
-  asthmaControl: AsthmaControlDto;
-
-  @ApiProperty({ description: 'Частота использования ингалятора' })
-  inhalerUseFrequency: string;
-
-  @ApiProperty({ description: 'Частота обострений астмы' })
-  asthmaExacerbationsFrequency: string;
-}
-
-export class HealthMetricsDto {
-  @ApiProperty({ type: AnthropometryDto })
-  anthropometry: AnthropometryDto;
-
-  @ApiProperty({ type: LifestyleDto })
-  lifestyle: LifestyleDto;
-
-  @ApiProperty({ type: VitalSignsDto })
-  vitalSigns: VitalSignsDto;
-
-  @ApiProperty({ type: LaboratoryResultsDto })
-  laboratoryResults: LaboratoryResultsDto;
-
-  @ApiProperty({ type: PulmonaryFunctionDto })
-  pulmonaryFunction: PulmonaryFunctionDto;
-
-  @ApiProperty({ type: CardiacAssessmentDto })
-  cardiacAssessment: CardiacAssessmentDto;
-
-  @ApiProperty({ type: DiseaseSpecificInfoDto })
-  diseaseSpecificInfo: DiseaseSpecificInfoDto;
-}
-
-export class DiagnosisDto {
-  @ApiProperty({ description: 'Основной диагноз' })
-  primary: string;
-
-  @ApiPropertyOptional({ description: 'Вторичный диагноз' })
-  secondary?: string;
-
-  @ApiPropertyOptional({ description: 'Подозреваемый диагноз' })
-  suspectedDiagnosis?: string;
-}
-
-export class PrescriptionDto {
-  @ApiProperty({
-    description: 'Тип назначения (лекарство/упражнение/процедура)',
-  })
-  type: string;
-
-  @ApiProperty({ description: 'Название назначения' })
+export class PreviousMedicationDto {
+  @ApiProperty({ description: 'Название препарата' })
   name: string;
-
-  @ApiPropertyOptional({ description: 'Форма (для лекарств)' })
-  form?: string;
 
   @ApiProperty({ description: 'Дозировка' })
   dosage: string;
 
-  @ApiProperty({ description: 'Частота приема/выполнения' })
-  frequency: string;
-
-  @ApiProperty({ description: 'Продолжительность' })
+  @ApiProperty({ description: 'Длительность приема' })
   duration: string;
 
-  @ApiPropertyOptional({ description: 'Особые инструкции' })
-  specialInstructions?: string;
+  @ApiProperty({ description: 'Причина приема' })
+  reason: string;
+}
+
+export class PreviousProcedureDto {
+  @ApiProperty({ description: 'Название процедуры' })
+  name: string;
+
+  @ApiProperty({ description: 'Дата проведения в формате yyyy-mm-dd' })
+  date: string;
+
+  @ApiProperty({ description: 'Причина проведения' })
+  reason: string;
+}
+
+export class AnamnesisDto {
+  @ApiProperty({ type: () => [PreviousMedicationDto] })
+  previousMedications: PreviousMedicationDto[];
+
+  @ApiProperty({ type: [String], description: 'Хронические заболевания' })
+  chronicDiseases: string[];
+
+  @ApiProperty({ type: [String], description: 'Аллергии' })
+  allergies: string[];
+
+  @ApiProperty({ type: () => [PreviousProcedureDto] })
+  previousProcedures: PreviousProcedureDto[];
+
+  @ApiPropertyOptional({ description: 'Дополнительная информация из анамнеза' })
+  additionalInfo?: string;
+}
+
+export class HealthMetricDto {
+  @ApiProperty({ description: 'Категория показателя' })
+  category: string;
+
+  @ApiProperty({ description: 'Название показателя' })
+  name: string;
+
+  @ApiProperty({ description: 'Значение показателя' })
+  value: string;
+
+  @ApiPropertyOptional({ description: 'Единица измерения' })
+  unit?: string;
+
+  @ApiPropertyOptional({ description: 'Дата измерения/анализа в формате yyyy-mm-dd' })
+  date?: string;
+
+  @ApiPropertyOptional({ description: 'Дополнительное описание или интерпретация' })
+  description?: string;
+}
+
+export class DiagnosisDto {
+  @ApiProperty({ description: 'Тип диагноза (основной, вторичный, подозреваемый)' })
+  type: string;
+
+  @ApiProperty({ description: 'Описание диагноза' })
+  description: string;
+
+  @ApiPropertyOptional({ description: 'Код по МКБ-10 (если применимо)' })
+  code?: string;
+}
+
+export class MedicationRecommendationDto {
+  @ApiProperty({ description: 'МНН медикамента' })
+  name: string;
+
+  @ApiProperty({ description: 'Торговое название медикамента' })
+  tradeName: string;
+
+  @ApiProperty({ description: 'Частота' })
+  frequency: string;
+
+  @ApiProperty({ description: 'Длительность курса лечения' })
+  courseDuration: string;
+
+  @ApiProperty({ description: 'Дозировка' })
+  dosage: string;
+
+  @ApiProperty({ description: 'Способ применения' })
+  administrationMethod: string;
+
+  @ApiPropertyOptional({ description: 'Дополнительные инструкции' })
+  additionalInstructions?: string;
+}
+
+export enum OtherRecommendationType {
+  Exercise = 'exercise',
+  Procedure = 'procedure'
+}
+
+export class OtherRecommendationDto {
+  @ApiProperty({ enum: OtherRecommendationType, description: 'Тип рекомендации' })
+  type: OtherRecommendationType;
+
+  @ApiProperty({ description: 'Наименование' })
+  name: string;
+
+  @ApiProperty({ description: 'Частота' })
+  frequency: string;
+
+  @ApiProperty({ description: 'Длительность курса' })
+  courseDuration: string;
+
+  @ApiPropertyOptional({ description: 'Дополнительные инструкции' })
+  additionalInstructions?: string;
+}
+
+export class RecommendationsDto {
+  @ApiProperty({ type: () => [MedicationRecommendationDto] })
+  medication: MedicationRecommendationDto[];
+
+  @ApiProperty({ type: () => [OtherRecommendationDto] })
+  other: OtherRecommendationDto[];
 }
 
 export class ReferralDto {
-  @ApiProperty({ description: 'Тип направления' })
-  type: string;
-
-  @ApiProperty({ description: 'Специалист, к которому направляется пациент' })
+  @ApiProperty({ description: 'Специалист или отделение' })
   specialist: string;
 
   @ApiProperty({ description: 'Причина направления' })
@@ -222,24 +178,36 @@ export class ReferralDto {
 }
 
 export class MedicalReportDto {
-  @ApiProperty({ type: PatientDto })
+  @ApiProperty({ type: () => DoctorDto })
+  doctor: DoctorDto;
+
+  @ApiProperty({ type: () => PatientDto })
   patient: PatientDto;
 
-  @ApiProperty({ type: EmergencyContactDto })
+  @ApiProperty({ type: () => EmergencyContactDto })
   emergency_contact: EmergencyContactDto;
 
-  @ApiProperty({ type: HealthMetricsDto })
-  healthMetrics: HealthMetricsDto;
+  @ApiProperty({ description: 'Жалобы пациента', type: [String] })
+  complaints: string[];
 
-  @ApiProperty({ type: DiagnosisDto })
-  diagnosis: DiagnosisDto;
+  @ApiProperty({ type: () => AnamnesisDto })
+  anamnesis: AnamnesisDto;
 
-  @ApiProperty({ type: [PrescriptionDto] })
-  prescriptions: PrescriptionDto[];
+  @ApiProperty({ type: () => [HealthMetricDto] })
+  healthMetrics: HealthMetricDto[];
 
-  @ApiProperty({ type: [ReferralDto] })
+  @ApiProperty({ type: () => [DiagnosisDto] })
+  diagnoses: DiagnosisDto[];
+
+  @ApiProperty({ type: () => RecommendationsDto })
+  recommendations: RecommendationsDto;
+
+  @ApiProperty({ type: () => [ReferralDto] })
   referrals: ReferralDto[];
 
-  @ApiProperty({ description: 'Дата и время следующего приема' })
+  @ApiProperty({ description: 'Дата следующего приема в формате yyyy-mm-dd' })
   nextAppointment: string;
+
+  @ApiPropertyOptional({ description: 'Дополнительные заметки или рекомендации' })
+  additionalNotes?: string;
 }
