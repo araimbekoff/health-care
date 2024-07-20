@@ -1,0 +1,191 @@
+{
+  "doctor": {
+    "fullName": "Соколова Марина Андреевна",
+    "specialization": "Пульмонолог",
+    "clinic": "ГБУЗ \"Городская клиническая больница №3\"",
+    "appointmentDate": "2024-07-20"
+  },
+  "patient": {
+    "fullName": "Петров Николай Иванович",
+    "phone": "+7 (915) 234-56-78",
+    "address": "г. Воронеж, ул. Ленина, д. 45, кв. 12"
+  },
+  "complaints": [
+    "одышка при физической нагрузке",
+    "хронический кашель с отделением мокроты, преимущественно по утрам",
+    "быстрая утомляемость"
+  ],
+  "anamnesis": {
+    "previousMedications": [
+      {
+        "name": "Сальбутамол",
+        "reason": "при ухудшении состояния"
+      },
+      {
+        "name": "Амброксол",
+        "reason": "при обострениях"
+      }
+    ],
+    "chronicDiseases": [
+      "ХОБЛ"
+    ],
+    "additionalInfo": "Курит в течение 30 лет, 1 пачка в день. Диагноз ХОБЛ установлен 5 лет назад. Обострения 2-3 раза в год."
+  },
+  "healthMetrics": [
+    {
+      "category": "антропометрия",
+      "name": "Рост",
+      "value": "172",
+      "unit": "см"
+    },
+    {
+      "category": "антропометрия",
+      "name": "Вес",
+      "value": "68",
+      "unit": "кг"
+    },
+    {
+      "category": "антропометрия",
+      "name": "ИМТ",
+      "value": "23,0",
+      "unit": null,
+      "description": "норма"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "ЧДД",
+      "value": "20",
+      "unit": "в мин"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "SpO2",
+      "value": "94",
+      "unit": "%"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "Пульс",
+      "value": "82",
+      "unit": "уд/мин"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "АД",
+      "value": "130/80",
+      "unit": "мм рт.ст."
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "ОФВ1",
+      "value": "58",
+      "unit": "% от должного"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "ФЖЕЛ",
+      "value": "75",
+      "unit": "% от должного"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "ОФВ1/ФЖЕЛ",
+      "value": "0,62",
+      "unit": null
+    }
+  ],
+  "diagnoses": [
+    {
+      "type": "основной",
+      "description": "ХОБЛ, среднетяжелое течение (GOLD 2), группа B",
+      "code": null
+    },
+    {
+      "type": "основной",
+      "description": "ДН I ст.",
+      "code": null
+    }
+  ],
+  "recommendations": {
+    "medication": [
+      {
+        "name": "Тиотропия бромид",
+        "tradeName": null,
+        "frequency": "1 раз в день",
+        "courseDuration": "длительно",
+        "dosage": "18 мкг",
+        "administrationMethod": "порошковый ингалятор"
+      },
+      {
+        "name": "Формотерол",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": "3 месяца",
+        "dosage": "12 мкг",
+        "administrationMethod": "ДПИ"
+      },
+      {
+        "name": "Будесонид",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": "3 месяца",
+        "dosage": "400 мкг",
+        "administrationMethod": "ДПИ"
+      },
+      {
+        "name": "Сальбутамол",
+        "tradeName": null,
+        "frequency": "по потребности",
+        "courseDuration": null,
+        "dosage": "100 мкг",
+        "administrationMethod": "ингаляция",
+        "additionalInstructions": "не более 4 раз в сутки"
+      }
+    ],
+    "other": [
+      {
+        "type": "exercise",
+        "name": "Лечебная физкультура, дыхательная гимнастика",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "procedure",
+        "name": "Вакцинация против гриппа",
+        "frequency": "ежегодно",
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "procedure",
+        "name": "Пневмококковая вакцина",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "если не проводилась ранее"
+      },
+      {
+        "type": "other",
+        "name": "Отказ от курения",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "консультация в кабинете по отказу от курения"
+      },
+      {
+        "type": "other",
+        "name": "Обучение технике ингаляций и самоконтролю симптомов",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      }
+    ]
+  },
+  "referrals": [
+    {
+      "specialist": null,
+      "reason": null
+    }
+  ],
+  "nextAppointment": "2024-08-20",
+  "additionalNotes": "Пациенту объяснены риски прогрессирования заболевания при продолжении курения. Даны рекомендации по модификации образа жизни и правильному использованию ингаляторов."
+}

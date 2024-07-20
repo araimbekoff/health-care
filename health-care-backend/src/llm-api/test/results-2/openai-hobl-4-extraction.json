@@ -1,0 +1,233 @@
+{
+  "doctor": {
+    "fullName": "Соколова Марина Андреевна",
+    "specialization": "Пульмонолог",
+    "clinic": "ГБУЗ \"Городская клиническая больница №3\"",
+    "appointmentDate": null
+  },
+  "patient": {
+    "fullName": "Петров Николай Иванович",
+    "dateOfBirth": null,
+    "gender": null,
+    "phone": "+7 (915) 234-56-78",
+    "email": null,
+    "address": "г. Воронеж, ул. Ленина, д. 45, кв. 12"
+  },
+  "emergency_contact": {
+    "name": null,
+    "relation": null,
+    "phone": null
+  },
+  "complaints": [
+    "одышка при физической нагрузке",
+    "хронический кашель с отделением мокроты, преимущественно по утрам",
+    "быстрая утомляемость"
+  ],
+  "anamnesis": {
+    "previousMedications": [
+      {
+        "name": "Сальбутамол",
+        "dosage": null,
+        "duration": null,
+        "reason": "при ухудшении состояния"
+      },
+      {
+        "name": "Амброксол",
+        "dosage": null,
+        "duration": "курсами",
+        "reason": "при обострениях"
+      }
+    ],
+    "chronicDiseases": [
+      "ХОБЛ"
+    ],
+    "allergies": [],
+    "previousProcedures": [],
+    "additionalInfo": "Курит в течение 30 лет, 1 пачка в день. Диагноз ХОБЛ установлен 5 лет назад. Обострения 2-3 раза в год."
+  },
+  "healthMetrics": [
+    {
+      "category": "антропометрия",
+      "name": "Рост",
+      "value": "172",
+      "unit": "см",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "антропометрия",
+      "name": "Вес",
+      "value": "68",
+      "unit": "кг",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "антропометрия",
+      "name": "ИМТ",
+      "value": "23,0",
+      "unit": null,
+      "date": null,
+      "description": "норма"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "ЧДД",
+      "value": "20",
+      "unit": "в мин",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "SpO2",
+      "value": "94",
+      "unit": "%",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "Пульс",
+      "value": "82",
+      "unit": "уд/мин",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "АД",
+      "value": "130/80",
+      "unit": "мм рт.ст.",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "исследования",
+      "name": "Спирометрия",
+      "value": "ОФВ1 58% от должного, ФЖЕЛ 75% от должного, ОФВ1/ФЖЕЛ 0,62",
+      "unit": null,
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "исследования",
+      "name": "Рентгенография ОГК",
+      "value": "Повышенная воздушность легочной ткани, уплощение куполов диафрагмы",
+      "unit": null,
+      "date": null,
+      "description": null
+    }
+  ],
+  "diagnoses": [
+    {
+      "type": "основной",
+      "description": "ХОБЛ, среднетяжелое течение (GOLD 2), группа B.",
+      "code": null
+    },
+    {
+      "type": "вторичный",
+      "description": "ДН I ст.",
+      "code": null
+    }
+  ],
+  "recommendations": {
+    "medication": [
+      {
+        "name": "Тиотропия бромид",
+        "tradeName": null,
+        "frequency": "1 раз в день",
+        "courseDuration": "длительно",
+        "dosage": "18 мкг",
+        "administrationMethod": "ингаляция",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Формотерол + Будесонид",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": "курс 3 месяца",
+        "dosage": "12 мкг + 400 мкг",
+        "administrationMethod": "ингаляция",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Сальбутамол",
+        "tradeName": null,
+        "frequency": "по потребности (не более 4 раз в сутки)",
+        "courseDuration": null,
+        "dosage": "100 мкг",
+        "administrationMethod": "ингаляция",
+        "additionalInstructions": null
+      }
+    ],
+    "other": [
+      {
+        "type": "exercise",
+        "name": "Лечебная физкультура, дыхательная гимнастика",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "procedure",
+        "name": "Консультация в кабинете по отказу от курения",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "Отказ от курения"
+      },
+      {
+        "type": "procedure",
+        "name": "Ежегодная вакцинация против гриппа",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "procedure",
+        "name": "Пневмококковая вакцина",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "если не проводилась ранее"
+      },
+      {
+        "type": "procedure",
+        "name": "Обучение технике ингаляций и самоконтролю симптомов",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "procedure",
+        "name": "Контроль симптомов по шкале CAT",
+        "frequency": "ежемесячно",
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "procedure",
+        "name": "Повторная спирометрия",
+        "frequency": null,
+        "courseDuration": "через 3 месяца",
+        "additionalInstructions": null
+      },
+      {
+        "type": "procedure",
+        "name": "Общий анализ крови, С-реактивный белок",
+        "frequency": null,
+        "courseDuration": "через 1 месяц",
+        "additionalInstructions": null
+      },
+      {
+        "type": "procedure",
+        "name": "Повторный прием",
+        "frequency": null,
+        "courseDuration": "через 1 месяц",
+        "additionalInstructions": "для оценки эффективности терапии"
+      }
+    ]
+  },
+  "referrals": [],
+  "nextAppointment": "2024-08-20",
+  "additionalNotes": "Пациенту объяснены риски прогрессирования заболевания при продолжении курения. Даны рекомендации по модификации образа жизни и правильному использованию ингаляторов."
+}

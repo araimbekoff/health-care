@@ -1,0 +1,218 @@
+{
+  "doctor": {
+    "fullName": "Николаева Ирина Сергеевна",
+    "specialization": "Терапевт высшей категории",
+    "clinic": "Городская поликлиника №5",
+    "appointmentDate": "2024-07-20"
+  },
+  "patient": {
+    "fullName": "Сидоров Алексей Викторович",
+    "phone": "+7 (903) 555-44-33",
+    "email": "sidorov@mail.ru",
+    "address": "Екатеринбург, ул. Мира, 33-12"
+  },
+  "complaints": [
+    "периодические головные боли",
+    "чувство \"тяжести\" в затылке",
+    "повышенная утомляемость",
+    "раздражительность"
+  ],
+  "anamnesis": {
+    "previousMedications": [
+      {
+        "name": "Каптоприл",
+        "reason": "При ухудшении самочувствия"
+      }
+    ],
+    "chronicDiseases": [
+      "Повышение АД"
+    ],
+    "additionalInfo": "Повышение АД отмечает около 3 лет. Максимальные значения до 165/95 мм рт. ст. Постоянной терапии не получал."
+  },
+  "healthMetrics": [
+    {
+      "category": "Антропометрия",
+      "name": "Рост",
+      "value": 178,
+      "unit": "см"
+    },
+    {
+      "category": "Антропометрия",
+      "name": "Вес",
+      "value": 88,
+      "unit": "кг"
+    },
+    {
+      "category": "Антропометрия",
+      "name": "ИМТ",
+      "value": 27.8,
+      "description": "Избыточная масса тела"
+    },
+    {
+      "category": "Жизненные показатели",
+      "name": "ЧСС",
+      "value": 76,
+      "unit": "уд/мин"
+    },
+    {
+      "category": "Жизненные показатели",
+      "name": "АД",
+      "value": "158/94",
+      "unit": "мм рт.ст.",
+      "description": "Среднее из 3-х измерений"
+    },
+    {
+      "category": "Антропометрия",
+      "name": "Окружность талии",
+      "value": 98,
+      "unit": "см"
+    },
+    {
+      "category": "Лабораторные результаты",
+      "name": "Общий холестерин",
+      "value": 6.1,
+      "unit": "ммоль/л"
+    },
+    {
+      "category": "Лабораторные результаты",
+      "name": "Триглицериды",
+      "value": 1.9,
+      "unit": "ммоль/л"
+    },
+    {
+      "category": "Лабораторные результаты",
+      "name": "Глюкоза натощак",
+      "value": 5.7,
+      "unit": "ммоль/л"
+    },
+    {
+      "category": "Лабораторные результаты",
+      "name": "Креатинин",
+      "value": 88,
+      "unit": "мкмоль/л",
+      "description": "СКФ по CKD-EPI: 89 мл/мин/1,73м2"
+    },
+    {
+      "category": "Инструментальные исследования",
+      "name": "ЭКГ",
+      "value": "Признаки гипертрофии левого желудочка"
+    }
+  ],
+  "diagnoses": [
+    {
+      "type": "Основной",
+      "description": "Гипертоническая болезнь II стадии, 2 степени, риск ССО высокий"
+    },
+    {
+      "type": "Сопутствующий",
+      "description": "Дислипидемия"
+    },
+    {
+      "type": "Сопутствующий",
+      "description": "Избыточная масса тела"
+    }
+  ],
+  "recommendations": {
+    "medication": [
+      {
+        "name": "Периндоприл",
+        "tradeName": null,
+        "frequency": "утром",
+        "courseDuration": null,
+        "dosage": "5 мг",
+        "administrationMethod": "перорально"
+      },
+      {
+        "name": "Амлодипин",
+        "tradeName": null,
+        "frequency": "вечером",
+        "courseDuration": null,
+        "dosage": "5 мг",
+        "administrationMethod": "перорально"
+      },
+      {
+        "name": "Аторвастатин",
+        "tradeName": null,
+        "frequency": "на ночь",
+        "courseDuration": null,
+        "dosage": "20 мг",
+        "administrationMethod": "перорально"
+      }
+    ],
+    "other": [
+      {
+        "type": "exercise",
+        "name": "Снижение массы тела",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "на 5-10% от исходной"
+      },
+      {
+        "type": "exercise",
+        "name": "Ограничение потребления поваренной соли",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "до 5 г/сутки"
+      },
+      {
+        "type": "exercise",
+        "name": "Увеличение потребления овощей, фруктов, цельнозерновых продуктов",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "exercise",
+        "name": "Ограничение употребления насыщенных жиров и трансжиров",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "exercise",
+        "name": "Регулярные аэробные физические нагрузки",
+        "frequency": "не менее 30 минут в день, 5-7 дней в неделю",
+        "courseDuration": null,
+        "additionalInstructions": "Быстрая ходьба, плавание"
+      },
+      {
+        "type": "exercise",
+        "name": "Ограничение употребления алкоголя",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "не более 2 стандартных доз в день для мужчин"
+      },
+      {
+        "type": "exercise",
+        "name": "Отказ от курения",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "если курит"
+      }
+    ]
+  },
+  "referrals": [
+    {
+      "specialist": "СМАД (суточное мониторирование АД)",
+      "reason": "Через 2 недели"
+    },
+    {
+      "specialist": "Эхокардиография",
+      "reason": "В плановом порядке"
+    },
+    {
+      "specialist": "УЗИ почек и надпочечников",
+      "reason": null
+    },
+    {
+      "specialist": "Консультация офтальмолога (осмотр глазного дна)",
+      "reason": null
+    },
+    {
+      "specialist": "Повторный биохимический анализ крови",
+      "reason": "Через 1 месяц"
+    }
+  ],
+  "nextAppointment": "2024-08-10",
+  "additionalNotes": "Пациенту разъяснены риски осложнений при отсутствии адекватного лечения АГ, важность соблюдения рекомендаций и регулярного приема назначенных препаратов. Даны рекомендации по правильному измерению АД в домашних условиях."
+}

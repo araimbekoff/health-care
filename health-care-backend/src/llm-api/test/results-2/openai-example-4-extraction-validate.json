@@ -1,0 +1,137 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "doctor.fullName",
+      "type": "missing",
+      "description": "Полное имя врача отсутствует."
+    },
+    {
+      "field": "doctor.specialization",
+      "type": "missing",
+      "description": "Специализация врача отсутствует."
+    },
+    {
+      "field": "doctor.clinic",
+      "type": "missing",
+      "description": "Название клиники отсутствует."
+    },
+    {
+      "field": "doctor.appointmentDate",
+      "type": "missing",
+      "description": "Дата приема отсутствует."
+    },
+    {
+      "field": "patient.fullName",
+      "type": "missing",
+      "description": "Полное имя пациента отсутствует."
+    },
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента отсутствует."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента отсутствует."
+    },
+    {
+      "field": "patient.phone",
+      "type": "missing",
+      "description": "Телефон пациента отсутствует."
+    },
+    {
+      "field": "patient.email",
+      "type": "missing",
+      "description": "Email пациента отсутствует."
+    },
+    {
+      "field": "patient.address",
+      "type": "missing",
+      "description": "Адрес пациента отсутствует."
+    },
+    {
+      "field": "complaints",
+      "type": "incomplete",
+      "description": "Жалобы пациента отсутствуют, что важно для анализа."
+    },
+    {
+      "field": "diagnoses",
+      "type": "incomplete",
+      "description": "Диагнозы отсутствуют, что критично для понимания состояния пациента."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "doctor.fullName",
+      "suggestion": "Добавьте полное имя врача."
+    },
+    {
+      "field": "doctor.specialization",
+      "suggestion": "Добавьте специализацию врача."
+    },
+    {
+      "field": "doctor.clinic",
+      "suggestion": "Добавьте название клиники."
+    },
+    {
+      "field": "doctor.appointmentDate",
+      "suggestion": "Добавьте дату приема."
+    },
+    {
+      "field": "patient.fullName",
+      "suggestion": "Добавьте полное имя пациента."
+    },
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Добавьте дату рождения пациента."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Добавьте пол пациента."
+    },
+    {
+      "field": "patient.phone",
+      "suggestion": "Добавьте телефон пациента."
+    },
+    {
+      "field": "patient.email",
+      "suggestion": "Добавьте email пациента."
+    },
+    {
+      "field": "patient.address",
+      "suggestion": "Добавьте адрес пациента."
+    },
+    {
+      "field": "complaints",
+      "suggestion": "Добавьте жалобы пациента для полноты информации."
+    },
+    {
+      "field": "diagnoses",
+      "suggestion": "Добавьте диагнозы для понимания состояния пациента."
+    }
+  ],
+  "assessment": {
+    "score": 3,
+    "description": "Извлечение данных неполное и неточное. Отсутствуют ключевые поля, такие как информация о пациенте и враче, а также жалобы и диагнозы, что делает анализ состояния пациента затруднительным."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Биохимический анализ крови",
+      "reason": "Для оценки уровня липидов, глюкозы и креатинина в крови."
+    },
+    {
+      "test": "ЭКГ",
+      "reason": "Для оценки сердечной функции через 3 месяца."
+    },
+    {
+      "test": "СМАД",
+      "reason": "Для мониторинга артериального давления через 3 недели."
+    },
+    {
+      "test": "Консультация офтальмолога",
+      "reason": "Для осмотра глазного дна в течение 1 месяца."
+    }
+  ]
+}

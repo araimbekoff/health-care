@@ -1,0 +1,75 @@
+{
+  "doctor": {
+    "fullName": "Козлов Дмитрий Иванович",
+    "specialization": "Пульмонолог-аллерголог",
+    "clinic": "Медицинский центр \"Пульмо-Плюс\"",
+    "appointmentDate": "2024-07-20"
+  },
+  "patient": {
+    "fullName": "Васильева Татьяна Алексеевна",
+    "dateOfBirth": null,
+    "gender": null,
+    "phone": "+7 (926) 789-01-23",
+    "email": "vasilyeva_ta@yandex.ru",
+    "address": null
+  },
+  "emergency_contact": {
+    "name": null,
+    "relation": null,
+    "phone": null
+  },
+  "complaints": [
+    "периодический кашель с небольшим количеством светлой мокроты, одышка при умеренной физической нагрузке (подъем на 2-3 этаж), дискомфорт в грудной клетке"
+  ],
+  "anamnesis": {
+    "previousMedications": null,
+    "chronicDiseases": [
+      "ХОБЛ"
+    ],
+    "allergies": [
+      "Аллергический ринит"
+    ],
+    "previousProcedures": [],
+    "additionalInfo": "ХОБЛ диагностирована 3 года назад. Курит 15 лет по 0,5 пачки в день. Работает бухгалтером."
+  },
+  "healthMetrics": [
+    {
+      "category": "антропометрия",
+      "name": "Рост: 165 см, Вес: 70 кг, ИМТ: 25.7 (избыточная масса тела)",
+      "date": "2024-07-20",
+      "description": null
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "ЧДД: 18 в мин, SpO2: 95%, ЧСС: 76 уд/мин, АД: 120/70 мм рт.ст.",
+      "date": "2024-07-20",
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "ОАК, ОАМ - без существенных отклонений",
+      "date": "2024-07-20",
+      "description": null
+    },
+    {
+      "category": "исследования",
+      "name": "Спирометрия: -",
+      "date": "2024-07-20",
+      "description": null
+    }
+  ],
+  "diagnoses": [
+    {
+      "type": "основной",
+      "description": "ХОБЛ",
+      "code": null
+    }
+  ],
+  "recommendations": {
+    "medication": [],
+    "other": []
+  },
+  "referrals": [],
+  "nextAppointment": null,
+  "additionalNotes": null
+}

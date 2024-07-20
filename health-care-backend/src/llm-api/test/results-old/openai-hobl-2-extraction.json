@@ -1,0 +1,306 @@
+{
+  "doctor": {
+    "fullName": "Морозова Ольга Сергеевна",
+    "specialization": "Пульмонолог, к.м.н.",
+    "clinic": "Областная клиническая больница №1",
+    "appointmentDate": "2024-07-20"
+  },
+  "patient": {
+    "fullName": "Кузнецов Андрей Владимирович",
+    "dateOfBirth": null,
+    "gender": null,
+    "phone": "+7 (912) 345-67-89",
+    "email": "kuznetsov@mail.ru",
+    "address": "Екатеринбург, пр. Ленина, 50-15"
+  },
+  "emergency_contact": {
+    "name": null,
+    "relation": null,
+    "phone": null
+  },
+  "complaints": [
+    "выраженная одышка в покое, усиливающаяся при минимальной физической нагрузке",
+    "постоянный кашель с небольшим количеством вязкой мокроты",
+    "общая слабость"
+  ],
+  "anamnesis": {
+    "previousMedications": null,
+    "chronicDiseases": [
+      "ХОБЛ"
+    ],
+    "allergies": null,
+    "previousProcedures": [
+      {
+        "name": "госпитализация",
+        "date": "2024-05-20",
+        "reason": "обострение ХОБЛ"
+      }
+    ],
+    "additionalInfo": "Стаж курения 40 лет (до 2 пачек в день), продолжает курить."
+  },
+  "healthMetrics": [
+    {
+      "category": "антропометрия",
+      "name": "Рост",
+      "value": "170",
+      "unit": "см",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "антропометрия",
+      "name": "Вес",
+      "value": "58",
+      "unit": "кг",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "ИМТ",
+      "value": "20.1",
+      "unit": null,
+      "date": null,
+      "description": "норма"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "ЧДД",
+      "value": "28",
+      "unit": "в мин",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "SpO2",
+      "value": "88",
+      "unit": "%",
+      "date": null,
+      "description": "на воздухе"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "ЧСС",
+      "value": "100",
+      "unit": "уд/мин",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "АД",
+      "value": "140/85",
+      "unit": "мм рт.ст.",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Эритроциты",
+      "value": "5.8*10^12",
+      "unit": "/л",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Гемоглобин",
+      "value": "170",
+      "unit": "г/л",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Лейкоциты",
+      "value": "12.5*10^9",
+      "unit": "/л",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "СОЭ",
+      "value": "28",
+      "unit": "мм/ч",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "pH",
+      "value": "7.35",
+      "unit": null,
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "PaO2",
+      "value": "58",
+      "unit": "мм рт.ст.",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "PaCO2",
+      "value": "48",
+      "unit": "мм рт.ст.",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "ОФВ1",
+      "value": "28",
+      "unit": "%",
+      "date": null,
+      "description": "от должного"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "ФЖЕЛ",
+      "value": "50",
+      "unit": "%",
+      "date": null,
+      "description": "от должного"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "ОФВ1/ФЖЕЛ",
+      "value": "0.45",
+      "unit": null,
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "ЧСС на ЭКГ",
+      "value": "98",
+      "unit": "в мин",
+      "date": null,
+      "description": "синусовая тахикардия"
+    }
+  ],
+  "diagnoses": [
+    {
+      "type": "основной",
+      "description": "ХОБЛ, крайне тяжелое течение (GOLD 4), группа D. Обострение тяжелой степени. Эмфизема легких. ДН III ст. Хроническое легочное сердце, субкомпенсация.",
+      "code": null
+    }
+  ],
+  "recommendations": {
+    "medication": [
+      {
+        "name": "Оксигенотерапия",
+        "tradeName": null,
+        "frequency": "постоянно",
+        "courseDuration": null,
+        "dosage": "2-3 л/мин",
+        "administrationMethod": "через носовые канюли",
+        "additionalInstructions": "под контролем SpO2 (целевой уровень 90-92%)"
+      },
+      {
+        "name": "Преднизолон",
+        "tradeName": null,
+        "frequency": null,
+        "courseDuration": "7 дней",
+        "dosage": "40 мг",
+        "administrationMethod": "в/в капельно",
+        "additionalInstructions": "с последующим переходом на таблетированную форму и постепенным снижением дозы"
+      },
+      {
+        "name": "Левофлоксацин",
+        "tradeName": null,
+        "frequency": "1 раз в день",
+        "courseDuration": "7 дней",
+        "dosage": "500 мг",
+        "administrationMethod": "в/в капельно",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Ипратропия бромид + Фенотерол",
+        "tradeName": null,
+        "frequency": "каждые 4-6 часов",
+        "courseDuration": null,
+        "dosage": "0,5 мг + 0,25 мг",
+        "administrationMethod": "через небулайзер",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Будесонид",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": "7 дней",
+        "dosage": "0,5 мг",
+        "administrationMethod": "через небулайзер",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Аминофиллин",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": "5 дней",
+        "dosage": "10 мл",
+        "administrationMethod": "в/в капельно на 200 мл физ. раствора",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Гепарин",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": null,
+        "dosage": "5000 ЕД",
+        "administrationMethod": "п/к",
+        "additionalInstructions": "профилактика тромбоэмболических осложнений"
+      }
+    ],
+    "other": [
+      {
+        "type": "exercise",
+        "name": "Строгий постельный режим",
+        "frequency": null,
+        "courseDuration": "в первые 2-3 дня",
+        "additionalInstructions": null
+      },
+      {
+        "type": "monitoring",
+        "name": "Контроль диуреза, баланса жидкости",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "positioning",
+        "name": "Возвышенное положение головного конца кровати",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "exercise",
+        "name": "Дыхательная гимнастика",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "под контролем методиста ЛФК после стабилизации состояния"
+      },
+      {
+        "type": "psychological support",
+        "name": "Психологическая поддержка",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "мотивация к отказу от курения"
+      }
+    ]
+  },
+  "referrals": [
+    {
+      "specialist": "психотерапевт",
+      "reason": "консультация для помощи в отказе от курения"
+    }
+  ],
+  "nextAppointment": "2024-07-23",
+  "additionalNotes": "Пациент предупрежден о высоком риске осложнений при продолжении курения. После стабилизации состояния планируется перевод на длительную кислородотерапию в домашних условиях."
+}

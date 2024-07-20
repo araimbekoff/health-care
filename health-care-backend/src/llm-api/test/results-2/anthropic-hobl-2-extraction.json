@@ -1,0 +1,266 @@
+{
+  "doctor": {
+    "fullName": "Морозова Ольга Сергеевна",
+    "specialization": "Пульмонолог, к.м.н.",
+    "clinic": "Областная клиническая больница №1",
+    "appointmentDate": "2024-07-20"
+  },
+  "patient": {
+    "fullName": "Кузнецов Андрей Владимирович",
+    "phone": "+7 (912) 345-67-89",
+    "email": "kuznetsov@mail.ru",
+    "address": "Екатеринбург, пр. Ленина, 50-15"
+  },
+  "complaints": [
+    "выраженная одышка в покое, усиливающаяся при минимальной физической нагрузке",
+    "постоянный кашель с небольшим количеством вязкой мокроты",
+    "общая слабость"
+  ],
+  "anamnesis": {
+    "previousMedications": [],
+    "chronicDiseases": [
+      "ХОБЛ"
+    ],
+    "allergies": [],
+    "previousProcedures": [],
+    "additionalInfo": "Страдает ХОБЛ более 10 лет. Стаж курения 40 лет (до 2 пачек в день), продолжает курить. Последняя госпитализация 2 месяца назад по поводу обострения ХОБЛ."
+  },
+  "healthMetrics": [
+    {
+      "category": "антропометрия",
+      "name": "Рост",
+      "value": "170",
+      "unit": "см"
+    },
+    {
+      "category": "антропометрия",
+      "name": "Вес",
+      "value": "58",
+      "unit": "кг"
+    },
+    {
+      "category": "антропометрия",
+      "name": "ИМТ",
+      "value": "20.1",
+      "unit": null,
+      "description": "норма"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "ЧДД",
+      "value": "28",
+      "unit": "в мин"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "SpO2",
+      "value": "88",
+      "unit": "%",
+      "description": "на воздухе"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "ЧСС",
+      "value": "100",
+      "unit": "уд/мин"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "АД",
+      "value": "140/85",
+      "unit": "мм рт.ст."
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Эр.",
+      "value": "5.8",
+      "unit": "*10^12/л"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Hb",
+      "value": "170",
+      "unit": "г/л"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Лейк.",
+      "value": "12.5",
+      "unit": "*10^9/л"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "СОЭ",
+      "value": "28",
+      "unit": "мм/ч"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "pH",
+      "value": "7.35",
+      "unit": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "PaO2",
+      "value": "58",
+      "unit": "мм рт.ст."
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "PaCO2",
+      "value": "48",
+      "unit": "мм рт.ст."
+    },
+    {
+      "category": "функциональные исследования",
+      "name": "ОФВ1",
+      "value": "28",
+      "unit": "% от должного"
+    },
+    {
+      "category": "функциональные исследования",
+      "name": "ФЖЕЛ",
+      "value": "50",
+      "unit": "% от должного"
+    },
+    {
+      "category": "функциональные исследования",
+      "name": "ОФВ1/ФЖЕЛ",
+      "value": "0.45",
+      "unit": null
+    },
+    {
+      "category": "инструментальные исследования",
+      "name": "Синусовая тахикардия",
+      "value": "98",
+      "unit": "в мин",
+      "description": "признаки перегрузки правых отделов сердца"
+    },
+    {
+      "category": "инструментальные исследования",
+      "name": "Рентген ОГК",
+      "value": null,
+      "description": "Выраженная эмфизема, уплощение куполов диафрагмы, расширение корней легких"
+    }
+  ],
+  "diagnoses": [
+    {
+      "type": "основной",
+      "description": "ХОБЛ, крайне тяжелое течение (GOLD 4), группа D. Обострение тяжелой степени",
+      "code": null
+    },
+    {
+      "type": "основной",
+      "description": "Эмфизема легких",
+      "code": null
+    },
+    {
+      "type": "основной",
+      "description": "ДН III ст.",
+      "code": null
+    },
+    {
+      "type": "основной",
+      "description": "Хроническое легочное сердце, субкомпенсация",
+      "code": null
+    }
+  ],
+  "recommendations": {
+    "medication": [
+      {
+        "name": "Преднизолон",
+        "tradeName": null,
+        "frequency": "в/в капельно, курс 7 дней с последующим переходом на таблетированную форму и постепенным снижением дозы",
+        "courseDuration": "7 дней",
+        "dosage": "40 мг",
+        "administrationMethod": "в/в капельно"
+      },
+      {
+        "name": "Левофлоксацин",
+        "tradeName": null,
+        "frequency": "1 раз в день",
+        "courseDuration": "7 дней",
+        "dosage": "500 мг",
+        "administrationMethod": "в/в капельно"
+      },
+      {
+        "name": "Ипратропия бромид + Фенотерол",
+        "tradeName": null,
+        "frequency": "каждые 4-6 часов",
+        "courseDuration": null,
+        "dosage": "0.5 мг + 0.25 мг",
+        "administrationMethod": "через небулайзер"
+      },
+      {
+        "name": "Будесонид",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": "7 дней",
+        "dosage": "0.5 мг",
+        "administrationMethod": "через небулайзер"
+      },
+      {
+        "name": "Аминофиллин",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": "5 дней",
+        "dosage": "2.4% - 10 мл",
+        "administrationMethod": "в/в капельно на 200 мл физ. раствора"
+      },
+      {
+        "name": "Гепарин",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": null,
+        "dosage": "5000 ЕД",
+        "administrationMethod": "п/к"
+      }
+    ],
+    "other": [
+      {
+        "type": "exercise",
+        "name": "Дыхательная гимнастика",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "под контролем методиста ЛФК после стабилизации состояния"
+      },
+      {
+        "type": "other",
+        "name": "Строгий постельный режим",
+        "frequency": null,
+        "courseDuration": "первые 2-3 дня",
+        "additionalInstructions": null
+      },
+      {
+        "type": "other",
+        "name": "Контроль диуреза, баланса жидкости",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "other",
+        "name": "Возвышенное положение головного конца кровати",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "other",
+        "name": "Психологическая поддержка, мотивация к отказу от курения",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      }
+    ]
+  },
+  "referrals": [
+    {
+      "specialist": "консультация психотерапевта",
+      "reason": "помощь в отказе от курения"
+    }
+  ],
+  "nextAppointment": "2024-07-27",
+  "additionalNotes": null
+}

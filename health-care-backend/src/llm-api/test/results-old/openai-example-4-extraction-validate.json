@@ -1,0 +1,155 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "doctor.fullName",
+      "type": "missing",
+      "description": "Не указано полное имя врача."
+    },
+    {
+      "field": "doctor.specialization",
+      "type": "missing",
+      "description": "Не указана специализация врача."
+    },
+    {
+      "field": "doctor.clinic",
+      "type": "missing",
+      "description": "Не указана клиника."
+    },
+    {
+      "field": "doctor.appointmentDate",
+      "type": "missing",
+      "description": "Не указана дата приема."
+    },
+    {
+      "field": "patient.fullName",
+      "type": "missing",
+      "description": "Не указано полное имя пациента."
+    },
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Не указана дата рождения пациента."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Не указан пол пациента."
+    },
+    {
+      "field": "patient.phone",
+      "type": "missing",
+      "description": "Не указан телефон пациента."
+    },
+    {
+      "field": "patient.email",
+      "type": "missing",
+      "description": "Не указан email пациента."
+    },
+    {
+      "field": "patient.address",
+      "type": "missing",
+      "description": "Не указан адрес пациента."
+    },
+    {
+      "field": "complaints",
+      "type": "incomplete",
+      "description": "Нет указанных жалоб пациента."
+    },
+    {
+      "field": "anamnesis.additionalInfo",
+      "type": "incomplete",
+      "description": "Не указана дополнительная информация о состоянии пациента."
+    },
+    {
+      "field": "healthMetrics",
+      "type": "incomplete",
+      "description": "Нет указанных показателей здоровья."
+    },
+    {
+      "field": "diagnoses",
+      "type": "incomplete",
+      "description": "Не указаны диагнозы пациента."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "doctor.fullName",
+      "suggestion": "Укажите полное имя врача."
+    },
+    {
+      "field": "doctor.specialization",
+      "suggestion": "Укажите специализацию врача."
+    },
+    {
+      "field": "doctor.clinic",
+      "suggestion": "Укажите название клиники."
+    },
+    {
+      "field": "doctor.appointmentDate",
+      "suggestion": "Укажите дату приема."
+    },
+    {
+      "field": "patient.fullName",
+      "suggestion": "Укажите полное имя пациента."
+    },
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Укажите дату рождения пациента."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Укажите пол пациента."
+    },
+    {
+      "field": "patient.phone",
+      "suggestion": "Укажите контактный телефон пациента."
+    },
+    {
+      "field": "patient.email",
+      "suggestion": "Укажите email пациента."
+    },
+    {
+      "field": "patient.address",
+      "suggestion": "Укажите адрес пациента."
+    },
+    {
+      "field": "complaints",
+      "suggestion": "Укажите жалобы пациента."
+    },
+    {
+      "field": "anamnesis.additionalInfo",
+      "suggestion": "Добавьте дополнительную информацию о состоянии пациента."
+    },
+    {
+      "field": "healthMetrics",
+      "suggestion": "Добавьте показатели здоровья пациента."
+    },
+    {
+      "field": "diagnoses",
+      "suggestion": "Укажите диагнозы пациента."
+    }
+  ],
+  "assessment": {
+    "score": 2,
+    "description": "Извлечение информации неполное и недостаточно точное. Множество необходимых полей отсутствует, что затрудняет дальнейший анализ состояния пациента и назначение лечения."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Биохимический анализ крови",
+      "reason": "Для оценки уровня липидов, глюкозы и креатинина, а также для мониторинга состояния пациента."
+    },
+    {
+      "test": "ЭКГ",
+      "reason": "Для оценки состояния сердечно-сосудистой системы через 3 месяца."
+    },
+    {
+      "test": "СМАД",
+      "reason": "Для мониторинга артериального давления через 3 недели."
+    },
+    {
+      "test": "Консультация офтальмолога",
+      "reason": "Для осмотра глазного дна в течение 1 месяца."
+    }
+  ]
+}

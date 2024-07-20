@@ -1,0 +1,111 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Отсутствует дата рождения пациента"
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Отсутствует пол пациента"
+    },
+    {
+      "field": "patient.phone",
+      "type": "missing",
+      "description": "Отсутствует контактный телефон пациента"
+    },
+    {
+      "field": "patient.email",
+      "type": "missing",
+      "description": "Отсутствует email пациента"
+    },
+    {
+      "field": "patient.address",
+      "type": "missing",
+      "description": "Отсутствует адрес проживания пациента"
+    },
+    {
+      "field": "emergency_contact.name",
+      "type": "missing",
+      "description": "Отсутствует контактное лицо в случае экстренной ситуации"
+    },
+    {
+      "field": "emergency_contact.relation",
+      "type": "missing",
+      "description": "Отсутствует информация о связи с контактным лицом в случае экстренной ситуации"
+    },
+    {
+      "field": "emergency_contact.phone",
+      "type": "missing",
+      "description": "Отсутствует контактный телефон лица, которое следует извещать в случае экстренной ситуации"
+    },
+    {
+      "field": "anamnesis.previousProcedures[].date",
+      "type": "missing",
+      "description": "Отсутствует дата проведения предыдущих процедур"
+    },
+    {
+      "field": "healthMetrics[].date",
+      "type": "missing",
+      "description": "Отсутствует дата измерения некоторых показателей здоровья"
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Добавить дату рождения пациента"
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Добавить пол пациента"
+    },
+    {
+      "field": "patient.phone",
+      "suggestion": "Добавить контактный телефон пациента"
+    },
+    {
+      "field": "patient.email",
+      "suggestion": "Добавить email пациента"
+    },
+    {
+      "field": "patient.address",
+      "suggestion": "Добавить адрес проживания пациента"
+    },
+    {
+      "field": "emergency_contact.name",
+      "suggestion": "Добавить контактное лицо в случае экстренной ситуации"
+    },
+    {
+      "field": "emergency_contact.relation",
+      "suggestion": "Добавить информацию о связи с контактным лицом в случае экстренной ситуации"
+    },
+    {
+      "field": "emergency_contact.phone",
+      "suggestion": "Добавить контактный телефон лица, которое следует извещать в случае экстренной ситуации"
+    },
+    {
+      "field": "anamnesis.previousProcedures[].date",
+      "suggestion": "Добавить даты проведения предыдущих процедур"
+    },
+    {
+      "field": "healthMetrics[].date",
+      "suggestion": "Добавить даты измерения показателей здоровья"
+    }
+  ],
+  "assessment": {
+    "score": 6,
+    "description": "Извлеченные данные содержат большое количество пропусков, которые необходимо заполнить. Отсутствует информация о пациенте, его контактах, анамнезе, подробностях предыдущих процедур и дат измерения некоторых показателей здоровья. Для получения полной клинической картины требуется собрать дополнительные данные."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Дополнительное интервью с пациентом",
+      "reason": "Для сбора недостающих персональных данных, уточнения анамнеза и данных о предыдущих процедурах"
+    },
+    {
+      "test": "Оценка физического осмотра и витальных показателей",
+      "reason": "Для получения информации о текущем состоянии здоровья пациента"
+    }
+  ]
+}

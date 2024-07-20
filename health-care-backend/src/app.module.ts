@@ -11,7 +11,7 @@ import { ScheduleTaskModule } from './schedule-task/schedule-task.module';
 import { ScheduleResponseModule } from './schedule-response/schedule-response.module';
 import { GlobalConfigModule } from './global-config/global-config.module';
 import { ConfigModule } from '@nestjs/config';
-import { AnthropicApiModule } from './anthropic-api/anthropic-api.module';
+import { LlmApiModule } from './llm-api/llm-api.module';
 
 @Module({
   imports: [
@@ -25,7 +25,7 @@ import { AnthropicApiModule } from './anthropic-api/anthropic-api.module';
     ScheduleTaskModule,
     ScheduleResponseModule,
     GlobalConfigModule,
-    AnthropicApiModule,
+    LlmApiModule,
   ],
   controllers: [AppController],
   providers: [AppService],

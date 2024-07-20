@@ -1,0 +1,208 @@
+{
+  "doctor": {
+    "fullName": "Козлов Дмитрий Игоревич",
+    "specialization": "Кардиолог, к.м.н.",
+    "clinic": "Клиника \"Кардио-Плюс\"",
+    "appointmentDate": "2024-07-20"
+  },
+  "patient": {
+    "fullName": "Петрова Анна Михайловна",
+    "phone": "8 (905) 987-65-43",
+    "address": "г. Санкт-Петербург, пр. Невский, д. 100, кв. 45"
+  },
+  "complaints": [
+    "тяжесть в голове",
+    "мелькание мушек перед глазами",
+    "плохой сон",
+    "чувство тревоги"
+  ],
+  "anamnesis": {
+    "previousMedications": [
+      {
+        "name": "каптоприл",
+        "dosage": "under the tongue",
+        "duration": "when feeling unwell",
+        "reason": "to control high blood pressure"
+      }
+    ],
+    "chronicDiseases": [
+      "Гипертоническая болезнь"
+    ]
+  },
+  "healthMetrics": [
+    {
+      "category": "Антропометрия",
+      "name": "Рост",
+      "value": 162,
+      "unit": "см"
+    },
+    {
+      "category": "Антропометрия",
+      "name": "Вес",
+      "value": 73,
+      "unit": "кг"
+    },
+    {
+      "category": "Антропометрия",
+      "name": "ИМТ",
+      "value": 27.8,
+      "description": "избыточный вес"
+    },
+    {
+      "category": "Жизненные показатели",
+      "name": "Окружность талии",
+      "value": 88,
+      "unit": "см"
+    },
+    {
+      "category": "Жизненные показатели",
+      "name": "Артериальное давление",
+      "value": "162/98",
+      "unit": "мм рт.ст."
+    },
+    {
+      "category": "Жизненные показатели",
+      "name": "Частота сердечных сокращений",
+      "value": 84,
+      "unit": "уд/мин"
+    },
+    {
+      "category": "Лабораторные результаты",
+      "name": "Общий холестерин",
+      "value": 5.9,
+      "unit": "ммоль/л"
+    },
+    {
+      "category": "Лабораторные результаты",
+      "name": "ЛПНП",
+      "value": 3.8,
+      "unit": "ммоль/л"
+    },
+    {
+      "category": "Лабораторные результаты",
+      "name": "Триглицериды",
+      "value": 2.1,
+      "unit": "ммоль/л"
+    },
+    {
+      "category": "Лабораторные результаты",
+      "name": "Глюкоза",
+      "value": 5.6,
+      "unit": "ммоль/л"
+    },
+    {
+      "category": "Лабораторные результаты",
+      "name": "Креатинин",
+      "value": 82,
+      "unit": "мкмоль/л",
+      "description": "СКФ 75 мл/мин"
+    },
+    {
+      "category": "Инструментальные исследования",
+      "name": "ЭКГ",
+      "value": "Признаки гипертрофии левого желудочка"
+    }
+  ],
+  "diagnoses": [
+    {
+      "type": "Основной",
+      "description": "Гипертоническая болезнь II стадии, АГ 2 степени, риск ССО высокий"
+    },
+    {
+      "type": "Основной",
+      "description": "Дислипидемия"
+    },
+    {
+      "type": "Основной",
+      "description": "Избыточная масса тела"
+    }
+  ],
+  "recommendations": {
+    "medication": [
+      {
+        "name": "Лозартан",
+        "tradeName": null,
+        "frequency": "утром",
+        "courseDuration": null,
+        "dosage": "50 мг",
+        "administrationMethod": "перорально"
+      },
+      {
+        "name": "Индапамид",
+        "tradeName": null,
+        "frequency": "утром",
+        "courseDuration": null,
+        "dosage": "1,5 мг",
+        "administrationMethod": "перорально"
+      },
+      {
+        "name": "Розувастатин",
+        "tradeName": null,
+        "frequency": "вечером",
+        "courseDuration": null,
+        "dosage": "10 мг",
+        "administrationMethod": "перорально"
+      }
+    ],
+    "other": [
+      {
+        "type": "exercise",
+        "name": "Аэробные нагрузки",
+        "frequency": "150 мин в неделю",
+        "courseDuration": null,
+        "additionalInstructions": "быстрая ходьба, плавание"
+      },
+      {
+        "type": "other",
+        "name": "Контроль АД 2 раза в день",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "утро, вечер, запись в дневник"
+      },
+      {
+        "type": "other",
+        "name": "Ограничить потребление соли",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "до 5 г/сут"
+      },
+      {
+        "type": "other",
+        "name": "Увеличить потребление овощей и фруктов",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "other",
+        "name": "Снизить вес",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "на 5-10% от исходного"
+      },
+      {
+        "type": "other",
+        "name": "Ограничить употребление алкоголя",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      }
+    ]
+  },
+  "referrals": [
+    {
+      "specialist": "СМАД",
+      "reason": "через 2 недели"
+    },
+    {
+      "specialist": "Повторный анализ крови (липиды, глюкоза)",
+      "reason": "через 1 мес"
+    },
+    {
+      "specialist": "УЗИ сердца и почек",
+      "reason": "в плановом порядке"
+    }
+  ],
+  "nextAppointment": "2024-08-10",
+  "additionalNotes": "Пациентке обьяснены принципы модификации образа жизни, важность регулярного приема назначенных препаратов. Предупреждена о необходимости обращения к врачу при ухудшении самочувствия или повышении АД выше 180/100 мм рт.ст."
+}

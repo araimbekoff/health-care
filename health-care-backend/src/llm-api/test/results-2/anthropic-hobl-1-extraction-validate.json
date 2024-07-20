@@ -1,0 +1,106 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента не заполнена"
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента не указан"
+    },
+    {
+      "field": "patient.address",
+      "type": "missing",
+      "description": "Адрес проживания пациента не указан"
+    },
+    {
+      "field": "emergency_contact",
+      "type": "incomplete",
+      "description": "Отсутствуют контактные данные для экстренной связи"
+    },
+    {
+      "field": "healthMetrics.healthMetrics[12].value",
+      "type": "missing",
+      "description": "Значение показателя спирометрии не указано"
+    },
+    {
+      "field": "diagnoses[0].code",
+      "type": "missing",
+      "description": "Код диагноза ХОБЛ не указан"
+    },
+    {
+      "field": "recommendations.medication[0]",
+      "type": "incomplete",
+      "description": "Отсутствуют детали по назначенной медикаментозной терапии"
+    },
+    {
+      "field": "recommendations.other[0]",
+      "type": "incomplete",
+      "description": "Отсутствуют детали по рекомендациям, кроме медикаментозной терапии"
+    },
+    {
+      "field": "referrals",
+      "type": "incomplete",
+      "description": "Отсутствуют данные о направлениях к другим специалистам"
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Добавьте дату рождения пациента"
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Укажите пол пациента"
+    },
+    {
+      "field": "patient.address",
+      "suggestion": "Добавьте адрес проживания пациента"
+    },
+    {
+      "field": "emergency_contact",
+      "suggestion": "Заполните контактные данные для экстренной связи"
+    },
+    {
+      "field": "healthMetrics.healthMetrics[12].value",
+      "suggestion": "Внесите результаты проведенной спирометрии"
+    },
+    {
+      "field": "diagnoses[0].code",
+      "suggestion": "Добавьте код диагноза ХОБЛ"
+    },
+    {
+      "field": "recommendations.medication[0]",
+      "suggestion": "Укажите подробности назначенной медикаментозной терапии"
+    },
+    {
+      "field": "recommendations.other[0]",
+      "suggestion": "Добавьте информацию о рекомендациях, кроме медикаментозной терапии"
+    },
+    {
+      "field": "referrals",
+      "suggestion": "Укажите данные о направлениях к другим специалистам"
+    }
+  ],
+  "assessment": {
+    "score": 5,
+    "description": "Данные извлечены не в полном объеме. Отсутствует ряд важной информации, необходимой для полноценной оценки состояния пациента и планирования дальнейшего лечения. Требуется дополнительный сбор данных."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Спирометрия",
+      "reason": "Для объективной оценки состояния дыхательной системы и подтверждения диагноза ХОБЛ необходимо провести спирометрию и внести результаты исследования"
+    },
+    {
+      "test": "Рентгенография органов грудной клетки",
+      "reason": "Рентгенологическое исследование позволит оценить структурные изменения в легких, характерные для ХОБЛ, и исключить другие заболевания"
+    },
+    {
+      "test": "Определение газового состава крови",
+      "reason": "Данные газового анализа крови важны для оценки дыхательной недостаточности и выбора оптимальной терапии"
+    }
+  ]
+}

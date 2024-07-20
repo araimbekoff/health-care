@@ -1,0 +1,142 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента не указана."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента не указан."
+    },
+    {
+      "field": "emergency_contact.name",
+      "type": "missing",
+      "description": "Имя контактного лица в экстренной ситуации не указано."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "type": "missing",
+      "description": "Отношение к пациенту контактного лица в экстренной ситуации не указано."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "type": "missing",
+      "description": "Телефон контактного лица в экстренной ситуации не указан."
+    },
+    {
+      "field": "diagnoses[0].code",
+      "type": "missing",
+      "description": "Код диагноза ХОБЛ не указан."
+    },
+    {
+      "field": "healthMetrics[0].date",
+      "type": "missing",
+      "description": "Дата измерения роста не указана."
+    },
+    {
+      "field": "healthMetrics[1].date",
+      "type": "missing",
+      "description": "Дата измерения веса не указана."
+    },
+    {
+      "field": "healthMetrics[2].date",
+      "type": "missing",
+      "description": "Дата измерения ИМТ не указана."
+    },
+    {
+      "field": "healthMetrics[3].date",
+      "type": "missing",
+      "description": "Дата измерения ЧДД не указана."
+    },
+    {
+      "field": "healthMetrics[4].date",
+      "type": "missing",
+      "description": "Дата измерения SpO2 не указана."
+    },
+    {
+      "field": "healthMetrics[5].date",
+      "type": "missing",
+      "description": "Дата измерения ЧСС не указана."
+    },
+    {
+      "field": "healthMetrics[6].date",
+      "type": "missing",
+      "description": "Дата измерения АД не указана."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Укажите дату рождения пациента."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Укажите пол пациента."
+    },
+    {
+      "field": "emergency_contact.name",
+      "suggestion": "Добавьте имя контактного лица в экстренной ситуации."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "suggestion": "Добавьте отношение контактного лица к пациенту."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "suggestion": "Добавьте телефон контактного лица в экстренной ситуации."
+    },
+    {
+      "field": "diagnoses[0].code",
+      "suggestion": "Укажите код диагноза ХОБЛ."
+    },
+    {
+      "field": "healthMetrics[0].date",
+      "suggestion": "Добавьте дату измерения роста."
+    },
+    {
+      "field": "healthMetrics[1].date",
+      "suggestion": "Добавьте дату измерения веса."
+    },
+    {
+      "field": "healthMetrics[2].date",
+      "suggestion": "Добавьте дату измерения ИМТ."
+    },
+    {
+      "field": "healthMetrics[3].date",
+      "suggestion": "Добавьте дату измерения ЧДД."
+    },
+    {
+      "field": "healthMetrics[4].date",
+      "suggestion": "Добавьте дату измерения SpO2."
+    },
+    {
+      "field": "healthMetrics[5].date",
+      "suggestion": "Добавьте дату измерения ЧСС."
+    },
+    {
+      "field": "healthMetrics[6].date",
+      "suggestion": "Добавьте дату измерения АД."
+    }
+  ],
+  "assessment": {
+    "score": 5,
+    "description": "Извлечение данных неполное и требует исправлений. Некоторые поля отсутствуют, что затрудняет полное понимание состояния пациента."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Спирометрия",
+      "reason": "Для оценки функции легких и подтверждения диагноза ХОБЛ."
+    },
+    {
+      "test": "Общий анализ крови (ОАК)",
+      "reason": "Для выявления возможных воспалительных процессов."
+    },
+    {
+      "test": "Общий анализ мочи (ОАМ)",
+      "reason": "Для оценки функции почек и выявления возможных заболеваний."
+    }
+  ]
+}

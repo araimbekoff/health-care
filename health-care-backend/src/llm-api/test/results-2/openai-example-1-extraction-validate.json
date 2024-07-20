@@ -1,0 +1,175 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "doctor.appointmentDate",
+      "type": "missing",
+      "description": "Дата приема врача не указана."
+    },
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента не указана."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента не указан."
+    },
+    {
+      "field": "emergency_contact.name",
+      "type": "missing",
+      "description": "Имя контактного лица в экстренной ситуации не указано."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "type": "missing",
+      "description": "Отношение к пациенту контактного лица в экстренной ситуации не указано."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "type": "missing",
+      "description": "Телефон контактного лица в экстренной ситуации не указан."
+    },
+    {
+      "field": "healthMetrics[0].date",
+      "type": "missing",
+      "description": "Дата измерения роста не указана."
+    },
+    {
+      "field": "healthMetrics[1].date",
+      "type": "missing",
+      "description": "Дата измерения веса не указана."
+    },
+    {
+      "field": "healthMetrics[2].date",
+      "type": "missing",
+      "description": "Дата измерения ИМТ не указана."
+    },
+    {
+      "field": "healthMetrics[3].date",
+      "type": "missing",
+      "description": "Дата измерения ЧСС не указана."
+    },
+    {
+      "field": "healthMetrics[4].date",
+      "type": "missing",
+      "description": "Дата измерения АД не указана."
+    },
+    {
+      "field": "healthMetrics[5].date",
+      "type": "missing",
+      "description": "Дата измерения уровня общего холестерина не указана."
+    },
+    {
+      "field": "healthMetrics[6].date",
+      "type": "missing",
+      "description": "Дата измерения уровня триглицеридов не указана."
+    },
+    {
+      "field": "healthMetrics[7].date",
+      "type": "missing",
+      "description": "Дата измерения уровня глюкозы натощак не указана."
+    },
+    {
+      "field": "healthMetrics[8].date",
+      "type": "missing",
+      "description": "Дата измерения уровня креатинина не указана."
+    },
+    {
+      "field": "healthMetrics[9].date",
+      "type": "missing",
+      "description": "Дата проведения ЭКГ не указана."
+    },
+    {
+      "field": "diagnoses[0].code",
+      "type": "missing",
+      "description": "Код основного диагноза не указан."
+    },
+    {
+      "field": "diagnoses[1].code",
+      "type": "missing",
+      "description": "Код вторичного диагноза (дислипидемия) не указан."
+    },
+    {
+      "field": "diagnoses[2].code",
+      "type": "missing",
+      "description": "Код вторичного диагноза (избыточная масса тела) не указан."
+    },
+    {
+      "field": "recommendations.medication[0].courseDuration",
+      "type": "missing",
+      "description": "Продолжительность курса для Периндоприла не указана."
+    },
+    {
+      "field": "recommendations.medication[1].courseDuration",
+      "type": "missing",
+      "description": "Продолжительность курса для Амлодипина не указана."
+    },
+    {
+      "field": "recommendations.medication[2].courseDuration",
+      "type": "missing",
+      "description": "Продолжительность курса для Аторвастатина не указана."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "doctor.appointmentDate",
+      "suggestion": "Указать дату приема врача."
+    },
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Указать дату рождения пациента."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Указать пол пациента."
+    },
+    {
+      "field": "emergency_contact.name",
+      "suggestion": "Указать имя контактного лица в экстренной ситуации."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "suggestion": "Указать отношение к пациенту контактного лица в экстренной ситуации."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "suggestion": "Указать телефон контактного лица в экстренной ситуации."
+    },
+    {
+      "field": "healthMetrics[*].date",
+      "suggestion": "Указать дату для всех измерений здоровья."
+    },
+    {
+      "field": "diagnoses[*].code",
+      "suggestion": "Указать коды для всех диагнозов."
+    },
+    {
+      "field": "recommendations.medication[*].courseDuration",
+      "suggestion": "Указать продолжительность курса для всех назначенных медикаментов."
+    }
+  ],
+  "assessment": {
+    "score": 5,
+    "description": "Извлеченные данные содержат множество пропусков и недостающих значений, что влияет на полноту и точность информации."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Суточное мониторирование АД (СМАД)",
+      "reason": "Для более точной оценки артериального давления и коррекции терапии."
+    },
+    {
+      "test": "Эхокардиография",
+      "reason": "Для оценки состояния сердечно-сосудистой системы."
+    },
+    {
+      "test": "УЗИ почек и надпочечников",
+      "reason": "Для исключения вторичных причин гипертонии."
+    },
+    {
+      "test": "Повторный биохимический анализ крови",
+      "reason": "Для контроля уровня липидов и глюкозы."
+    }
+  ]
+}

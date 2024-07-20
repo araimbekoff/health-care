@@ -1,0 +1,58 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента не указана."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента не указан."
+    },
+    {
+      "field": "emergency_contact.name",
+      "type": "missing",
+      "description": "Имя контактного лица в экстренных случаях не указано."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "type": "missing",
+      "description": "Степень родства контактного лица в экстренных случаях не указана."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "type": "missing",
+      "description": "Телефон контактного лица в экстренных случаях не указан."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Добавить дату рождения пациента для полной идентификации."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Добавить пол пациента для полноты данных."
+    },
+    {
+      "field": "emergency_contact",
+      "suggestion": "Добавить информацию о контактном лице в экстренных случаях для обеспечения безопасности пациента."
+    }
+  ],
+  "assessment": {
+    "score": 7,
+    "description": "Извлечение данных в целом корректно, однако отсутствуют важные поля, такие как дата рождения и пол пациента, а также информация о контактном лице в экстренных случаях."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "СМАД",
+      "reason": "Рекомендуется для мониторинга артериального давления в домашних условиях."
+    },
+    {
+      "test": "Анализ крови на липиды",
+      "reason": "Повторный анализ через 1 месяц для контроля уровня липидов в крови."
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "doctor": {
+    "fullName": null,
+    "specialization": null,
+    "clinic": null,
+    "appointmentDate": null
+  },
+  "patient": {
+    "fullName": null,
+    "dateOfBirth": null,
+    "gender": null,
+    "phone": null,
+    "email": null,
+    "address": null
+  },
+  "emergency_contact": {
+    "name": null,
+    "relation": null,
+    "phone": null
+  },
+  "complaints": [
+    null
+  ],
+  "anamnesis": {
+    "previousMedications": [
+      {
+        "name": null,
+        "dosage": null,
+        "duration": null,
+        "reason": null
+      }
+    ],
+    "chronicDiseases": [
+      null
+    ],
+    "allergies": [
+      null
+    ],
+    "previousProcedures": [
+      {
+        "name": null,
+        "date": null,
+        "reason": null
+      }
+    ],
+    "additionalInfo": null
+  },
+  "healthMetrics": [
+    {
+      "category": null,
+      "name": null,
+      "value": null,
+      "unit": null,
+      "date": null,
+      "description": null
+    }
+  ],
+  "diagnoses": [
+    {
+      "type": null,
+      "description": null,
+      "code": null
+    }
+  ],
+  "recommendations": {
+    "medication": [
+      {
+        "name": "Валсартан",
+        "tradeName": null,
+        "frequency": "утром, постоянно",
+        "courseDuration": null,
+        "dosage": "80 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": "контроль через 1 месяц"
+      },
+      {
+        "name": "Амлодипин",
+        "tradeName": null,
+        "frequency": "вечером, постоянно",
+        "courseDuration": null,
+        "dosage": "5 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": "контроль через 1 месяц"
+      },
+      {
+        "name": "Розувастатин",
+        "tradeName": null,
+        "frequency": "на ночь",
+        "courseDuration": "3 месяца",
+        "dosage": "10 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": "затем контроль липидограммы"
+      },
+      {
+        "name": "Торасемид",
+        "tradeName": null,
+        "frequency": "утром",
+        "courseDuration": "2 недели",
+        "dosage": "5 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": "затем перерыв 5 дней и повторный курс при необходимости"
+      }
+    ],
+    "other": [
+      {
+        "type": "exercise",
+        "name": "Ходьба быстрым шагом",
+        "frequency": "не менее 5 раз в неделю",
+        "courseDuration": "30-40 минут в день",
+        "additionalInstructions": null
+      },
+      {
+        "type": "diet",
+        "name": "Диета DASH",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "ограничение соли до 5 г/сут, увеличение потребления овощей, фруктов, цельнозерновых продуктов, ограничение насыщенных жиров"
+      },
+      {
+        "type": "other",
+        "name": "Снижение массы тела",
+        "frequency": null,
+        "courseDuration": "6 месяцев",
+        "additionalInstructions": "целевое снижение на 5-10% от исходного веса"
+      },
+      {
+        "type": "other",
+        "name": "Ограничение употребления алкоголя",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "не более 1 стандартной дозы в день для женщин"
+      },
+      {
+        "type": "other",
+        "name": "Отказ от курения",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      }
+    ]
+  },
+  "referrals": [
+    {
+      "specialist": "офтальмолог",
+      "reason": "осмотр глазного дна"
+    }
+  ],
+  "nextAppointment": "8/20/2024",
+  "additionalNotes": "Пациентке разъяснены принципы лечения артериальной гипертензии, важность регулярного приема препаратов и соблюдения рекомендаций по образу жизни. Дана инструкция по правильному измерению АД в домашних условиях. Рекомендовано обращение к врачу при ухудшении самочувствия или стойком повышении АД выше 160/100 мм рт.ст. на фоне лечения."
+}

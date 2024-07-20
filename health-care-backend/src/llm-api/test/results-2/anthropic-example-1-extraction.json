@@ -1,0 +1,245 @@
+{
+  "doctor": {
+    "fullName": "Николаева Ирина Сергеевна",
+    "specialization": "Терапевт высшей категории",
+    "clinic": "Городская поликлиника №5",
+    "appointmentDate": "2024-07-20"
+  },
+  "patient": {
+    "fullName": "Сидоров Алексей Викторович",
+    "phone": "+7 (903) 555-44-33",
+    "email": "sidorov@mail.ru",
+    "address": "Екатеринбург, ул. Мира, 33-12"
+  },
+  "complaints": [
+    "периодические головные боли",
+    "чувство \"тяжести\" в затылке",
+    "повышенная утомляемость",
+    "раздражительность"
+  ],
+  "anamnesis": {
+    "previousMedications": [
+      {
+        "name": "Каптоприл",
+        "dosage": null,
+        "duration": null,
+        "reason": "При ухудшении самочувствия"
+      }
+    ],
+    "chronicDiseases": [
+      "Повышение АД около 3 лет"
+    ],
+    "allergies": [],
+    "previousProcedures": [],
+    "additionalInfo": null
+  },
+  "healthMetrics": [
+    {
+      "category": "антропометрия",
+      "name": "Рост",
+      "value": "178",
+      "unit": "см",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "антропометрия",
+      "name": "Вес",
+      "value": "88",
+      "unit": "кг",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "антропометрия",
+      "name": "ИМТ",
+      "value": "27.8",
+      "unit": null,
+      "date": null,
+      "description": "избыточная масса тела"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "ЧСС",
+      "value": "76",
+      "unit": "уд/мин",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "АД",
+      "value": "158/94",
+      "unit": "мм рт.ст.",
+      "date": null,
+      "description": "среднее из 3-х измерений"
+    },
+    {
+      "category": "антропометрия",
+      "name": "Окружность талии",
+      "value": "98",
+      "unit": "см",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Общий холестерин",
+      "value": "6.1",
+      "unit": "ммоль/л",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Триглицериды",
+      "value": "1.9",
+      "unit": "ммоль/л",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Глюкоза натощак",
+      "value": "5.7",
+      "unit": "ммоль/л",
+      "date": null,
+      "description": null
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Креатинин",
+      "value": "88",
+      "unit": "мкмоль/л",
+      "date": null,
+      "description": "СКФ по CKD-EPI: 89 мл/мин/1,73м2"
+    },
+    {
+      "category": "инструментальные исследования",
+      "name": "ЭКГ",
+      "value": "Признаки гипертрофии левого желудочка",
+      "unit": null,
+      "date": null,
+      "description": null
+    }
+  ],
+  "diagnoses": [
+    {
+      "type": "основной",
+      "description": "Гипертоническая болезнь II стадии, 2 степени, риск ССО высокий",
+      "code": null
+    },
+    {
+      "type": "основной",
+      "description": "Дислипидемия",
+      "code": null
+    },
+    {
+      "type": "основной",
+      "description": "Избыточная масса тела",
+      "code": null
+    }
+  ],
+  "recommendations": {
+    "medication": [
+      {
+        "name": "Периндоприл",
+        "tradeName": null,
+        "frequency": "утром",
+        "courseDuration": null,
+        "dosage": "5 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Амлодипин",
+        "tradeName": null,
+        "frequency": "вечером",
+        "courseDuration": null,
+        "dosage": "5 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Аторвастатин",
+        "tradeName": null,
+        "frequency": "на ночь",
+        "courseDuration": null,
+        "dosage": "20 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": null
+      }
+    ],
+    "other": [
+      {
+        "type": "exercise",
+        "name": "Регулярные аэробные физические нагрузки (быстрая ходьба, плавание)",
+        "frequency": "не менее 30 минут в день, 5-7 дней в неделю",
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "other",
+        "name": "Снижение массы тела на 5-10% от исходной",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "other",
+        "name": "Ограничение потребления поваренной соли до 5 г/сутки",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "other",
+        "name": "Увеличение потребления овощей, фруктов, цельнозерновых продуктов",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "other",
+        "name": "Ограничение употребления насыщенных жиров и трансжиров",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "other",
+        "name": "Ограничение употребления алкоголя (не более 2 стандартных доз в день для мужчин)",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "other",
+        "name": "Отказ от курения (если курит)",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      }
+    ]
+  },
+  "referrals": [
+    {
+      "specialist": "СМАД (суточное мониторирование АД)",
+      "reason": "через 2 недели"
+    },
+    {
+      "specialist": "Эхокардиография",
+      "reason": "в плановом порядке"
+    },
+    {
+      "specialist": "УЗИ почек и надпочечников",
+      "reason": null
+    },
+    {
+      "specialist": "Консультация офтальмолога (осмотр глазного дна)",
+      "reason": null
+    }
+  ],
+  "nextAppointment": "2024-08-10",
+  "additionalNotes": "Пациенту разъяснены риски осложнений при отсутствии адекватного лечения АГ, важность соблюдения рекомендаций и регулярного приема назначенных препаратов. Даны рекомендации по правильному измерению АД в домашних условиях."
+}

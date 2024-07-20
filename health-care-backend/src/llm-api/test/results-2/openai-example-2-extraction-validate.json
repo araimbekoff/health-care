@@ -1,0 +1,84 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента не указана."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента не указан."
+    },
+    {
+      "field": "doctor.appointmentDate",
+      "type": "missing",
+      "description": "Дата назначения врача не указана."
+    },
+    {
+      "field": "emergency_contact.name",
+      "type": "missing",
+      "description": "Имя контактного лица в экстренной ситуации не указано."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "type": "missing",
+      "description": "Отношение к пациенту контактного лица в экстренной ситуации не указано."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "type": "missing",
+      "description": "Телефон контактного лица в экстренной ситуации не указан."
+    },
+    {
+      "field": "nextAppointment",
+      "type": "incomplete",
+      "description": "Следующая запись к врачу указана, но нет информации о частоте повторных консультаций."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Добавить дату рождения пациента для полной идентификации."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Добавить пол пациента для улучшения анализа данных."
+    },
+    {
+      "field": "doctor.appointmentDate",
+      "suggestion": "Указать дату назначения врача для отслеживания истории посещений."
+    },
+    {
+      "field": "emergency_contact.name",
+      "suggestion": "Добавить имя контактного лица для экстренных случаев."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "suggestion": "Указать отношение к пациенту контактного лица для экстренных случаев."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "suggestion": "Добавить телефон контактного лица для экстренных случаев."
+    },
+    {
+      "field": "nextAppointment",
+      "suggestion": "Указать частоту повторных консультаций для лучшего планирования лечения."
+    }
+  ],
+  "assessment": {
+    "score": 6,
+    "description": "Извлечение информации в целом корректное, однако отсутствуют важные данные, такие как дата рождения и пол пациента, что снижает полноту и точность информации."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Общий анализ крови (ОАК)",
+      "reason": "Рекомендуется для более полного анализа состояния здоровья пациента."
+    },
+    {
+      "test": "Общий анализ мочи (ОАМ)",
+      "reason": "Необходим для оценки функции почек и общего состояния организма."
+    }
+  ]
+}

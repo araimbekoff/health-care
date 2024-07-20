@@ -1,0 +1,15 @@
+{
+  "isValid": true,
+  "errors": [],
+  "suggestions": [],
+  "assessment": {
+    "score": 10,
+    "description": "Extracted data is complete, accurate, and consistent with the original text. All necessary fields are present, and the information has been fully and correctly extracted."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Офтальмологический осмотр",
+      "reason": "Для оценки состояния глазного дна в связи с артериальной гипертензией"
+    }
+  ]
+}

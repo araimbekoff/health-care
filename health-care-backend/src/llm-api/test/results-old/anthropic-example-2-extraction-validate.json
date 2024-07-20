@@ -1,0 +1,10 @@
+{
+  "isValid": true,
+  "errors": [],
+  "suggestions": [],
+  "assessment": {
+    "score": 10,
+    "description": "Информация, извлеченная из медицинского заключения, является полной, точной и непротиворечивой."
+  },
+  "additionalDataRecommendations": []
+}

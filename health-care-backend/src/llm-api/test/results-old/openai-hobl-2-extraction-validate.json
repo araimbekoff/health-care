@@ -1,0 +1,159 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента отсутствует."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента отсутствует."
+    },
+    {
+      "field": "emergency_contact.name",
+      "type": "missing",
+      "description": "Имя контактного лица в экстренной ситуации отсутствует."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "type": "missing",
+      "description": "Отношение контактного лица в экстренной ситуации отсутствует."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "type": "missing",
+      "description": "Телефон контактного лица в экстренной ситуации отсутствует."
+    },
+    {
+      "field": "healthMetrics[0].date",
+      "type": "missing",
+      "description": "Дата измерения роста отсутствует."
+    },
+    {
+      "field": "healthMetrics[1].date",
+      "type": "missing",
+      "description": "Дата измерения веса отсутствует."
+    },
+    {
+      "field": "healthMetrics[3].date",
+      "type": "missing",
+      "description": "Дата измерения частоты дыхания отсутствует."
+    },
+    {
+      "field": "healthMetrics[4].date",
+      "type": "missing",
+      "description": "Дата измерения уровня SpO2 отсутствует."
+    },
+    {
+      "field": "healthMetrics[5].date",
+      "type": "missing",
+      "description": "Дата измерения частоты сердечных сокращений отсутствует."
+    },
+    {
+      "field": "healthMetrics[6].date",
+      "type": "missing",
+      "description": "Дата измерения артериального давления отсутствует."
+    },
+    {
+      "field": "healthMetrics[7].date",
+      "type": "missing",
+      "description": "Дата измерения уровня эритроцитов отсутствует."
+    },
+    {
+      "field": "healthMetrics[8].date",
+      "type": "missing",
+      "description": "Дата измерения уровня гемоглобина отсутствует."
+    },
+    {
+      "field": "healthMetrics[9].date",
+      "type": "missing",
+      "description": "Дата измерения уровня лейкоцитов отсутствует."
+    },
+    {
+      "field": "healthMetrics[10].date",
+      "type": "missing",
+      "description": "Дата измерения СОЭ отсутствует."
+    },
+    {
+      "field": "healthMetrics[11].date",
+      "type": "missing",
+      "description": "Дата измерения pH отсутствует."
+    },
+    {
+      "field": "healthMetrics[12].date",
+      "type": "missing",
+      "description": "Дата измерения PaO2 отсутствует."
+    },
+    {
+      "field": "healthMetrics[13].date",
+      "type": "missing",
+      "description": "Дата измерения PaCO2 отсутствует."
+    },
+    {
+      "field": "healthMetrics[14].date",
+      "type": "missing",
+      "description": "Дата измерения ОФВ1 отсутствует."
+    },
+    {
+      "field": "healthMetrics[15].date",
+      "type": "missing",
+      "description": "Дата измерения ФЖЕЛ отсутствует."
+    },
+    {
+      "field": "healthMetrics[16].date",
+      "type": "missing",
+      "description": "Дата измерения ОФВ1/ФЖЕЛ отсутствует."
+    },
+    {
+      "field": "healthMetrics[17].date",
+      "type": "missing",
+      "description": "Дата измерения частоты сердечных сокращений на ЭКГ отсутствует."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Добавить дату рождения пациента."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Добавить пол пациента."
+    },
+    {
+      "field": "emergency_contact.name",
+      "suggestion": "Добавить имя контактного лица в экстренной ситуации."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "suggestion": "Добавить отношение контактного лица в экстренной ситуации."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "suggestion": "Добавить телефон контактного лица в экстренной ситуации."
+    },
+    {
+      "field": "healthMetrics[].date",
+      "suggestion": "Добавить даты для всех измерений жизненных показателей и лабораторных результатов."
+    }
+  ],
+  "assessment": {
+    "score": 5,
+    "description": "Извлечение данных неполное из-за отсутствия ключевых полей, таких как дата рождения и пол пациента. Также отсутствуют даты для большинства измерений, что затрудняет оценку динамики состояния пациента."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Дата рождения пациента",
+      "reason": "Необходима для полного понимания истории болезни и оценки риска."
+    },
+    {
+      "test": "Пол пациента",
+      "reason": "Необходим для правильной интерпретации медицинских данных."
+    },
+    {
+      "test": "Даты измерений жизненных показателей",
+      "reason": "Необходимы для отслеживания динамики состояния пациента."
+    }
+  ]
+}

@@ -1,0 +1,129 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента отсутствует в извлеченных данных."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента отсутствует в извлеченных данных."
+    },
+    {
+      "field": "emergency_contact.name",
+      "type": "missing",
+      "description": "Имя контактного лица в экстренных случаях отсутствует в извлеченных данных."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "type": "missing",
+      "description": "Отношение к пациенту контактного лица в экстренных случаях отсутствует в извлеченных данных."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "type": "missing",
+      "description": "Телефон контактного лица в экстренных случаях отсутствует в извлеченных данных."
+    },
+    {
+      "field": "healthMetrics[0].date",
+      "type": "missing",
+      "description": "Дата измерений антропометрии отсутствует в извлеченных данных."
+    },
+    {
+      "field": "healthMetrics[1].date",
+      "type": "missing",
+      "description": "Дата измерений антропометрии отсутствует в извлеченных данных."
+    },
+    {
+      "field": "healthMetrics[2].date",
+      "type": "missing",
+      "description": "Дата измерений ИМТ отсутствует в извлеченных данных."
+    },
+    {
+      "field": "healthMetrics[3].date",
+      "type": "missing",
+      "description": "Дата измерений жизненных показателей отсутствует в извлеченных данных."
+    },
+    {
+      "field": "healthMetrics[4].date",
+      "type": "missing",
+      "description": "Дата измерений жизненных показателей отсутствует в извлеченных данных."
+    },
+    {
+      "field": "healthMetrics[5].date",
+      "type": "missing",
+      "description": "Дата измерений жизненных показателей отсутствует в извлеченных данных."
+    },
+    {
+      "field": "healthMetrics[6].date",
+      "type": "missing",
+      "description": "Дата измерений жизненных показателей отсутствует в извлеченных данных."
+    },
+    {
+      "field": "healthMetrics[7].date",
+      "type": "missing",
+      "description": "Дата измерений лабораторных результатов отсутствует в извлеченных данных."
+    },
+    {
+      "field": "healthMetrics[8].date",
+      "type": "missing",
+      "description": "Дата измерений лабораторных результатов отсутствует в извлеченных данных."
+    },
+    {
+      "field": "healthMetrics[9].date",
+      "type": "missing",
+      "description": "Дата измерений лабораторных результатов отсутствует в извлеченных данных."
+    },
+    {
+      "field": "healthMetrics[10].date",
+      "type": "missing",
+      "description": "Дата измерений лабораторных результатов отсутствует в извлеченных данных."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Добавить дату рождения пациента."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Добавить пол пациента."
+    },
+    {
+      "field": "emergency_contact.name",
+      "suggestion": "Добавить имя контактного лица в экстренных случаях."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "suggestion": "Добавить отношение к пациенту контактного лица в экстренных случаях."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "suggestion": "Добавить телефон контактного лица в экстренных случаях."
+    },
+    {
+      "field": "healthMetrics[].date",
+      "suggestion": "Добавить даты для всех показателей здоровья."
+    }
+  ],
+  "assessment": {
+    "score": 6,
+    "description": "Извлечение данных в целом корректно, но отсутствуют важные поля, такие как дата рождения и пол пациента, а также информация о контактном лице в экстренных случаях. Даты для измерений также не указаны, что снижает полноту и точность данных."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Общий анализ крови",
+      "reason": "Рекомендуется для оценки общего состояния пациента и выявления возможных сопутствующих заболеваний."
+    },
+    {
+      "test": "С-реактивный белок",
+      "reason": "Рекомендуется для оценки воспалительных процессов в организме."
+    },
+    {
+      "test": "Спирометрия",
+      "reason": "Повторная спирометрия через 3 месяца для контроля эффективности терапии."
+    }
+  ]
+}

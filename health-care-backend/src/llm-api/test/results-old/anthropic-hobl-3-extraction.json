@@ -1,0 +1,231 @@
+{
+  "doctor": {
+    "fullName": "Иванов Сергей Николаевич",
+    "specialization": "Пульмонолог высшей категории",
+    "clinic": "ООО \"Пульмо-Центр\"",
+    "appointmentDate": "2024-07-20"
+  },
+  "patient": {
+    "fullName": "Сидорова Елена Павловна",
+    "phone": "8 (905) 876-54-32",
+    "address": "г. Казань, ул. Гагарина, д. 78, кв. 56"
+  },
+  "complaints": [
+    "усиление одышки",
+    "кашель с трудноотделяемой мокротой",
+    "слабость",
+    "повышение температуры до 37,5°C"
+  ],
+  "anamnesis": {
+    "previousMedications": [],
+    "chronicDiseases": [
+      "ХОБЛ"
+    ],
+    "allergies": [],
+    "previousProcedures": [],
+    "additionalInfo": "ХОБЛ в течение 8 лет. Курила 25 лет (бросила 2 года назад). Последнее обострение 4 месяца назад."
+  },
+  "healthMetrics": [
+    {
+      "category": "антропометрия",
+      "name": "Рост",
+      "value": "158",
+      "unit": "см"
+    },
+    {
+      "category": "антропометрия",
+      "name": "Вес",
+      "value": "52",
+      "unit": "кг"
+    },
+    {
+      "category": "антропометрия",
+      "name": "ИМТ",
+      "value": "20.8",
+      "unit": null
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "ЧДД",
+      "value": "24",
+      "unit": "в мин"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "SpO2",
+      "value": "91",
+      "unit": "%"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "АД",
+      "value": "125/75",
+      "unit": "мм рт.ст."
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "ЧСС",
+      "value": "90",
+      "unit": "уд/мин"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Лейкоциты",
+      "value": "11.2",
+      "unit": "*10^9/л",
+      "date": "2024-07-20"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "СОЭ",
+      "value": "25",
+      "unit": "мм/ч",
+      "date": "2024-07-20"
+    },
+    {
+      "category": "функциональные исследования",
+      "name": "ОФВ1",
+      "value": "42",
+      "unit": "% от должного"
+    },
+    {
+      "category": "функциональные исследования",
+      "name": "ФЖЕЛ",
+      "value": "65",
+      "unit": "% от должного"
+    },
+    {
+      "category": "функциональные исследования",
+      "name": "ОФВ1/ФЖЕЛ",
+      "value": "0.52",
+      "unit": null
+    },
+    {
+      "category": "лучевая диагностика",
+      "name": "Рентгенография ОГК",
+      "value": "Усиление легочного рисунка, признаки эмфиземы"
+    }
+  ],
+  "diagnoses": [
+    {
+      "type": "основной",
+      "description": "ХОБЛ, тяжелое течение (GOLD 3), группа D. Обострение средней степени тяжести. ДН II ст."
+    }
+  ],
+  "recommendations": {
+    "medication": [
+      {
+        "name": "Преднизолон",
+        "tradeName": null,
+        "frequency": "per os",
+        "courseDuration": "5 дней",
+        "dosage": "30 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": "с последующим снижением дозы"
+      },
+      {
+        "name": "Ципрофлоксацин",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": "7 дней",
+        "dosage": "500 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Тиотропия бромид",
+        "tradeName": null,
+        "frequency": "1 раз в день",
+        "courseDuration": "длительно",
+        "dosage": "18 мкг",
+        "administrationMethod": "ингаляционно",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Формотерол",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": "длительно",
+        "dosage": "12 мкг",
+        "administrationMethod": "ингаляционно",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Будесонид",
+        "tradeName": null,
+        "frequency": "2 раза в день",
+        "courseDuration": "длительно",
+        "dosage": "400 мкг",
+        "administrationMethod": "ингаляционно",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Ипратропия бромид",
+        "tradeName": null,
+        "frequency": "3 раза в день",
+        "courseDuration": "7 дней",
+        "dosage": "0.5 мг",
+        "administrationMethod": "через небулайзер",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Фенотерол",
+        "tradeName": null,
+        "frequency": "3 раза в день",
+        "courseDuration": "7 дней",
+        "dosage": "0.25 мг",
+        "administrationMethod": "через небулайзер",
+        "additionalInstructions": null
+      },
+      {
+        "name": "N-ацетилцистеин",
+        "tradeName": null,
+        "frequency": "1 раз в день",
+        "courseDuration": "14 дней",
+        "dosage": "600 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": null
+      }
+    ],
+    "other": [
+      {
+        "type": "exercise",
+        "name": "Ведение дневника симптомов",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "exercise",
+        "name": "Контроль пиковой скорости выдоха (ПСВ)",
+        "frequency": "ежедневно",
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "exercise",
+        "name": "Дыхательная гимнастика",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "после купирования острых симптомов"
+      },
+      {
+        "type": "diet",
+        "name": "Диета, богатая белком и витаминами",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "other",
+        "name": "Избегать контакта с триггерами",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "(дым, пыль, резкие запахи)"
+      }
+    ]
+  },
+  "referrals": [],
+  "nextAppointment": "2024-07-27",
+  "additionalNotes": "Пациентке объяснены признаки ухудшения состояния, требующие немедленного обращения к врачу. Проведен инструктаж по технике ингаляций и небулайзерной терапии.\n\nПовторный анализ крови через 5 дней\nКонтрольная рентгенография ОГК через 2 недели\nСпирометрия после стабилизации состояния (ориентировочно через 3 недели)"
+}

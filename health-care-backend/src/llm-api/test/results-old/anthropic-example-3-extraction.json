@@ -1,0 +1,188 @@
+{
+  "doctor": {
+    "fullName": "Смирнова Елена Александровна",
+    "specialization": "Кардиолог",
+    "clinic": "ООО \"Здоровье+\"",
+    "appointmentDate": "2024-07-20"
+  },
+  "patient": {
+    "fullName": "Иванов Сергей Петрович",
+    "phone": "+7 (916) 123-45-67",
+    "address": "г. Москва, ул. Ленина, д. 15, кв. 78"
+  },
+  "complaints": [
+    "Головные боли",
+    "Головокружение",
+    "Шум в ушах",
+    "Повышенное давление"
+  ],
+  "anamnesis": {
+    "previousMedications": [
+      {
+        "name": "Эналаприл",
+        "dosage": "10 мг",
+        "duration": "2 раза в день",
+        "reason": "Лечение повышенного давления"
+      }
+    ],
+    "chronicDiseases": null,
+    "allergies": null,
+    "previousProcedures": null,
+    "additionalInfo": null
+  },
+  "healthMetrics": [
+    {
+      "category": "антропометрия",
+      "name": "Рост",
+      "value": 175,
+      "unit": "см"
+    },
+    {
+      "category": "антропометрия",
+      "name": "Вес",
+      "value": 92,
+      "unit": "кг"
+    },
+    {
+      "category": "антропометрия",
+      "name": "ИМТ",
+      "value": 30.0,
+      "unit": null,
+      "description": "ожирение 1 ст."
+    },
+    {
+      "category": "антропометрия",
+      "name": "Окружность талии",
+      "value": 102,
+      "unit": "см"
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "АД",
+      "value": "155/95",
+      "unit": "мм рт.ст."
+    },
+    {
+      "category": "жизненные показатели",
+      "name": "Пульс",
+      "value": 78,
+      "unit": "уд/мин"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Общий холестерин",
+      "value": 6.2,
+      "unit": "ммоль/л"
+    },
+    {
+      "category": "лабораторные результаты",
+      "name": "Глюкоза натощак",
+      "value": 5.8,
+      "unit": "ммоль/л"
+    }
+  ],
+  "diagnoses": [
+    {
+      "type": "основной",
+      "description": "Гипертоническая болезнь II стадии, 2 степени, риск ССО высокий",
+      "code": null
+    },
+    {
+      "type": "основной",
+      "description": "Дислипидемия",
+      "code": null
+    },
+    {
+      "type": "основной",
+      "description": "Ожирение 1 ст.",
+      "code": null
+    }
+  ],
+  "recommendations": {
+    "medication": [
+      {
+        "name": "Лизиноприл",
+        "tradeName": null,
+        "frequency": "1 раз в день утром",
+        "courseDuration": null,
+        "dosage": "10 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Амлодипин",
+        "tradeName": null,
+        "frequency": "1 раз в день вечером",
+        "courseDuration": null,
+        "dosage": "5 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Аторвастатин",
+        "tradeName": null,
+        "frequency": "1 раз в день на ночь",
+        "courseDuration": null,
+        "dosage": "20 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": null
+      },
+      {
+        "name": "Ацетилсалициловая кислота",
+        "tradeName": null,
+        "frequency": "1 раз в день вечером",
+        "courseDuration": null,
+        "dosage": "75 мг",
+        "administrationMethod": "перорально",
+        "additionalInstructions": null
+      }
+    ],
+    "other": [
+      {
+        "type": "exercise",
+        "name": "Ходьба",
+        "frequency": "5-6 раз в неделю",
+        "courseDuration": null,
+        "additionalInstructions": "30-40 минут в день"
+      },
+      {
+        "type": "diet",
+        "name": "Средиземноморская диета",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      },
+      {
+        "type": "exercise",
+        "name": "Снижение массы тела",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "целевой показатель - минус 10% от исходного веса"
+      },
+      {
+        "type": "other",
+        "name": "Ограничение соли",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "до 5 г/сут"
+      },
+      {
+        "type": "other",
+        "name": "Отказ от курения",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": "(если курит)"
+      },
+      {
+        "type": "other",
+        "name": "Ограничение алкоголя",
+        "frequency": null,
+        "courseDuration": null,
+        "additionalInstructions": null
+      }
+    ]
+  },
+  "referrals": null,
+  "nextAppointment": "2024-08-03",
+  "additionalNotes": "Пациенту объяснены риски осложнений при отсутствии лечения. Даны рекомендации по правилам измерения АД в домашних условиях.\nКонтроль АД 2 раза в день с ведением дневника\nПовторный анализ крови через 1 месяц: липидограмма, глюкоза\nЭКГ, ЭхоКГ в плановом порядке\nПовторный прием через 2 недели для оценки эффективности терапии"
+}

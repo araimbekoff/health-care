@@ -1,0 +1,71 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента не указана."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента не указан."
+    },
+    {
+      "field": "emergency_contact.name",
+      "type": "missing",
+      "description": "Имя контактного лица в экстренных ситуациях не указано."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "type": "missing",
+      "description": "Отношение к пациенту контактного лица в экстренных ситуациях не указано."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "type": "missing",
+      "description": "Телефон контактного лица в экстренных ситуациях не указан."
+    },
+    {
+      "field": "anamnesis.duration",
+      "type": "missing",
+      "description": "Продолжительность приема предыдущего лекарства не указана."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Укажите дату рождения пациента для полной информации."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Укажите пол пациента для улучшения анализа."
+    },
+    {
+      "field": "emergency_contact.name",
+      "suggestion": "Добавьте имя контактного лица для экстренных ситуаций."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "suggestion": "Укажите отношение контактного лица к пациенту."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "suggestion": "Добавьте телефон контактного лица для экстренных ситуаций."
+    },
+    {
+      "field": "anamnesis.duration",
+      "suggestion": "Укажите продолжительность приема предыдущего лекарства."
+    }
+  ],
+  "assessment": {
+    "score": 6,
+    "description": "Извлечение данных в целом корректное, но отсутствуют ключевые поля, такие как дата рождения и пол пациента, что снижает полноту информации."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Общий анализ крови",
+      "reason": "Для оценки общего состояния здоровья пациента и выявления возможных скрытых заболеваний."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "recommendations.medication[0].tradeName",
+      "type": "missing",
+      "description": "Отсутствует торговое наименование препарата Периндоприл"
+    },
+    {
+      "field": "recommendations.medication[0].courseDuration",
+      "type": "missing",
+      "description": "Отсутствует длительность курса приема препарата Периндоприл"
+    },
+    {
+      "field": "recommendations.medication[1].tradeName",
+      "type": "missing",
+      "description": "Отсутствует торговое наименование препарата Амлодипин"
+    },
+    {
+      "field": "recommendations.medication[1].courseDuration",
+      "type": "missing",
+      "description": "Отсутствует длительность курса приема препарата Амлодипин"
+    },
+    {
+      "field": "recommendations.medication[2].tradeName",
+      "type": "missing",
+      "description": "Отсутствует торговое наименование препарата Аторвастатин"
+    },
+    {
+      "field": "recommendations.medication[2].courseDuration",
+      "type": "missing",
+      "description": "Отсутствует длительность курса приема препарата Аторвастатин"
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "recommendations.medication[0].tradeName",
+      "suggestion": "Указать торговое наименование препарата Периндоприл"
+    },
+    {
+      "field": "recommendations.medication[0].courseDuration",
+      "suggestion": "Указать длительность курса приема препарата Периндоприл"
+    },
+    {
+      "field": "recommendations.medication[1].tradeName",
+      "suggestion": "Указать торговое наименование препарата Амлодипин"
+    },
+    {
+      "field": "recommendations.medication[1].courseDuration",
+      "suggestion": "Указать длительность курса приема препарата Амлодипин"
+    },
+    {
+      "field": "recommendations.medication[2].tradeName",
+      "suggestion": "Указать торговое наименование препарата Аторвастатин"
+    },
+    {
+      "field": "recommendations.medication[2].courseDuration",
+      "suggestion": "Указать длительность курса приема препарата Аторвастатин"
+    }
+  ],
+  "assessment": {
+    "score": 8,
+    "description": "Большинство необходимых данных присутствует, однако отсутствуют некоторые сведения о назначенной лекарственной терапии, что может повлиять на полноту информации."
+  },
+  "additionalDataRecommendations": []
+}

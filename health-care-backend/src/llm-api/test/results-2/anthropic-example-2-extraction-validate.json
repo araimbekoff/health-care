@@ -1,0 +1,10 @@
+{
+  "isValid": true,
+  "errors": [],
+  "suggestions": [],
+  "assessment": {
+    "score": 9,
+    "description": "Извлечение данных из заключения выполнено корректно и полно. Все необходимые поля присутствуют, данные извлечены точно и не противоречат друг другу."
+  },
+  "additionalDataRecommendations": []
+}

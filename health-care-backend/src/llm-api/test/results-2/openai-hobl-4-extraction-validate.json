@@ -1,0 +1,66 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента не указана."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента не указан."
+    },
+    {
+      "field": "doctor.appointmentDate",
+      "type": "missing",
+      "description": "Дата назначения врача не указана."
+    },
+    {
+      "field": "anamnesis.allergies",
+      "type": "incomplete",
+      "description": "Не указаны возможные аллергии пациента."
+    },
+    {
+      "field": "anamnesis.previousProcedures",
+      "type": "incomplete",
+      "description": "Не указаны предыдущие процедуры, если таковые имелись."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Уточнить дату рождения пациента для более точной идентификации."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Уточнить пол пациента для корректной медицинской документации."
+    },
+    {
+      "field": "doctor.appointmentDate",
+      "suggestion": "Указать дату назначения для отслеживания истории лечения."
+    },
+    {
+      "field": "anamnesis.allergies",
+      "suggestion": "Собрать информацию об аллергиях для исключения противопоказаний."
+    },
+    {
+      "field": "anamnesis.previousProcedures",
+      "suggestion": "Уточнить информацию о предыдущих процедурах для полного анамнеза."
+    }
+  ],
+  "assessment": {
+    "score": 6,
+    "description": "Извлечение данных в целом корректное, однако отсутствуют ключевые поля, такие как дата рождения, пол пациента и дата назначения врача, что снижает полноту и точность информации."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Общий анализ крови",
+      "reason": "Для оценки общего состояния здоровья пациента и выявления возможных сопутствующих заболеваний."
+    },
+    {
+      "test": "Тест на аллергию",
+      "reason": "Для выявления возможных аллергий, которые могут повлиять на лечение."
+    }
+  ]
+}

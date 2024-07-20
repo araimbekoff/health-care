@@ -1,0 +1,75 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента отсутствует."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента отсутствует."
+    },
+    {
+      "field": "doctor.appointmentDate",
+      "type": "missing",
+      "description": "Дата назначения врача отсутствует."
+    },
+    {
+      "field": "emergency_contact.name",
+      "type": "missing",
+      "description": "Имя контактного лица в экстренной ситуации отсутствует."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "type": "missing",
+      "description": "Отношение к пациенту контактного лица в экстренной ситуации отсутствует."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "type": "missing",
+      "description": "Телефон контактного лица в экстренной ситуации отсутствует."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Добавить дату рождения пациента."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Добавить пол пациента."
+    },
+    {
+      "field": "doctor.appointmentDate",
+      "suggestion": "Добавить дату назначения врача."
+    },
+    {
+      "field": "emergency_contact.name",
+      "suggestion": "Добавить имя контактного лица в экстренной ситуации."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "suggestion": "Добавить отношение к пациенту контактного лица в экстренной ситуации."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "suggestion": "Добавить телефон контактного лица в экстренной ситуации."
+    }
+  ],
+  "assessment": {
+    "score": 7,
+    "description": "Извлечение информации в целом корректно, однако отсутствуют важные поля, такие как дата рождения и пол пациента, а также информация о контактном лице в экстренной ситуации."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Общий анализ крови",
+      "reason": "Для проверки общего состояния здоровья пациента и выявления возможных скрытых заболеваний."
+    },
+    {
+      "test": "Липидограмма",
+      "reason": "Для более точной оценки уровня холестерина и риска сердечно-сосудистых заболеваний."
+    }
+  ]
+}

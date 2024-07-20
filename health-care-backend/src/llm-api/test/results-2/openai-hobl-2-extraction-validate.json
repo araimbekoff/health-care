@@ -1,0 +1,84 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "doctor.appointmentDate",
+      "type": "missing",
+      "description": "Дата назначения отсутствует."
+    },
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента отсутствует."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента отсутствует."
+    },
+    {
+      "field": "emergency_contact.name",
+      "type": "missing",
+      "description": "Имя контактного лица отсутствует."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "type": "missing",
+      "description": "Отношение к пациенту отсутствует."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "type": "missing",
+      "description": "Телефон контактного лица отсутствует."
+    },
+    {
+      "field": "anamnesis.previousMedications",
+      "type": "missing",
+      "description": "Информация о предыдущих медикаментах отсутствует."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "doctor.appointmentDate",
+      "suggestion": "Добавить дату назначения врача."
+    },
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Добавить дату рождения пациента."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Добавить пол пациента."
+    },
+    {
+      "field": "emergency_contact.name",
+      "suggestion": "Добавить имя контактного лица."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "suggestion": "Добавить отношение к пациенту."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "suggestion": "Добавить телефон контактного лица."
+    },
+    {
+      "field": "anamnesis.previousMedications",
+      "suggestion": "Добавить информацию о предыдущих медикаментах."
+    }
+  ],
+  "assessment": {
+    "score": 6,
+    "description": "Извлечение данных неполное, отсутствуют важные поля, такие как дата рождения пациента и информация о контактном лице. Некоторые данные корректны, но не все поля заполнены."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Контрольные анализы крови",
+      "reason": "Необходимы для оценки состояния пациента и эффективности лечения."
+    },
+    {
+      "test": "Спирометрия",
+      "reason": "Рекомендуется для мониторинга функции легких и оценки динамики заболевания."
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+{
+  "isValid": false,
+  "errors": [
+    {
+      "field": "patient.dateOfBirth",
+      "type": "missing",
+      "description": "Дата рождения пациента отсутствует в извлеченных данных."
+    },
+    {
+      "field": "patient.gender",
+      "type": "missing",
+      "description": "Пол пациента отсутствует в извлеченных данных."
+    },
+    {
+      "field": "emergency_contact.name",
+      "type": "missing",
+      "description": "Имя контактного лица в экстренных случаях отсутствует."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "type": "missing",
+      "description": "Отношение к пациенту контактного лица в экстренных случаях отсутствует."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "type": "missing",
+      "description": "Телефон контактного лица в экстренных случаях отсутствует."
+    },
+    {
+      "field": "referrals[0].specialist",
+      "type": "missing",
+      "description": "Специализация для направления отсутствует."
+    },
+    {
+      "field": "referrals[0].reason",
+      "type": "missing",
+      "description": "Причина направления отсутствует."
+    }
+  ],
+  "suggestions": [
+    {
+      "field": "patient.dateOfBirth",
+      "suggestion": "Добавить дату рождения пациента для полной информации."
+    },
+    {
+      "field": "patient.gender",
+      "suggestion": "Указать пол пациента для улучшения данных."
+    },
+    {
+      "field": "emergency_contact.name",
+      "suggestion": "Добавить имя контактного лица в экстренных случаях."
+    },
+    {
+      "field": "emergency_contact.relation",
+      "suggestion": "Указать отношение контактного лица к пациенту."
+    },
+    {
+      "field": "emergency_contact.phone",
+      "suggestion": "Добавить телефон контактного лица в экстренных случаях."
+    },
+    {
+      "field": "referrals[0].specialist",
+      "suggestion": "Указать специализацию для направления."
+    },
+    {
+      "field": "referrals[0].reason",
+      "suggestion": "Добавить причину направления к специалисту."
+    }
+  ],
+  "assessment": {
+    "score": 6,
+    "description": "Извлечение данных в целом корректно, однако отсутствуют важные поля, такие как дата рождения и пол пациента, а также контактные данные для экстренных случаев и информация о направлении."
+  },
+  "additionalDataRecommendations": [
+    {
+      "test": "Общий анализ крови",
+      "reason": "Для контроля состояния пациента после назначенного лечения и оценки динамики."
+    },
+    {
+      "test": "Спирометрия",
+      "reason": "Для мониторинга функции легких и оценки эффективности терапии."
+    }
+  ]
+}
