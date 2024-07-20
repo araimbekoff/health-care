@@ -31,11 +31,11 @@ class TestCases {
     this.llmType = llmType;
   }
 
-  private resource_path() {
+  private resource_file_path() {
     return 'data/' + this.resource + '.txt';
   }
 
-  private extraction_path() {
+  private extraction_file_path() {
     return `results/${this.llmType}-${this.resource}-extraction.json`;
   }
 
@@ -43,9 +43,13 @@ class TestCases {
     return `results/${this.llmType}-${this.resource}-extraction-validate.json`;
   }
 
+  private schedule_file_path() {
+    return `results/${this.llmType}-${this.resource}-schedules.json`;
+  }
+
   async extraction() {
     const start = Date.now();
-    const request = await this.loadFileToText(this.resource_path());
+    const request = await this.loadFileToText(this.resource_file_path());
     const prompt = await this.service.loadPrompt(
       'medical-info-extraction-prompt.json',
       {
@@ -58,13 +62,38 @@ class TestCases {
       `extraction with ${this.resource} ${this.llmType}`,
       (end - start) / 1000,
     );
-    await this.writeToFile(this.extraction_path(), res);
+    await this.writeToFile(this.extraction_file_path(), res);
+  }
+
+  async schedule_generation() {
+    const start = Date.now();
+    const extractedData = await this.loadFileToText(
+      this.extraction_file_path(),
+    );
+    const data = JSON.parse(extractedData);
+    const prompt = await this.service.loadPrompt(
+      'recommendation-schedules-prompt.json',
+      {
+        'inputData.currentDate': new Date().toLocaleDateString(),
+        'inputData.recommendations': JSON.stringify(data['recommendations']),
+      },
+    );
+    const res = await this.service.generate(prompt, this.llmType);
+    const end = Date.now();
+
+    console.log(
+      `schedule_generation with ${this.resource} ${this.llmType}`,
+      (end - start) / 1000,
+    );
+    await this.writeToFile(this.schedule_file_path(), res);
   }
 
   async validate_extraction() {
     const start = Date.now();
-    const originalText = await this.loadFileToText(this.resource_path());
-    const extractedData = await this.loadFileToText(this.extraction_path());
+    const originalText = await this.loadFileToText(this.resource_file_path());
+    const extractedData = await this.loadFileToText(
+      this.extraction_file_path(),
+    );
     const prompt = await this.service.loadPrompt(
       'medical-info-extraction-result-checker.json',
       {
@@ -108,14 +137,14 @@ describe('LlmApiJsonService', () => {
   describe('Medical Info Extraction and Checking', () => {
     it('test use case', async () => {
       const src_list = [
-        'example-1',
+        // 'example-1',
         'example-2',
         'example-3',
-        'example-4',
-        'hobl-1',
+        // 'example-4',
+        // 'hobl-1',
         'hobl-2',
         'hobl-3',
-        'hobl-4',
+        // 'hobl-4',
       ];
       /*
       const promises = [];
@@ -132,12 +161,8 @@ describe('LlmApiJsonService', () => {
       */
       const promises = [
         ...src_list.map(async (src) => {
-          const cases = new TestCases(service, src, 'anthropic');
-          await cases.extraction();
-        }),
-        ...src_list.map(async (src) => {
           const cases = new TestCases(service, src, 'openai');
-          await cases.extraction();
+          await cases.schedule_generation();
         }),
       ];
       await Promise.all(promises);

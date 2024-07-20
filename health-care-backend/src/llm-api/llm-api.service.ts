@@ -4,12 +4,11 @@ import Anthropic from '@anthropic-ai/sdk';
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import OpenAI from 'openai';
-import { AbstractPrompt } from '../openai/prompts/abstract.prompt';
 
 export type PromptJsonType =
   | 'medical-info-extraction-prompt.json'
   | 'medical-info-extraction-result-checker.json'
-  | 'schedule-prompt.json'
+  | 'recommendation-schedules-prompt.json'
   | 'schedule-prompt-checker.json';
 
 export type LlmType = 'anthropic' | 'openai';
@@ -67,7 +66,6 @@ export class LlmApiService {
         model: 'claude-3-haiku-20240307',
         max_tokens: 4096,
         messages: [{ role: 'user', content: prompt }],
-        stream: true,
       });
 
       if (Array.isArray(message.content) && message.content.length > 0) {
